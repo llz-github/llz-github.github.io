@@ -193,10 +193,10 @@
 </blockquote>
 <h2 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h2><blockquote>
 <p> 区块是段落开头的使用的 &gt; 号，后面紧跟着一个空格</p>
-<p>示例：</p>
-<p>&gt; 区块的引用</p>
-<p>&gt; 我是区块</p>
-<p>效果：</p>
+<p> 示例：</p>
+<p> &gt; 区块的引用</p>
+<p> &gt; 我是区块</p>
+<p> 效果：</p>
 <blockquote>
 <p>区块的引用</p>
 <p>我是区块</p>
@@ -378,13 +378,12 @@
 <td>Ctrl+T</td>
 </tr>
 </tbody></table>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>##　支持HTML元素</p>
-<blockquote>
-<p>HTML中的元素例如<b>&lt;br&gt;等都可以在文档中实现</p>
-<p>示例:</p>
-<p>&lt;kbd&gt;ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;z&lt;/kbd&gt;调出QQ</p>
-<p>效果:</p>
-<p><kbd>ctrl</kbd>+<kbd>Alt</kbd>+<kbd>z</kbd>调出QQ</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="支持HTML元素"><a href="#支持HTML元素" class="headerlink" title="支持HTML元素"></a>支持HTML元素</h2><blockquote>
+<p>HTML中的元素例如&lt;br&gt;等都可以在文档中实现</p>
+<p>示例：</p>
+<p>&lt;kbd&gt;ctrl&lt;/kbd&gt; + &lt;kbd&gt;Atl&lt;/kbd&gt; + &lt;kbd&gt;z&lt;/kbd&gt;调出QQ </p>
+<p>效果：</p>
+<p>ctrl + Alt + z调出QQ</p>
 </blockquote>
 <h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><blockquote>
 <p>当你需要输入一些特殊字符时,例如:* [] (),我们就需要用到转义字符 \ </p>
@@ -682,13 +681,12 @@
 <td>Ctrl+T</td>
 </tr>
 </tbody></table>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>##　支持HTML元素</p>
-<blockquote>
-<p>HTML中的元素例如<b>&lt;br&gt;等都可以在文档中实现</p>
-<p>示例:</p>
-<p>&lt;kbd&gt;ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;z&lt;/kbd&gt;调出QQ</p>
-<p>效果:</p>
-<p><kbd>ctrl</kbd>+<kbd>Alt</kbd>+<kbd>z</kbd>调出QQ</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="支持HTML元素"><a href="#支持HTML元素" class="headerlink" title="支持HTML元素"></a>支持HTML元素</h2><blockquote>
+<p>HTML中的元素例如&lt;br&gt;等都可以在文档中实现</p>
+<p>示例：</p>
+<p>&lt;kbd&gt;ctrl&lt;/kbd&gt; + &lt;kbd&gt;Atl&lt;/kbd&gt; + &lt;kbd&gt;z&lt;/kbd&gt;调出QQ </p>
+<p>效果：</p>
+<p>ctrl + Alt + z调出QQ</p>
 </blockquote>
 <h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><blockquote>
 <p>当你需要输入一些特殊字符时,例如:* [] (),我们就需要用到转义字符 \ </p>
