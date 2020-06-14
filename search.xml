@@ -4,20 +4,42 @@
     <title>windows 下安装mongodb 机器可视化工具adminMongo</title>
     <url>/2020/06/11/windows%20%E4%B8%8B%E5%AE%89%E8%A3%85mongodb%20%E6%9C%BA%E5%99%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7adminMongo/</url>
     <content><![CDATA[<h1 id="windows-下安装mongodb-机器可视化工具adminMongo"><a href="#windows-下安装mongodb-机器可视化工具adminMongo" class="headerlink" title="windows 下安装mongodb 机器可视化工具adminMongo"></a>windows 下安装mongodb 机器可视化工具adminMongo</h1><p>目前图床出了一些问题，等有时间改好了再来更新图片哈~~</p>
-<h2 id="安装Mongodb"><a href="#安装Mongodb" class="headerlink" title="安装Mongodb"></a>安装Mongodb</h2><h3 id="至Mongodb的-官方网站下载安装包。"><a href="#至Mongodb的-官方网站下载安装包。" class="headerlink" title="至Mongodb的 官方网站下载安装包。"></a>至Mongodb的 官方网站下载安装包。</h3><p>地址<a href="https://www.mongodb.com/download-center#community" target="_blank" rel="noopener">https://www.mongodb.com/download-center#community</a> ，zip,msi均可。</p>
+<h2 id="安装Mongodb"><a href="#安装Mongodb" class="headerlink" title="安装Mongodb"></a>安装Mongodb</h2><h3 id="至Mongodb的-官方网站下载安装包。"><a href="#至Mongodb的-官方网站下载安装包。" class="headerlink" title="至Mongodb的 官方网站下载安装包。"></a>至Mongodb的 官方网站下载安装包。</h3><blockquote>
+<p>地址<a href="https://www.mongodb.com/download-center#community" target="_blank" rel="noopener">https://www.mongodb.com/download-center#community</a> ，zip,msi均可。</p>
+</blockquote>
+<blockquote>
 <p>官网下载比较慢，可以用我分享在百度网盘上的，</p>
-<p>链接：<a href="https://pan.baidu.com/s/1qsCni7Z_xV5dIBY7o3UDjg" target="_blank" rel="noopener">https://pan.baidu.com/s/1qsCni7Z_xV5dIBY7o3UDjg</a><br>提取码：f2l7 ，压缩包解压密码：666666</p>
+<p>链接：<a href="https://pan.baidu.com/s/1qsCni7Z_xV5dIBY7o3UDjg" target="_blank" rel="noopener">https://pan.baidu.com/s/1qsCni7Z_xV5dIBY7o3UDjg</a>  提取码：f2l7 ，压缩包解压密码：666666</p>
 <p>zip格式和msi格式都有，截止到今日（2021.6.9）是官网发布的最新版本。</p>
-<h3 id="Mongodb-的安装"><a href="#Mongodb-的安装" class="headerlink" title="Mongodb 的安装"></a>Mongodb 的安装</h3><p>msi安装起来很简单,一直下一步就好，可以自己选择喜欢的安装路径，新手最好安装我的路径方式来，文件存放之如下目录：F:\MongoDB\mongoDB\ 。</p>
+</blockquote>
+<h3 id="Mongodb-的安装"><a href="#Mongodb-的安装" class="headerlink" title="Mongodb 的安装"></a>Mongodb 的安装</h3><blockquote>
+<p>msi安装起来很简单,一直下一步就好，可以自己选择喜欢的安装路径，新手最好安装我的路径方式来，文件存放之如下目录：F:\MongoDB\mongoDB\ 。</p>
 <p>zip安装也很简单，直接将解压的包放在喜欢的位置下即可，最好也是如下目录：F:\MongoDB\mongoDB\。</p>
+</blockquote>
+<blockquote>
 <p>接下来我们要将这个文件的 bin 目录，即：F:\MongoDB\mongoDB\mongodb-win32-x86_64-2012plus-4.2.7\bin配置在我们的 Windows 环境变量的 Path 中。</p>
-<p>这部也很简单，不会的可自行百度“配置环境变量”哦。图床修复好后我也会更新配置步骤图的。</p>
-<h3 id="创建数据库文件的存放位置"><a href="#创建数据库文件的存放位置" class="headerlink" title="创建数据库文件的存放位置"></a>创建数据库文件的存放位置</h3><p>在MongoDB下创建data，在data下再创建db：F:\MongoDB\data\db</p>
+</blockquote>
+<blockquote>
+<p>这步也很简单，不会的可自行百度“配置环境变量”哦。图床修复好后我也会更新配置步骤图的。</p>
+</blockquote>
+<h3 id="创建数据库文件的存放位置"><a href="#创建数据库文件的存放位置" class="headerlink" title="创建数据库文件的存放位置"></a>创建数据库文件的存放位置</h3><blockquote>
+<p>在MongoDB下创建data，在data下再创建db：F:\MongoDB\data\db</p>
+</blockquote>
 <p>因为启动mongodb服务之前需要必须创建数据库文件的存放文件夹，否则命令不会自动创建，而且不能启动成功。</p>
-<h3 id="启动Mongodb-服务"><a href="#启动Mongodb-服务" class="headerlink" title="启动Mongodb 服务"></a>启动Mongodb 服务</h3><p>打开 cmd ，输入mongod –dbpath F:\MongoDB\data\db即可，这个–dbpath 后的位置就是我们刚刚配置数据库的位置。</p>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>在浏览器输入<a href="http://localhost:27017" target="_blank" rel="noopener">http://localhost:27017</a> （27017是mongodb的端口号）查看，若网页</p>
-<p>显示一行英文则表示启动成功啦~~</p>
-<h3 id="配置一下本地的-windows-mongodb-服务"><a href="#配置一下本地的-windows-mongodb-服务" class="headerlink" title="配置一下本地的 windows mongodb 服务"></a>配置一下本地的 windows mongodb 服务</h3><p>这样可设置为 开机自启动，可直接手动启动关闭，可通过命令行net start MongoDB 启动。该配置会大大方便。</p>
+<h3 id="启动Mongodb-服务"><a href="#启动Mongodb-服务" class="headerlink" title="启动Mongodb 服务"></a>启动Mongodb 服务</h3><blockquote>
+<p>打开 cmd ，输入mongod –dbpath F:\MongoDB\data\db即可，这个–dbpath 后的位置就是我们刚刚配置数据库的位置。</p>
+</blockquote>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><blockquote>
+<p>在浏览器输入<a href="http://localhost:27017" target="_blank" rel="noopener">http://localhost:27017</a> （27017是mongodb的端口号）查看，若网页</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">It looks like you are trying to access MongoDB over HTTP on the native driver port.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>显示以上英文则表示启动成功啦~~</p>
+</blockquote>
+<h3 id="配置一下本地的-windows-mongodb-服务"><a href="#配置一下本地的-windows-mongodb-服务" class="headerlink" title="配置一下本地的 windows mongodb 服务"></a>配置一下本地的 windows mongodb 服务</h3><blockquote>
+<p>这样可设置为 开机自启动，可直接手动启动关闭，可通过命令行net start MongoDB 启动。该配置会大大方便。</p>
+</blockquote>
 <ol>
 <li><p>先在data文件下创建一个新文件夹log（用来存放日志文件）</p>
 </li>
@@ -36,8 +58,10 @@
 </li>
 </ol>
 <p>至此Mongodb的安装及配置已圆满完成。</p>
-<h1 id="安装adminMongo"><a href="#安装adminMongo" class="headerlink" title="安装adminMongo"></a>安装adminMongo</h1><h3 id="git环境搭建"><a href="#git环境搭建" class="headerlink" title="git环境搭建"></a>git环境搭建</h3><p> 下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a><br> 安装完成后，找到安装git的目录下的git-bash.exe,打开，进行如下配置：</p>
+<h1 id="安装adminMongo"><a href="#安装adminMongo" class="headerlink" title="安装adminMongo"></a>安装adminMongo</h1><h3 id="git环境搭建"><a href="#git环境搭建" class="headerlink" title="git环境搭建"></a>git环境搭建</h3><blockquote>
+<p>下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a><br> 安装完成后，找到安装git的目录下的git-bash.exe,打开，进行配置：</p>
 <p>配置环境变量：在path环境变量中新增git安装路径下的bin文件夹路径</p>
+</blockquote>
 <h3 id="node-js环境搭建"><a href="#node-js环境搭建" class="headerlink" title="node.js环境搭建"></a>node.js环境搭建</h3><blockquote>
 <p>下载地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
 <p>安装完成后，打开<code>cmd</code>，输入 <code>node -v</code>，检查是否显示版本信息，如果显示即安装成功。</p>
@@ -48,16 +72,24 @@
 </blockquote>
 </blockquote>
 <h3 id="adminMongo下载安装"><a href="#adminMongo下载安装" class="headerlink" title="adminMongo下载安装"></a>adminMongo下载安装</h3><blockquote>
-<p>git下将adminMongo源码从github上clone下来：</p>
+<ol>
+<li>git下将adminMongo源码从github上clone下来：</li>
+</ol>
 <p>git clone <a href="https://github.com/mrvautin/adminMongo.git" target="_blank" rel="noopener">https://github.com/mrvautin/adminMongo.git</a></p>
-<p>进入adminMongo路径：</p>
+<ol start="2">
+<li>进入adminMongo路径：</li>
+</ol>
 <p>cd adminMongo</p>
-<p>安装依赖：</p>
+<ol start="3">
+<li>安装依赖：</li>
+</ol>
 <p>npm install</p>
-<p>启动应用：</p>
+<ol start="4">
+<li>启动应用：</li>
+</ol>
 <p>npm start </p>
 </blockquote>
-<h3 id="验证-1"><a href="#验证-1" class="headerlink" title="验证"></a>验证</h3><p>输入<a href="http://127.0.0.1:1234就会弹出adminMongo">http://127.0.0.1:1234就会弹出adminMongo</a> 的界面啦</p>
+<h3 id="验证-1"><a href="#验证-1" class="headerlink" title="验证"></a>验证</h3><p>输入 <a href="http://127.0.0.1:1234" target="_blank" rel="noopener">http://127.0.0.1:1234</a> 就会弹出adminMongo 的界面啦</p>
 <h3 id="添加mongodb到adminMongo"><a href="#添加mongodb到adminMongo" class="headerlink" title="添加mongodb到adminMongo"></a>添加mongodb到adminMongo</h3><p> 分别填入：<br> Connection name： local<br> Connection string： <a href="mongodb://localhost:27017">mongodb://localhost:27017</a><br> 点击 <code>Add Connection</code>按钮即可。</p>
 ]]></content>
   </entry>
