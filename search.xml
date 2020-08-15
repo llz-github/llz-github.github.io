@@ -3,8 +3,7 @@
   <entry>
     <title>windows 下安装mongodb 机器可视化工具adminMongo</title>
     <url>/2020/06/11/windows%20%E4%B8%8B%E5%AE%89%E8%A3%85mongodb%20%E6%9C%BA%E5%99%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7adminMongo/</url>
-    <content><![CDATA[<h1 id="windows-下安装mongodb-机器可视化工具adminMongo"><a href="#windows-下安装mongodb-机器可视化工具adminMongo" class="headerlink" title="windows 下安装mongodb 机器可视化工具adminMongo"></a>windows 下安装mongodb 机器可视化工具adminMongo</h1><p>目前图床出了一些问题，等有时间改好了再来更新图片哈~~</p>
-<h2 id="安装Mongodb"><a href="#安装Mongodb" class="headerlink" title="安装Mongodb"></a>安装Mongodb</h2><h3 id="至Mongodb的-官方网站下载安装包。"><a href="#至Mongodb的-官方网站下载安装包。" class="headerlink" title="至Mongodb的 官方网站下载安装包。"></a>至Mongodb的 官方网站下载安装包。</h3><blockquote>
+    <content><![CDATA[<h1 id="windows-下安装mongodb-机器可视化工具adminMongo"><a href="#windows-下安装mongodb-机器可视化工具adminMongo" class="headerlink" title="windows 下安装mongodb 机器可视化工具adminMongo"></a>windows 下安装mongodb 机器可视化工具adminMongo</h1><h2 id="安装Mongodb"><a href="#安装Mongodb" class="headerlink" title="安装Mongodb"></a>安装Mongodb</h2><h3 id="至Mongodb的-官方网站下载安装包。"><a href="#至Mongodb的-官方网站下载安装包。" class="headerlink" title="至Mongodb的 官方网站下载安装包。"></a>至Mongodb的 官方网站下载安装包。</h3><blockquote>
 <p>地址<a href="https://www.mongodb.com/download-center#community" target="_blank" rel="noopener">https://www.mongodb.com/download-center#community</a> ，zip,msi均可。</p>
 </blockquote>
 <blockquote>
@@ -18,14 +17,17 @@
 </blockquote>
 <blockquote>
 <p>接下来我们要将这个文件的 bin 目录，即：F:\MongoDB\mongoDB\mongodb-win32-x86_64-2012plus-4.2.7\bin配置在我们的 Windows 环境变量的 Path 中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200614195733.png" alt="image-20200614195527784"></p>
 </blockquote>
 <blockquote>
-<p>这步也很简单，不会的可自行百度“配置环境变量”哦。图床修复好后我也会更新配置步骤图的。</p>
+<p>配置步骤:</p>
+<p>我的电脑–属性–高级系统设置–高级–环境变量–找到系统变量下的Path–加入路径即可</p>
 </blockquote>
 <h3 id="创建数据库文件的存放位置"><a href="#创建数据库文件的存放位置" class="headerlink" title="创建数据库文件的存放位置"></a>创建数据库文件的存放位置</h3><blockquote>
 <p>在MongoDB下创建data，在data下再创建db：F:\MongoDB\data\db</p>
 </blockquote>
 <p>因为启动mongodb服务之前需要必须创建数据库文件的存放文件夹，否则命令不会自动创建，而且不能启动成功。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200615091626.png" alt="image-20200615091626563"></p>
 <h3 id="启动Mongodb-服务"><a href="#启动Mongodb-服务" class="headerlink" title="启动Mongodb 服务"></a>启动Mongodb 服务</h3><blockquote>
 <p>打开 cmd ，输入mongod –dbpath F:\MongoDB\data\db即可，这个–dbpath 后的位置就是我们刚刚配置数据库的位置。</p>
 </blockquote>
@@ -47,6 +49,7 @@
 <blockquote>
 <p>dbpath=F:\MongoDB\data\db<br>logpath=F:\MongoDB\data\log\mongodb.log</p>
 </blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200615092031.png" alt="image-20200614200342044"></p>
 </li>
 <li><p>以管理员身份打开cmd,运行以下命令：</p>
 <blockquote>
@@ -90,7 +93,9 @@
 <p>npm start </p>
 </blockquote>
 <h3 id="验证-1"><a href="#验证-1" class="headerlink" title="验证"></a>验证</h3><p>输入 <a href="http://127.0.0.1:1234" target="_blank" rel="noopener">http://127.0.0.1:1234</a> 就会弹出adminMongo 的界面啦</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200615092059.png" alt="image-20200614200653014"></p>
 <h3 id="添加mongodb到adminMongo"><a href="#添加mongodb到adminMongo" class="headerlink" title="添加mongodb到adminMongo"></a>添加mongodb到adminMongo</h3><p> 分别填入：<br> Connection name： local<br> Connection string： <a href="mongodb://localhost:27017">mongodb://localhost:27017</a><br> 点击 <code>Add Connection</code>按钮即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200615092209.png" alt="image-20200614200745468"></p>
 ]]></content>
   </entry>
   <entry>
@@ -422,8 +427,28 @@
 ]]></content>
   </entry>
   <entry>
-    <title>北京市租房信息数据的爬取与分析</title>
-    <url>/2020/06/14/%E5%8C%97%E4%BA%AC%E5%B8%82%E7%A7%9F%E6%88%BF%E4%BF%A1%E6%81%AF%E6%95%B0%E6%8D%AE%E7%9A%84%E7%88%AC%E5%8F%96%E4%B8%8E%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[]]></content>
+    <title>递归实现指数型枚举</title>
+    <url>/2020/08/15/%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8C%87%E6%95%B0%E5%9E%8B%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<p>从 1~n 这 n 个整数中随机选取任意多个，输出所有可能的选择方案。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入一个整数n。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>每行输出一种方案。</p>
+<p>同一行内的数必须升序排列，相邻两个数用恰好1个空格隔开。</p>
+<p>对于没有选任何数的方案，输出空行。</p>
+<p>本题有自定义校验器（SPJ），各行（不同方案）之间的顺序任意。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n≤15</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">2 3</span><br><span class="line">1</span><br><span class="line">1 3</span><br><span class="line">1 2</span><br><span class="line">1 2 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>题解:</strong></p>
+<blockquote>
+<p>暴力枚举</p>
+<p>整体思路是准备出一个数组，将每个位置都遍历一次，选中的置为1，未重的置为-1，最后将其输出即可。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">20</span>;</span><br><span class="line"><span class="keyword">int</span> b[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    <span class="comment">//判断何时选取到了规定的数目,并将符合条件的输出</span></span><br><span class="line">    <span class="keyword">if</span>(a&gt;n)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="keyword">if</span>(b[i] == <span class="number">1</span>) <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//递归选择,选中的置为1,未选中的置为-1,还未操作的置为0</span></span><br><span class="line">    b[a] = <span class="number">1</span>;</span><br><span class="line">    dfs(a+<span class="number">1</span>);</span><br><span class="line">    b[a] = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    b[a] = <span class="number">-1</span>;</span><br><span class="line">    dfs(a+<span class="number">1</span>);</span><br><span class="line">    b[a] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
   </entry>
 </search>
