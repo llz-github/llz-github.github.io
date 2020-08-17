@@ -451,4 +451,60 @@
 
 ]]></content>
   </entry>
+  <entry>
+    <title>递归实现排列型枚举</title>
+    <url>/2020/08/16/%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E6%8E%92%E5%88%97%E5%9E%8B%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<p>把 1~nn 这 nn 个整数排成一行后随机打乱顺序，输出所有可能的次序。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>一个整数n。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>按照从小到大的顺序输出所有方案，每行1个。</p>
+<p>首先，同一行相邻两个数用一个空格隔开。</p>
+<p>其次，对于两个不同的行，对应下标的数一一比较，字典序较小的排在前面。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n≤91≤n≤9</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">1 3 2</span><br><span class="line">2 1 3</span><br><span class="line">2 3 1</span><br><span class="line">3 1 2</span><br><span class="line">3 2 1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>题解思路:</strong></p>
+<p>暴力枚举每个位置上的所有数字的可能，前面位置已经时用过的数字不能重复使用，定义used数组来判断是否使用过该数字，满足条件后输出。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> b[N],n;</span><br><span class="line"><span class="keyword">bool</span> used[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t&gt;n)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;b[j]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        &#125;<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!used[i])&#123;</span><br><span class="line">            used[i]=<span class="literal">true</span>;</span><br><span class="line">            b[t]=i;</span><br><span class="line">            dfs(t+<span class="number">1</span>);</span><br><span class="line">            b[t]=<span class="number">0</span>;</span><br><span class="line">            used[i]=<span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Java大学生特训营 疫情地图项目实战课</title>
+    <url>/2020/08/17/Java%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%89%B9%E8%AE%AD%E8%90%A5%20%E7%96%AB%E6%83%85%E5%9C%B0%E5%9B%BE%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E8%AF%BE/</url>
+    <content><![CDATA[<h1 id="疫情地图的绘制及线上部署"><a href="#疫情地图的绘制及线上部署" class="headerlink" title="疫情地图的绘制及线上部署"></a>疫情地图的绘制及线上部署</h1><ol>
+<li><p><strong>阿里云服务器的搭建</strong></p>
+<blockquote>
+<p>首先打开浏览器输入<a href="https://www.aliyun.com/进入阿里云官网，本次购买的是阿里云目前云服务器使用量最高的云服务器ECS，" target="_blank" rel="noopener">https://www.aliyun.com/进入阿里云官网，本次购买的是阿里云目前云服务器使用量最高的云服务器ECS，</a></p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817215439.png" alt="image-20200817214834520"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817215423.png" alt="image-20200817215423707"></p>
+<p><strong>1. 基础配置</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817215931.png" alt="image-20200817215931336"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817221938.jpg" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817221840.jpg" alt="img"></p>
+<p><img src="F:%5CQQ%E7%BC%93%E5%AD%98%5C%E4%B8%AA%E4%BA%BA%E6%96%87%E4%BB%B6%5C2045949224%5CImage%5CGroup2%5CII%5CMO%5CIIMOKAZ_(NZ2N%5B)4M5L%60SQM.jpg" alt="img"></p>
+<p><strong>2. 网络和安全组</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817223833.png" alt="image-20200817223833690"></p>
+<p><strong>3. 系统配置</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817224339.png" alt="image-20200817224029213"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817224328.png" alt="image-20200817224328633"></p>
+<p>至此便完成了服务器的购买。</p>
+<p>接下来我们继续对服务器进行配置：</p>
+</li>
+</ol>
+<ol start="2">
+<li><p><strong>微信公众号的申请</strong></p>
+</li>
+<li><p><strong>编码实现</strong></p>
+</li>
+<li><p><strong>世界疫情地图部署上线</strong></p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200817215455.png" alt="image-20200817213747943"></p>
+]]></content>
+  </entry>
 </search>
