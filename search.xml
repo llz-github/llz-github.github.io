@@ -650,4 +650,137 @@
 
 ]]></content>
   </entry>
+  <entry>
+    <title>AC-费解的开关</title>
+    <url>/2020/08/18/AC-%E8%B4%B9%E8%A7%A3%E7%9A%84%E5%BC%80%E5%85%B3/</url>
+    <content><![CDATA[<p>你玩过“拉灯”游戏吗？25盏灯排成一个5x5的方形。每一个灯都有一个开关，游戏者可以改变它的状态。每一步，游戏者可以改变某一个灯的状态。游戏者改变一个灯的状态会产生连锁反应：和这个灯上下左右相邻的灯也要相应地改变其状态。</p>
+<p>我们用数字“1”表示一盏开着的灯，用数字“0”表示关着的灯。下面这种状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">10111</span><br><span class="line">01101</span><br><span class="line">10111</span><br><span class="line">10000</span><br><span class="line">11011</span><br></pre></td></tr></table></figure>
+
+<p>在改变了最左上角的灯的状态后将变成：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">01111</span><br><span class="line">11101</span><br><span class="line">10111</span><br><span class="line">10000</span><br><span class="line">11011</span><br></pre></td></tr></table></figure>
+
+<p>再改变它正中间的灯后状态将变成：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">01111</span><br><span class="line">11001</span><br><span class="line">11001</span><br><span class="line">10100</span><br><span class="line">11011</span><br></pre></td></tr></table></figure>
+
+<p>给定一些游戏的初始状态，编写程序判断游戏者是否可能在6步以内使所有的灯都变亮。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入正整数nn，代表数据中共有nn个待解决的游戏初始状态。</p>
+<p>以下若干行数据分为nn组，每组数据有5行，每行5个字符。每组数据描述了一个游戏的初始状态。各组数据间用一个空行分隔。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>一共输出nn行数据，每行有一个小于等于6的整数，它表示对于输入数据中对应的游戏状态最少需要几步才能使所有灯变亮。</p>
+<p>对于某一个游戏初始状态，若6步以内无法使所有灯变亮，则输出“-1”。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>0&lt;n≤5000&lt;n≤500</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">00111</span><br><span class="line">01011</span><br><span class="line">10001</span><br><span class="line">11010</span><br><span class="line">11100</span><br><span class="line"></span><br><span class="line">11101</span><br><span class="line">11101</span><br><span class="line">11110</span><br><span class="line">11111</span><br><span class="line">11111</span><br><span class="line"></span><br><span class="line">01111</span><br><span class="line">11111</span><br><span class="line">11111</span><br><span class="line">11111</span><br><span class="line">11111</span><br></pre></td></tr></table></figure>
+
+<p>输出样例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
+
+<p>题解:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> g[N][N], backup[N][N];</span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">5</span>] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;, dy[<span class="number">5</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">turn</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> a = x + dx[i], b = y + dy[i];</span><br><span class="line">        <span class="keyword">if</span> (a &lt; <span class="number">0</span> || a &gt;= <span class="number">5</span> || b &lt; <span class="number">0</span> || b &gt;= <span class="number">5</span>) <span class="keyword">continue</span>;   <span class="comment">// 在边界外，直接忽略即可</span></span><br><span class="line">        g[a][b] ^= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T -- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++ ) <span class="built_in">cin</span> &gt;&gt; g[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> op = <span class="number">0</span>; op &lt; <span class="number">32</span>; op ++ )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">memcpy</span>(backup, g, <span class="keyword">sizeof</span> g);</span><br><span class="line">            <span class="keyword">int</span> <span class="built_in">step</span> = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++ )</span><br><span class="line">                <span class="keyword">if</span> (op &gt;&gt; i &amp; <span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">step</span> ++ ;</span><br><span class="line">                    <span class="built_in">turn</span>(<span class="number">0</span>, i);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i ++ )</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j ++ )</span><br><span class="line">                    <span class="keyword">if</span> (g[i][j] == <span class="string">'0'</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="built_in">step</span> ++ ;</span><br><span class="line">                        <span class="built_in">turn</span>(i + <span class="number">1</span>, j);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">bool</span> dark = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++ )</span><br><span class="line">                <span class="keyword">if</span> (g[<span class="number">4</span>][i] == <span class="string">'0'</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    dark = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!dark) res = <span class="built_in">min</span>(res, <span class="built_in">step</span>);</span><br><span class="line">            <span class="built_in">memcpy</span>(g, backup, <span class="keyword">sizeof</span> g);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (res &gt; <span class="number">6</span>) res = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Java基础-实现定时关机功能</title>
+    <url>/2020/08/18/Java%E5%9F%BA%E7%A1%80-%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E5%85%B3%E6%9C%BA%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<blockquote>
+<p>任务名称: 自动关机程序 </p>
+<p>任务描述: </p>
+<blockquote>
+<p>1、提示用户，欢迎使用某某 关机程序 </p>
+<p>2、提示用户，输入倒计时关机的秒数</p>
+<p>3、根据用户输入的秒数，进行自动关机 </p>
+<p>4、开始自动关机时，提示用户xxx秒后关机 </p>
+</blockquote>
+</blockquote>
+<p>__标识符 __</p>
+<blockquote>
+<p>Java对包、类、方法、参数和变量等要素命名时 使用的字符序列成为标识符，规则： </p>
+<blockquote>
+<ol>
+<li>不能以数字开头。 </li>
+<li>由数字、字母、下划线_和美元符号$组成。 </li>
+<li>长度无限制 </li>
+<li>不能是Java中的保留关键字</li>
+</ol>
+</blockquote>
+<p>规范： 不遵守不会出错， 但是在团队协同开发中 ，会被团队嫌弃。</p>
+</blockquote>
+<p>__单行注释 __</p>
+<blockquote>
+<p>//单行注释的范围: 从//开始 到 行的结束 </p>
+<p>//注释: 注释是对代码的解释和说明,注释只是为了提高代码的可读性,注释不会被计算机作为指令执行 </p>
+</blockquote>
+<p><strong>定时关机</strong>  </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo1</span> </span>&#123;</span><br><span class="line">	<span class="comment">//代码分为结构定义语句, 和 功能执行语句. 功能执行语句必须以分号结尾</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//注释是对代码的解释和说明,注释只是为了提高代码的可读性,注释不会被计算机作为指令执行</span></span><br><span class="line">        <span class="comment">//关机</span></span><br><span class="line">        Runtime.getRuntime().exec(<span class="string">"shutdown -s -t 1000"</span>);</span><br><span class="line">        <span class="comment">//取消关机</span></span><br><span class="line">        Runtime.getRuntime().exec(<span class="string">"shutdown -a"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>导出jar文件流程</strong> </p>
+<p><strong>变量</strong> </p>
+<blockquote>
+<p>变量就是系统为程序分配的一块内存单元 ， 用于存储各种类型的数据。 由于该存储单元的数据可以发生 改变，因此得名“变量”。</p>
+<p> 创建变量的格式：</p>
+<p>​                 数据类型 变量名 = 初始值; </p>
+<p>更改变量的内容： </p>
+<p>​                变量名 = 新的值; </p>
+<p>如何使用变量： </p>
+<p>​                在后续的程序代码中,变量的名称就表示变量中存储的内容.所以直接使用名称即可</p>
+</blockquote>
+<p><strong>数据类型</strong></p>
+<p> <strong>基本数据类型</strong> </p>
+<blockquote>
+<p>由于变量记录的数据内容大小不同， 导致所需的存储单元大小不同。</p>
+<p> 这些不同大小的存储单元， 在Java中使用数据类型的概念加以描述。 </p>
+<p>8种基本数据类型：</p>
+<p>​                 数值类型6种：byte、short、int、long、float、double </p>
+<p>​                字符类型：char </p>
+<p>​                布尔类型：boolean （取值：true或false）</p>
+<p> 创建变量的示例： </p>
+<p>​                int x = 20; </p>
+<p>​                x = 30;//x在内存中存储的数据就更新为了30</p>
+</blockquote>
+<p><strong>引用数据类型 （工具相关的数据类型）</strong></p>
+<blockquote>
+<p>字符串：String </p>
+<p>创建变量的示例: </p>
+<p>​                String text = “床前明月光,玻璃好上霜.要不及时擦,整不好得脏.”; </p>
+<p>​                text = “从前有座山,山上有座庙,庙里有个老和尚正在对小和尚说:嘿嘿嘿”;</p>
+</blockquote>
+<p><strong>进行文字的显示</strong></p>
+<blockquote>
+<p>方式1.通过普通文字展示 </p>
+<p>​                System.out.println(变量或数据); </p>
+<p>方式2.通过红色文字展示(通常用于提示错误) </p>
+<p>​                System.err.println(变量或数据);</p>
+</blockquote>
+<p><strong>运算符</strong></p>
+<blockquote>
+<p>算术运算符： +-*/% </p>
+<p>赋值运算符： = : 将等号右边的运算结果赋值给等号左边. </p>
+<p>比较运算符： (特殊:运算的结果都是boolean类型的,非true即false) </p>
+<p>​                == :比较符号两边是否相等,相等时结果为true </p>
+<p>​                != :比较符号两边是否步相等,不相等时结果为false </p>
+<p>​                &gt; :比较符号左边是否大于符号右边,大于时结果为true </p>
+<p>​                &lt; :比较符号左边是否小于符号右边,小于时结果为true </p>
+<p>​                &gt;= : … </p>
+<p>​                &lt;= : … </p>
+<p>字符串连接符： + </p>
+<p>​                当+号的任意一边为字符串时, +号的含义就不再是算数运算符,而是字符串连接符. </p>
+<p>​                例如: </p>
+<p>​                                String text = “He”+”llo”+12;//结果是Hello12 </p>
+<p>​                常见面试题: </p>
+<p>​                                String text = 1+1+1+”1”+”1”+1+1;//“31111” </p>
+</blockquote>
+<p>*<em>接收用户的键盘输入 *</em></p>
+<blockquote>
+<p>//1. 用于创建接收用户输入的变量input </p>
+<p>Scanner input = new Scanner(System.in); </p>
+<p>//2. 先提示用户请输入 </p>
+<p>System.out.println(“请输入一个秒数”); </p>
+<p>//3. 接收用户输入 </p>
+<p>String text = input.nextLine(); </p>
+<p>System.out.println(“你输入的是:”+text);</p>
+</blockquote>
+]]></content>
+  </entry>
 </search>
