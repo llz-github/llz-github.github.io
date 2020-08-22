@@ -783,4 +783,44 @@
 </blockquote>
 ]]></content>
   </entry>
+  <entry>
+    <title>LeetCode-70.爬楼梯</title>
+    <url>/2020/08/22/LeetCode-70.%E7%88%AC%E6%A5%BC%E6%A2%AF/</url>
+    <content><![CDATA[<p><strong>原题链接:</strong> <a href="https://leetcode-cn.com/problems/climbing-stairs" target="_blank" rel="noopener">https://leetcode-cn.com/problems/climbing-stairs</a></p>
+<p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p>
+<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p>注意：给定 n 是一个正整数。</p>
+<p><strong>示例1 ：</strong></p>
+<blockquote>
+<p>输入： 2<br>输出： 2<br>解释： 有两种方法可以爬到楼顶。</p>
+<ol>
+<li>1 阶 + 1 阶</li>
+<li>2 阶</li>
+</ol>
+</blockquote>
+<p><strong>示例 2：</strong></p>
+<blockquote>
+<p>输入： 3<br>输出： 3<br>解释： 有三种方法可以爬到楼顶。</p>
+<ol>
+<li>1 阶 + 1 阶 + 1 阶</li>
+<li>1 阶 + 2 阶</li>
+<li>2 阶 + 1 阶</li>
+</ol>
+</blockquote>
+<p><strong>题解:</strong></p>
+<blockquote>
+<p>动态规划:</p>
+<p>给定 n 级台阶,最后一步可能为1 或 2 ,假定 n-1 级台阶或 n-2 级台阶的方法已经确定,则可得出 n 级台阶的公式: </p>
+<p>f(n) = f(n - 1) + f(n - 2)(n &gt; 2)</p>
+<p>类似斐波那契数列的求值。</p>
+<p>接下来我们讨论一下极限，n 为正整数， n极限为1时，f(n)=1，n=2时f(n)=2，我们可以看出爬当前阶楼梯的方法只跟当前阶楼梯的前一阶以及前前阶楼梯有关，接下来只需定义两个变量往后递推即可。</p>
+</blockquote>
+<p><strong>代码:</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">            b=a+b;</span><br><span class="line">            a=b-a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200822113541.png" alt="image-20200822113411499"></p>
+]]></content>
+  </entry>
 </search>
