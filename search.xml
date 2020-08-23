@@ -837,4 +837,69 @@
 <p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200823134922.png" alt="image-20200823134922290"></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>LN-时间复杂度和空间复杂度</title>
+    <url>/2020/08/23/LN-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</url>
+    <content><![CDATA[<blockquote>
+<p>算法的优劣主要从时间和空间两方面进行分析：</p>
+<blockquote>
+<p>时间：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。</p>
+<p>空间：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。</p>
+</blockquote>
+</blockquote>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度:"></a>时间复杂度:</h1><h2 id="常见的七种时间复杂度"><a href="#常见的七种时间复杂度" class="headerlink" title="常见的七种时间复杂度"></a>常见的七种时间复杂度</h2><blockquote>
+<p>O（1）：Constant Complexity 常数复杂度</p>
+<p>O（log n）：Logarithmic Complexity 对数复杂度</p>
+<p>O（n）：Linear Complexity 线性时间复杂度</p>
+<p>O（n^2）：N square Complexity 平方</p>
+<p>O（n^3）：N cubic Complexity 立方</p>
+<p>O（2^n）：Exponential Growth 指数</p>
+<p>O（n!）：Factorial 阶乘</p>
+<p><em>注</em>:<em>用到多种时,只看最高复杂度的运算</em></p>
+</blockquote>
+<h2 id="七种时间复杂度曲线"><a href="#七种时间复杂度曲线" class="headerlink" title="七种时间复杂度曲线:"></a>七种时间复杂度曲线:</h2><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200824000120.png" alt="image-20200823233037517"></p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><blockquote>
+<h3 id="计算：1-2-3-4-…-n"><a href="#计算：1-2-3-4-…-n" class="headerlink" title="计算：1+2+3+4+…+n"></a><strong>计算：1+2+3+4+…+n</strong></h3><p>方法一：从1到n的循环累加 </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">	sum+=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此方法循环了 n 次，时间复杂度为 O(n)。</p>
+<p>方法二：公式法 sum = n (n+1)/2</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = n(n+<span class="number">1</span>)/<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>此方法只运行一步，时间复杂度为 O(1)。</p>
+</blockquote>
+<h3 id="斐波那契额数列"><a href="#斐波那契额数列" class="headerlink" title="斐波那契额数列:"></a><strong>斐波那契额数列</strong>:</h3><blockquote>
+<p>递归法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;<span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">	<span class="keyword">return</span> fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>递归树：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200823235645.png" alt="image-20200823233641687"></p>
+<p>斐波那契数列递归解法存在大量的冗余，在这里先不做优化，只看时间复杂度为O(2^n)</p>
+</blockquote>
+<h2 id="主定理"><a href="#主定理" class="headerlink" title="主定理"></a>主定理</h2><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200823235634.png" alt="image-20200823235634487"></p>
+<blockquote>
+<p>二分查找:                                           O(log n)</p>
+<p>二叉树遍历:                                       O(n)</p>
+<p>二维矩阵（有序）二分查找:           O(n)</p>
+<p>归并:                                                   O(nlog n)</p>
+<p>主定理证明比较复杂，只记住这四种即可。</p>
+</blockquote>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考:"></a>思考:</h2><blockquote>
+<p>二叉树遍历-前序、中序、后序：时间复杂度是多少？<br>图的遍历：时间复杂度是多少？                     O(n)<br>搜索算法：DFS、BFS时间复杂度是多少？   O(n)<br>二分查找：时间复杂度是多少？                     O(log n)</p>
+</blockquote>
+<h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><blockquote>
+<p>空间复杂度取决于以下因素:</p>
+<ol>
+<li><p>数组的长度</p>
+<p>一维数组 O(n)</p>
+<p>二维数组 O(n^2)</p>
+</li>
+<li><p>递归的深度</p>
+<p>注: 递归里面开数组,空间复杂度为两者中的最大值</p>
+</li>
+</ol>
+</blockquote>
+<p>上述斐波那契额数列的递归解法的空间复杂度为递归的深度，既O(n);</p>
+]]></content>
+  </entry>
 </search>
