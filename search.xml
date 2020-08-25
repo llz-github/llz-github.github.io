@@ -906,12 +906,21 @@
     <title>LeetCode-11.盛最多水的容器</title>
     <url>/2020/08/24/LeetCode-11.%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</url>
     <content><![CDATA[<h1 id="原题链接"><a href="#原题链接" class="headerlink" title="原题链接:"></a>原题链接:</h1><p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/container-with-most-water/</a></p>
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
+</blockquote>
+<blockquote>
 <p>说明：你不能倾斜容器，且 n 的值至少为 2。</p>
+</blockquote>
 <p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200824232413.png" alt="image-20200824232413405"></p>
+<blockquote>
 <p>图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p>
-<h1 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h1><p>输入：[1,8,6,2,5,4,8,3,7]<br>输出：49</p>
+</blockquote>
+<h1 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h1><blockquote>
+<p>输入：[1,8,6,2,5,4,8,3,7]<br>输出：49</p>
+</blockquote>
 <h1 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路:"></a>题解思路:</h1><blockquote>
+<p>看到这个题目可以想到双指针的解法，但是双指针解法是否正确，会不会漏掉一些情况呢。</p>
 <p>首先我们按着以下步骤思考：</p>
 <ol>
 <li>当前两条直线是最两侧的直线，x 作为宽固定，此时取到最大值，其他的之线组合 x 逐渐缩小。</li>
@@ -925,32 +934,44 @@
 </blockquote>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; <span class="built_in">height</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="built_in">height</span>.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="built_in">min</span>(<span class="built_in">height</span>[l], <span class="built_in">height</span>[r]) * (r - l);</span><br><span class="line">            a = <span class="built_in">max</span>(a, sum);</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">height</span>[l] &lt;= <span class="built_in">height</span>[r]) &#123;</span><br><span class="line">                ++l;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                --r;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.双指针</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200824234201.png" alt="image-20200824234201443"></p>
+<blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200825104409.png" alt="image-20200825104409725"></p>
+</blockquote>
 ]]></content>
   </entry>
   <entry>
     <title>LeetCode-26. 删除排序数组中的重复项</title>
     <url>/2020/08/24/LeetCode-26.%20%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
     <content><![CDATA[<h1 id="原题链接"><a href="#原题链接" class="headerlink" title="原题链接:"></a>原题链接:</h1><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/</a></p>
+<blockquote>
 <p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
 <p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<h1 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h1><p>给定数组 nums = [1,1,2], </p>
+</blockquote>
+<h1 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h1><blockquote>
+<p>给定数组 nums = [1,1,2], </p>
 <p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
 <p>你不需要考虑数组中超出新长度后面的元素。</p>
-<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h2><p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
+</blockquote>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h2><blockquote>
+<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
 <p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
 <p>你不需要考虑数组中超出新长度后面的元素。</p>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h3><p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+</blockquote>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h3><blockquote>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
 <p>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
 <p>你可以想象内部操作如下:</p>
 <p>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>int len = removeDuplicates(nums);</p>
 <p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
+</blockquote>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解:"></a>题解:</h1><blockquote>
-<p>/*<br>1.暴力循环一次，当前一位和后一位相同，删除后一位    (删除操作耗时严重)<br>2.暴力循环一次，当前一位和后一位相同，后者向前移动覆盖前面相同的值。指定一个cout，相同时让其位数加一，代表后者需要让其移动多少位。<br>3.用自带的 unique 函数覆盖重复元素<br>*/</p>
+<p>/*<br>1.暴力循环一次，当前一位和后一位相同，删除后一位<br>2.暴力循环一次，当前一位和后一位相同，后者向前移动覆盖前面相同的值。指定一个cout，相同时让其位数加一，代表后者需要让其移动多少位。<br>3.用自带的 unique 函数覆盖重复元素<br>*/</p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.</span></span><br><span class="line">        <span class="comment">// for (int i= 1; i&lt; nums.size();i++) &#123;</span></span><br><span class="line">        <span class="comment">//         while (i&lt;nums.size() &amp;&amp; nums[i-1] == nums[i]) nums.erase(nums.begin() + i);</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// return nums.size();</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//2.</span></span><br><span class="line">        <span class="comment">// int size = nums.size();</span></span><br><span class="line">        <span class="comment">// int cnt = 0; //统计当前元素需要前移的位数，注意还是计数排序思想！！！只不过不需要整个数组</span></span><br><span class="line">        <span class="comment">// for(int i=1; i&lt;size; ++i)&#123;</span></span><br><span class="line">        <span class="comment">//     if(nums[i] == nums[i-1])</span></span><br><span class="line">        <span class="comment">//         cnt++;</span></span><br><span class="line">        <span class="comment">//     nums[i-cnt] = nums[i]; //前移cnt个位置           </span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// return size-cnt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.</span></span><br><span class="line">        <span class="keyword">return</span> unique(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>())-nums.<span class="built_in">begin</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200824234534.png" alt="image-20200824231857088"></p>
+<blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200825105218.png" alt="image-20200825105218069"></p>
+</blockquote>
 ]]></content>
   </entry>
 </search>
