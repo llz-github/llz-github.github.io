@@ -1074,4 +1074,48 @@
 <p>上述斐波那契额数列的递归解法的空间复杂度为递归的深度，即O(n);</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>LN-JK-3.第二次课堂笔记</title>
+    <url>/2020/08/31/LN-JK-3.%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="极客-第二次课堂笔记"><a href="#极客-第二次课堂笔记" class="headerlink" title="极客-第二次课堂笔记"></a>极客-第二次课堂笔记</h1><h1 id="二叉树的基础内容"><a href="#二叉树的基础内容" class="headerlink" title="二叉树的基础内容"></a>二叉树的基础内容</h1><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831113006.png" alt="image-20200831113006526"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831113030.png" alt="image-20200831113029974"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831113053.png" alt="image-20200831113053545"></p>
+<h1 id="《验证二叉搜索树》"><a href="#《验证二叉搜索树》" class="headerlink" title="《验证二叉搜索树》"></a>《验证二叉搜索树》</h1><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831112935.png" alt="image-20200831112935068"></p>
+<blockquote>
+<p>通过二叉搜索的性质，我们能想到只需遍历整棵树，并判断 node.left.val &lt; node.val &lt; node.right.val 对于每个结点是否成立。</p>
+<p>需要注意的是不仅左子结点（右子结点）需要小于（大于）该结点，而且整个左子树（右子树）的所有的元素都应该小于（大于）该结点。所以我们在遍历的同时需要同结点的上界和下界比较。</p>
+<h2 id="方法一：递归-前序遍历"><a href="#方法一：递归-前序遍历" class="headerlink" title="方法一：递归 + 前序遍历"></a>方法一：递归 + 前序遍历</h2><p>上述的思路可以通过递归的方法实现，将当前结点的值与上下界进行比较，然后在对左右子树进行递归。过程如图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831112008.png" alt="image-20200831111618331"></p>
+<p>如果当前结点的值应检验无效时，返回false。</p>
+<p>源码如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831112241.png" alt="image-20200831111713988"></p>
+<h2 id="方法二：递归-中序遍历"><a href="#方法二：递归-中序遍历" class="headerlink" title="方法二：递归 + 中序遍历"></a>方法二：递归 + 中序遍历</h2><p>我们也可以采用中序遍历的方式，因为中序遍历后的二叉搜索树是有序的，所以只需判断一次当前结点的值即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831112310.png" alt="image-20200831111730767"></p>
+<h2 id="方法三：栈-中序遍历"><a href="#方法三：栈-中序遍历" class="headerlink" title="方法三：栈 + 中序遍历"></a>方法三：栈 + 中序遍历</h2><p>基于栈实现中序遍历。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831112129.png" alt="image-20200831111752167"></p>
+<p>接下来讲解一下如何使用栈实现前中后序遍历，以栈实现中序遍历为例，过程如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831112110.png" alt="image-20200831111809138"></p>
+</blockquote>
+<blockquote>
+<h3 id="栈实现中序遍历模板及关键点："><a href="#栈实现中序遍历模板及关键点：" class="headerlink" title="栈实现中序遍历模板及关键点："></a>栈实现中序遍历模板及关键点：</h3><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831112051.png" alt="image-20200831111850897"></p>
+<h3 id="栈实现先序遍历："><a href="#栈实现先序遍历：" class="headerlink" title="栈实现先序遍历："></a>栈实现先序遍历：</h3><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831111921.png" alt="image-20200831111919195"></p>
+<h3 id="栈实现后序遍历："><a href="#栈实现后序遍历：" class="headerlink" title="栈实现后序遍历："></a>栈实现后序遍历：</h3><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831111940.png" alt="image-20200831111940549"></p>
+<p>综上， 我们分析了递归和栈实现《验证二叉搜索树》的思路。并且学习了二叉树的先中后序遍历。</p>
+</blockquote>
+<blockquote>
+<h3 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h3><p>现在再给大家介绍一种遍历方式——层序遍历，层序比遍历非常好理解，就是将二叉树的每一层分遍历，直到最后所有的结点全部遍历完成，这里我们需要的辅助数据结构是队列，因为需要用到队列先进先出的特性。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831113258.png" alt="image-20200831113258424"></p>
+<p>模板代码如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831113335.png" alt="image-20200831113334688"></p>
+<p>大家可以做一下LeeCode102题《二叉树的层序遍历》，进一步理解层序遍历的思想和代码。</p>
+</blockquote>
+<blockquote>
+<h2 id="《二叉树的最大深度》"><a href="#《二叉树的最大深度》" class="headerlink" title="《二叉树的最大深度》"></a>《二叉树的最大深度》</h2><p>接下来我们看下《二叉树的最大深度》, 这道题目根据我们上面总结的内容，不难写出来。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200831113431.png" alt="image-20200831113431668"></p>
+<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200831113516371.png" alt="image-20200831113516371"></p>
+<p>注意使用递归和栈实现二叉树的前中后序遍历的是非常重要，很多题目都会涉及到二叉树的遍历，所以大家一定要多加练习，保证能够熟练的写出来。大家可以尝试去完成 LeetCode 中二叉树的前中后序遍历的题目，进行巩固练习。</p>
+<p>综上， 我们分析了递归和栈实现 《验证二叉树》《二叉树的最大深度》的思路和源码 并给出拓展,</p>
+</blockquote>
+]]></content>
+  </entry>
 </search>
