@@ -1267,4 +1267,48 @@
 
 ]]></content>
   </entry>
+  <entry>
+    <title>P-打印图形练习</title>
+    <url>/2020/09/08/P-%E6%89%93%E5%8D%B0%E5%9B%BE%E5%BD%A2%E7%BB%83%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h1><p>打印图形<br>1<br>3  2<br>4  5  6<br>10 9  8  7</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解:"></a>题解:</h1><blockquote>
+<p>思路：</p>
+<ol>
+<li>首先利用双重循环打印斜三角形框架。</li>
+<li>将数字按位置顺序存放。</li>
+<li>将偶数列的数据逆序排列,打印。</li>
+</ol>
+</blockquote>
+<h1 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h1><blockquote>
+<p>这里需要注意的有两点：</p>
+<ol>
+<li><p>如何指定数组中某个位置的逆序输出。</p>
+<blockquote>
+<p>vector的升序排序是sort(a.begin(),a.end())，降序排序为sort(a.rbegin(),a.rend()).</p>
+<p>这里需要注意一下：</p>
+<p>c.begin() 返回一个迭代器，它指向容器c的第一个元素</p>
+<p>c.end() 返回一个迭代器，它指向容器c的最后一个元素的下一个位置</p>
+<p>c.rbegin() 返回一个逆序迭代器，它指向容器c的最后一个元素</p>
+<p>c.rend() 返回一个逆序迭代器，它指向容器c的第一个元素前面的位置</p>
+<p>逆向迭代器是一种反向遍历容器的迭代器。也就是，从最后一个元素到第一个元素遍历容器。反向迭代器将自增（和自减）的含义反过来了：对于反向迭代器，++ 运算将访问前一个元素，而 – 运算则访问下一个元素。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200908120007.png" alt="image-20200908120007266"></p>
+<p>执行并观察以下程序帮助理解：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=<span class="number">4</span>,s=<span class="number">0</span>;</span><br><span class="line">	<span class="comment">//cin&gt;&gt;n;</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n*n;i++) a.push_back(i);</span><br><span class="line">	sort(a.rbegin()+<span class="number">2</span>,a.rend()<span class="number">-5</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n*n;i++) <span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="string">" "</span>; 	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200908115931.png" alt="image-20200908115922322"></p>
+</blockquote>
+</li>
+<li><p>偶数列在数组中的坐标。</p>
+<p>由题目可以观察得出，</p>
+<p>需要排序的起始位置为之前输出的位数总和，终止位置为本行及本行以上的位数总和。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20200908120506.png" alt="image-20200908120506235"></p>
+<p>得出表达式（1/2）<em>n</em>(n+1)。</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,s=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n*n;i++) a.push_back(i);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>((i+<span class="number">1</span>)%<span class="number">2</span>==<span class="number">0</span>) sort(a.rend()<span class="number">-0.5</span>*(i+<span class="number">1</span>)*(i+<span class="number">1</span>+<span class="number">1</span>),a.rend()<span class="number">-0.5</span>*(i)*(i+<span class="number">1</span>));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=n-i<span class="number">-1</span>;j&lt;n;j++) &#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;a[s++]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
 </search>
