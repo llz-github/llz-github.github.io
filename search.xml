@@ -1403,7 +1403,7 @@
 </blockquote>
 <h1 id="报错原因"><a href="#报错原因" class="headerlink" title="报错原因"></a>报错原因</h1><blockquote>
 <p>根据飘红显示的解释可以看出，我们的主类放在了默认的包，即main函数直接放在了Java目录下。</p>
-<p>由于主类中的@SpringBootApplicationz注解会自动扫描其包下的子包，而在默认包下，相当于没有定义包，更没子包的概念，所以报错。</p>
+<p>由于主类中的@SpringBootApplicationz注解会自动扫描当前包下面及其子包下面的所有组件，并将这些组件加载到spring容器里面。而在默认包下，相当于没有定义包，更没子包的概念，所以会报错。</p>
 </blockquote>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><blockquote>
 <p>将主类移动至一个包下，使其存在子包即可</p>
