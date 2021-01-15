@@ -1435,8 +1435,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title>LN-1.第一个Android程序</title>
-    <url>/2021/01/12/LN-1.%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E7%A8%8B%E5%BA%8F/</url>
+    <title>Android-LN-1.第一个Android程序</title>
+    <url>/2021/01/12/Android-LN-1.%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E7%A8%8B%E5%BA%8F/</url>
     <content><![CDATA[<h1 id="创建-Android-项目"><a href="#创建-Android-项目" class="headerlink" title="创建 Android 项目"></a>创建 Android 项目</h1><p>本节课向您介绍如何使用 Android Studio 创建新的 Android 项目，并介绍该项目中的一些文件。</p>
 <p>要创建新的 Android 项目，请按以下步骤操作：</p>
 <ol>
@@ -1732,6 +1732,208 @@
 <p><strong>图 2.</strong> 应用已打开，文本输入在左侧屏幕并显示在右侧。</p>
 <p>本课到此就结束了，您已经构建了自己的第一个 Android 应用！ </p>
 <h1 id="Android-Studio快捷键"><a href="#Android-Studio快捷键" class="headerlink" title="Android-Studio快捷键"></a>Android-Studio快捷键</h1><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210114215924.png" alt="image-20210114215701871"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android-LN-2.Android常用布局和控件的应用</title>
+    <url>/2021/01/15/Android-LN-2.Android%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80%E5%92%8C%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="LinearLayout布局的应用"><a href="#LinearLayout布局的应用" class="headerlink" title="LinearLayout布局的应用"></a><strong>LinearLayout布局的应用</strong></h1><h2 id="什么是布局"><a href="#什么是布局" class="headerlink" title="什么是布局"></a>什么是布局</h2><blockquote>
+<p>定义 UI 的可视化结构</p>
+<p>通过布局参数（LayoutParams）定义子元素的尺寸、位置</p>
+<p>布局是不可见的容器（ViewGroup）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210115171203.png" alt=""></p>
+</blockquote>
+<h2 id="LinearLayout布局的使用"><a href="#LinearLayout布局的使用" class="headerlink" title="LinearLayout布局的使用"></a><strong>LinearLayout布局的使用</strong></h2><blockquote>
+<p>LinearLayout是线性布局控件，它作为容器将其包含的子控件以横向或纵向的方式排列</p>
+<p>子元素被排列成一行或一列</p>
+<p><strong><em>orientation</em></strong> 属性设置排列方向</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210115171157.png" alt=""></p>
+<p><strong><em>layout_gravity</em></strong>属性 设置元素在容器中的位置</p>
+<p><strong><em>gravity</em></strong>属性 设置元素所包含的内容或子元素在元素中的位置。</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th align="left">位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>top</td>
+<td align="left">在布局顶部（horizontal  时可用）</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td align="left">在布局底部（horizontal  时可用）</td>
+</tr>
+<tr>
+<td>left</td>
+<td align="left">在布局左则（vertical  时可用）</td>
+</tr>
+<tr>
+<td>right</td>
+<td align="left">在布局右侧（vertical  时可用）</td>
+</tr>
+<tr>
+<td>center_horizontal</td>
+<td align="left">水平居中（vertical  时可用）</td>
+</tr>
+<tr>
+<td>center_vertical</td>
+<td align="left">垂直居中（horizontal  时可用）</td>
+</tr>
+<tr>
+<td>center</td>
+<td align="left">水平或垂直居中（均有效）</td>
+</tr>
+</tbody></table>
+<p><strong><em>hint</em></strong>属性 设置提示文字</p>
+<p><strong><em>text</em></strong>属性 设置默认文字（可删除）</p>
+</blockquote>
+<h1 id="RelativeLayout布局的应用"><a href="#RelativeLayout布局的应用" class="headerlink" title="RelativeLayout布局的应用"></a><strong>RelativeLayout布局的应用</strong></h1><h2 id="RelativeLayout布局"><a href="#RelativeLayout布局" class="headerlink" title="RelativeLayout布局"></a>RelativeLayout布局</h2><blockquote>
+<p>元素在相对位置显示</p>
+<p>可避免嵌套，保持简洁的层次结构</p>
+<p>如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210115172704.png" alt="image-20210115172704358"></p>
+<table>
+<thead>
+<tr>
+<th><strong>属性名称</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>layout_alignParentTop</td>
+<td>父元素顶部对齐（true）</td>
+</tr>
+<tr>
+<td>layout_alignParentBottom</td>
+<td>父元素底部对齐（true）</td>
+</tr>
+<tr>
+<td>layout_alignParentStart</td>
+<td>父元素左侧对齐（true）</td>
+</tr>
+<tr>
+<td>layout_alignParentEnd</td>
+<td>父元素右侧对齐（true）</td>
+</tr>
+<tr>
+<td>layout_centerHorizontal</td>
+<td>水平居中（true）</td>
+</tr>
+<tr>
+<td>layout_centerVertical</td>
+<td>垂直居中（true）</td>
+</tr>
+<tr>
+<td>layout_marginTop</td>
+<td>距离顶部</td>
+</tr>
+<tr>
+<td>layout_marginBottom</td>
+<td>距离底部</td>
+</tr>
+<tr>
+<td>layout_marginStart</td>
+<td>距离左侧</td>
+</tr>
+<tr>
+<td>layout_marginEnd</td>
+<td>距离右侧</td>
+</tr>
+<tr>
+<td>layout_above</td>
+<td>底部置于给定元素之上</td>
+</tr>
+<tr>
+<td>llayout_below</td>
+<td>顶部置于给定元素之下</td>
+</tr>
+<tr>
+<td>layout_alignTop</td>
+<td>顶部与给定元素顶部对齐</td>
+</tr>
+<tr>
+<td>layout_alignBaseline</td>
+<td>baseline  与给定元素的 baseline 对齐</td>
+</tr>
+<tr>
+<td>layout_alignBottom</td>
+<td>底部与给定元素底部对齐</td>
+</tr>
+<tr>
+<td>layout_alignEnd</td>
+<td>右侧对齐给定元素</td>
+</tr>
+<tr>
+<td>layout_toStartOf</td>
+<td>右侧对齐给定元素开始的位置</td>
+</tr>
+<tr>
+<td>layout_toEndOf</td>
+<td>左侧对齐给定元素结束的位置</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h1 id="TextView、EditText控件的应用"><a href="#TextView、EditText控件的应用" class="headerlink" title="TextView、EditText控件的应用"></a><strong>TextView、EditText控件的应用</strong></h1><h2 id="TextView控件"><a href="#TextView控件" class="headerlink" title="TextView控件"></a><strong>TextView控件</strong></h2><blockquote>
+<p>显示文字</p>
+<p>只读</p>
+<p>可设置字体、字号、颜色、链接等样式</p>
+</blockquote>
+<h3 id="View与TextView的关系"><a href="#View与TextView的关系" class="headerlink" title="View与TextView的关系"></a><strong>View与TextView的关系</strong></h3><p>TextView由View控件派生而来</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210115173619.png" alt="image-20210115173619457"></p>
+<h2 id="EditText控件"><a href="#EditText控件" class="headerlink" title="EditText控件"></a><strong>EditText控件</strong></h2><blockquote>
+<p>显示和编辑文字</p>
+<p>可编辑</p>
+<p>可设置软键盘类型</p>
+</blockquote>
+<h3 id="TextView与EditText的关系"><a href="#TextView与EditText的关系" class="headerlink" title="TextView与EditText的关系"></a><strong>TextView与EditText的关系</strong></h3><p>EditText由TextView派生而来</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210115174124.png" alt="image-20210115173919206"></p>
+<h1 id="Button控件的应用"><a href="#Button控件的应用" class="headerlink" title="Button控件的应用"></a><strong>Button控件的应用</strong></h1><h2 id="Button控件"><a href="#Button控件" class="headerlink" title="Button控件"></a>Button控件</h2><blockquote>
+<p>普通按钮</p>
+<p>带图标的按钮</p>
+<p>按钮事件</p>
+</blockquote>
+<h2 id="Button与TextView的关系"><a href="#Button与TextView的关系" class="headerlink" title="Button与TextView的关系"></a><strong>Button与TextView的关系</strong></h2><blockquote>
+<p>Button由TextView派生而来</p>
+</blockquote>
+<h2 id="Button控件的事件"><a href="#Button控件的事件" class="headerlink" title="Button控件的事件"></a><strong>Button控件的事件</strong></h2><blockquote>
+<ul>
+<li><p>单击事件</p>
+<p>通过触屏或鼠标点击按钮所激发的事件</p>
+</li>
+<li><p>长按事件<br> 通过触屏或鼠标按下按钮控并保持不放开所激发的事件</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="Button控件单点事件定义方法"><a href="#Button控件单点事件定义方法" class="headerlink" title="Button控件单点事件定义方法"></a><strong>Button控件单点事件定义方法</strong></h2><blockquote>
+<ul>
+<li><p>通过设置控件属性<br> Button控件提供了onClick属性</p>
+</li>
+<li><p>事件监听器绑定方法<br> 通过调用控件的setOnClickListener绑定相应方法</p>
+</li>
+</ul>
+</blockquote>
+<h1 id="RadioButton控件的应用"><a href="#RadioButton控件的应用" class="headerlink" title="RadioButton控件的应用"></a><strong>RadioButton控件的应用</strong></h1><h2 id="RadioButton控件"><a href="#RadioButton控件" class="headerlink" title="RadioButton控件"></a><strong>RadioButton控件</strong></h2><blockquote>
+<p>单项选择的实现</p>
+<p>通过分组容器对RadioButton进行分组</p>
+</blockquote>
+<h2 id="RadioButton的继承关系图"><a href="#RadioButton的继承关系图" class="headerlink" title="RadioButton的继承关系图"></a><strong>RadioButton的继承关系图</strong></h2><blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210115175301.png" alt="image-20210115175301752"></p>
+</blockquote>
+<h1 id="CheckBox控件的应用"><a href="#CheckBox控件的应用" class="headerlink" title="CheckBox控件的应用"></a><strong>CheckBox控件的应用</strong></h1><h2 id="CheckBox控件"><a href="#CheckBox控件" class="headerlink" title="CheckBox控件"></a><strong>CheckBox控件</strong></h2><blockquote>
+<p>核选项的实现</p>
+<p>多项选择的实现</p>
+</blockquote>
+<h1 id="用户登录小案例"><a href="#用户登录小案例" class="headerlink" title="用户登录小案例"></a><strong>用户登录小案例</strong></h1><blockquote>
+<p>设计一套登录界面，用户可输入用户名、密码，同时可勾选“记住密码”选项。</p>
+</blockquote>
+<h2 id="xml页"><a href="#xml页" class="headerlink" title="xml页"></a>xml页</h2><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210115175706.png" alt="image-20210115175705874"></p>
+<h2 id="xml页代码"><a href="#xml页代码" class="headerlink" title="xml页代码"></a>xml页代码</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".DisplayMessageActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/TVUserlogin"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"70dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center|center_horizontal"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"TextView"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">"30sp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">tools:text</span>=<span class="string">"@string/UserLogin"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/ETUserName"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:ems</span>=<span class="string">"10"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:hint</span>=<span class="string">"@string/UserName"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:inputType</span>=<span class="string">"textPersonName"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/ETPassWord"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:ems</span>=<span class="string">"10"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:hint</span>=<span class="string">"密码"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:inputType</span>=<span class="string">"textPassword"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">RadioGroup</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/LoginMethod"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/radioButtonByUsername"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:checked</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"RadioButton"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">tools:text</span>=<span class="string">"用户名登陆"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/radioButtonByEmail"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"邮箱登录"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">RadioGroup</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/checkBox"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"CheckBox"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">tools:text</span>=<span class="string">"@string/RemeberUser"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/btnLogin"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@string/Login"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/ErrorMessage"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"TextView"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">"@color/design_default_color_error"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="后端控制页面代码"><a href="#后端控制页面代码" class="headerlink" title="后端控制页面代码"></a>后端控制页面代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.myapplication1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.EditText;</span><br><span class="line"><span class="keyword">import</span> android.widget.RadioButton;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DisplayMessageActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_display_message);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        // Get the Intent that started this activity and extract the string</span></span><br><span class="line"><span class="comment">//        Intent intent = getIntent();</span></span><br><span class="line"><span class="comment">//        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        // Capture the layout's TextView and set the string as its text</span></span><br><span class="line"><span class="comment">//        TextView textView = findViewById(R.id.TVUserlogin);</span></span><br><span class="line"><span class="comment">//        textView.setText(message);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//用户登录页</span></span><br><span class="line">        Button btnlogin = (Button) findViewById(R.id.btnLogin);</span><br><span class="line">        btnlogin.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                RadioButton rbtnByUsername = (RadioButton)findViewById(R.id.radioButtonByUsername);</span><br><span class="line">                <span class="comment">//RadioButton rbtnByEmail = (RadioButton)findViewById(R.id.radioButtonByEmail);</span></span><br><span class="line">                String DBUser,DBPassword;</span><br><span class="line">                <span class="keyword">if</span>(rbtnByUsername.isChecked())&#123;</span><br><span class="line">                    <span class="comment">//user-login</span></span><br><span class="line">                    DBUser = <span class="string">"llz"</span>;</span><br><span class="line">                    DBPassword = <span class="string">"123456"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">//Email-login</span></span><br><span class="line">                    DBUser = <span class="string">"llz@qq.com"</span>;</span><br><span class="line">                    DBPassword = <span class="string">"123456"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                EditText ETUsername = (EditText)findViewById(R.id.ETUserName);</span><br><span class="line">                EditText ETPassword = (EditText)findViewById(R.id.ETPassWord);</span><br><span class="line">                TextView ErrorMessage = (TextView)findViewById(R.id.ErrorMessage);</span><br><span class="line">                <span class="keyword">if</span>(ETUsername.getText().toString().equals(DBUser))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(ETPassword.getText().toString().equals(DBPassword))&#123;</span><br><span class="line">                        ErrorMessage.setText(<span class="string">"success"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        ErrorMessage.setText(<span class="string">"密码错误"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    ErrorMessage.setText(<span class="string">"账号不存在"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210115181101.png" alt="image-20210115181052387"></p>
 ]]></content>
   </entry>
 </search>
