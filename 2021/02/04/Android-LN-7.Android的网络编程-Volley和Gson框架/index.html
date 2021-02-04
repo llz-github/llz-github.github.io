@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Android-LN-7.Android的网络编程-Volley和Gson框架 | zl的个人博客</title><meta name="description" content="HTTP协议简介什么是HTTP协议？• HTTP（Hyper Text Transfer Protocol）协议即超文本传输协议，它规定了浏览器和万维网服务器之间互相通信的规则。• HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTP"><meta name="keywords" content="java 技术,各种小工具"><meta name="author" content="lilongzhe"><meta name="copyright" content="lilongzhe"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Android-LN-7.Android的网络编程-Volley和Gson框架"><meta name="twitter:description" content="HTTP协议简介什么是HTTP协议？• HTTP（Hyper Text Transfer Protocol）协议即超文本传输协议，它规定了浏览器和万维网服务器之间互相通信的规则。• HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTP"><meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Android-LN-7.Android的网络编程-Volley和Gson框架"><meta property="og:url" content="https://llz-github.github.io/2021/02/04/Android-LN-7.Android%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-Volley%E5%92%8CGson%E6%A1%86%E6%9E%B6/"><meta property="og:site_name" content="zl的个人博客"><meta property="og:description" content="HTTP协议简介什么是HTTP协议？• HTTP（Hyper Text Transfer Protocol）协议即超文本传输协议，它规定了浏览器和万维网服务器之间互相通信的规则。• HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTP"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2021-02-04T07:52:09.726Z"><meta property="article:modified_time" content="2021-02-04T07:51:50.710Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://llz-github.github.io/2021/02/04/Android-LN-7.Android%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-Volley%E5%92%8CGson%E6%A1%86%E6%9E%B6/"><link rel="next" title="词汇_1" href="https://llz-github.github.io/2021/02/02/%E8%AF%8D%E6%B1%87_1/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">29</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP协议简介"><span class="toc-number">1.</span> <span class="toc-text">HTTP协议简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是HTTP协议？"><span class="toc-number">1.1.</span> <span class="toc-text">什么是HTTP协议？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Volley网络框架的使用"><span class="toc-number">2.</span> <span class="toc-text">Volley网络框架的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Volley？"><span class="toc-number">2.1.</span> <span class="toc-text">什么是Volley？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-中使用Volley"><span class="toc-number">2.2.</span> <span class="toc-text">Android 中使用Volley</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例1：狗狗图片APP（一）"><span class="toc-number">2.3.</span> <span class="toc-text">案例1：狗狗图片APP（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UI界面设计"><span class="toc-number">2.3.1.</span> <span class="toc-text">UI界面设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载网络图片"><span class="toc-number">2.3.2.</span> <span class="toc-text">加载网络图片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例2：狗狗图片APP（二）"><span class="toc-number">2.4.</span> <span class="toc-text">案例2：狗狗图片APP（二）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Json解析框架Gson的使用"><span class="toc-number">3.</span> <span class="toc-text">Json解析框架Gson的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON格式数据介绍"><span class="toc-number">3.1.</span> <span class="toc-text">JSON格式数据介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-之-JSON格式数据解析"><span class="toc-number">3.2.</span> <span class="toc-text">Android 之 JSON格式数据解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例3：豆瓣电影APP（一）"><span class="toc-number">3.3.</span> <span class="toc-text">案例3：豆瓣电影APP（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Volley及INTERNET权限"><span class="toc-number">3.3.1.</span> <span class="toc-text">Volley及INTERNET权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载豆瓣电影列表"><span class="toc-number">3.3.2.</span> <span class="toc-text">加载豆瓣电影列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gson-框架简介"><span class="toc-number">3.4.</span> <span class="toc-text">Gson 框架简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gson-框架的使用"><span class="toc-number">3.5.</span> <span class="toc-text">Gson 框架的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gson-框架的注解"><span class="toc-number">3.6.</span> <span class="toc-text">Gson 框架的注解</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">zl的个人博客</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">Android-LN-7.Android的网络编程-Volley和Gson框架</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2021-02-04 15:52:09"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2021-02-04</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2021-02-04 15:51:50"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2021-02-04</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="HTTP协议简介"><a href="#HTTP协议简介" class="headerlink" title="HTTP协议简介"></a>HTTP协议简介</h1><h2 id="什么是HTTP协议？"><a href="#什么是HTTP协议？" class="headerlink" title="什么是HTTP协议？"></a>什么是HTTP协议？</h2><p>• HTTP（Hyper Text Transfer Protocol）协议即超文本传输协议，它规定了浏览器和万维网服务器之间互相通信的规则。<br>• HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。</p>
+<p>日常生活中，大多数人遇到了问题都会使用手机进行百度搜索。在浏<br>览器的地址栏中输入百度的网址点击搜索，此时就会进入百度主页。<br>这个访问百度的过程就是通过HTTP协议完成的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210203150226.png" alt=""></p>
+<p>从图中可以看出，使用手机客户端访问百度时，会发送一个HTTP请求。<br>当服务器端接收到这个请求后，会做出响应并将百度页面返回给客户端<br>浏览器。这个请求和响应的过程实际上就是HTTP通信的过程。</p>
+<h1 id="Volley网络框架的使用"><a href="#Volley网络框架的使用" class="headerlink" title="Volley网络框架的使用"></a>Volley网络框架的使用</h1><h2 id="什么是Volley？"><a href="#什么是Volley？" class="headerlink" title="什么是Volley？"></a>什么是Volley？</h2><p>Volley网络框架简介</p>
+<ul>
+<li>2013年Google I/O大会上推出的一个新的Android网络通信框架,能使网络通信更快，更<br>简单，更健壮。<ul>
+<li>Json,图像等的异步下载</li>
+<li>网络请求的排序(scheduling)</li>
+<li>网络请求的优先级处理</li>
+<li>缓存</li>
+<li>多级别取消请求</li>
+<li>和Activity生命周期联动(Activity结束时同时取消所有请求)</li>
+</ul>
+</li>
+</ul>
+<p>Volley主页 <a href="https://android.googlesource.com/platform/frameworks/volley" target="_blank" rel="noopener">https://android.googlesource.com/platform/frameworks/volley</a><br>Github地址 <a href="https://github.com/mcxiaoke/android-volley" target="_blank" rel="noopener">https://github.com/mcxiaoke/android-volley</a></p>
+<h2 id="Android-中使用Volley"><a href="#Android-中使用Volley" class="headerlink" title="Android 中使用Volley"></a>Android 中使用Volley</h2><ul>
+<li><p>在Android工程中添加Volley</p>
+<ul>
+<li>compile ‘com.mcxiaoke.volley:library:1.0.19’ </li>
+<li>implementation ‘com.mcxiaoke.volley:library:1.0.19’ </li>
+</ul>
+</li>
+<li><p>加网络访问权限：</p>
+<ul>
+<li>android.permission.INTERNET</li>
+</ul>
+</li>
+<li><p>StringRequest，JsonObjectRequest，JsonArrayRequest，ImageRequest</p>
+<ul>
+<li>1.创建一个请求队列RequestQueue</li>
+<li>2.创建Request对象</li>
+<li>3.将请求对象添加到请求队列中</li>
+</ul>
+</li>
+</ul>
+<h2 id="案例1：狗狗图片APP（一）"><a href="#案例1：狗狗图片APP（一）" class="headerlink" title="案例1：狗狗图片APP（一）"></a>案例1：狗狗图片APP（一）</h2><h3 id="UI界面设计"><a href="#UI界面设计" class="headerlink" title="UI界面设计"></a>UI界面设计</h3><p> 如图： </p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210203161129.png" alt="image-20210203161125322"></p>
+<p>代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:padding</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/iv_img"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:srcCompat</span>=<span class="string">"@drawable/ic_launcher_foreground"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/edt_name"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:ems</span>=<span class="string">"10"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:inputType</span>=<span class="string">"textPersonName"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"请粘贴链接地址"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/btn_commit"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"提交"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="加载网络图片"><a href="#加载网络图片" class="headerlink" title="加载网络图片"></a>加载网络图片</h3><ul>
+<li><p>添加Volley框架</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.mcxiaoke.volley:library:1.0.19'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加网络访问权限</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span>/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用ImageRequest加载网络图片</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadImage</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">    <span class="comment">//1.创建请求队列</span></span><br><span class="line">    requestQueue = Volley.newRequestQueue(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    String url = editText.getText().toString();</span><br><span class="line">    <span class="comment">//2.创建请求</span></span><br><span class="line">    ImageRequest request = <span class="keyword">new</span> ImageRequest(url, <span class="keyword">new</span> Response.Listener&lt;Bitmap&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Bitmap response)</span> </span>&#123;</span><br><span class="line">            imageView.setImageBitmap(response);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">0</span>, <span class="number">0</span>, Bitmap.Config.RGB_565, <span class="keyword">new</span> Response.ErrorListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError error)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">"网络错误"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//3.将请求加入队列</span></span><br><span class="line">    requestQueue.add(request);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="案例2：狗狗图片APP（二）"><a href="#案例2：狗狗图片APP（二）" class="headerlink" title="案例2：狗狗图片APP（二）"></a>案例2：狗狗图片APP（二）</h2><ul>
+<li>进行图片缓存</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadCacheImage</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">    <span class="comment">//创建网络请求队列</span></span><br><span class="line">    requestQueue = Volley.newRequestQueue(MainActivity.<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取网络图片路径url</span></span><br><span class="line">    String url = editText.getText().toString();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建请求</span></span><br><span class="line">    ImageLoader imageLoader = <span class="keyword">new</span> ImageLoader(requestQueue,<span class="keyword">new</span> BitmapCache());<span class="comment">//带缓存</span></span><br><span class="line">    <span class="comment">//加载不到图片，加载失败，采用默认图</span></span><br><span class="line">    ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(imageView, R.mipmap.ic_launcher, R.mipmap.ic_launcher);</span><br><span class="line"></span><br><span class="line">    imageLoader.get(url,imageListener);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>BitmapCache类（见素材）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.imagenet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.util.LruCache;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.android.volley.toolbox.ImageLoader;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 图片缓存</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BitmapCache</span> <span class="keyword">implements</span> <span class="title">ImageLoader</span>.<span class="title">ImageCache</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> LruCache&lt;String,Bitmap&gt; mCache;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BitmapCache</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxSize = <span class="number">10</span>* <span class="number">1024</span> *<span class="number">1024</span>;<span class="comment">//10m</span></span><br><span class="line">        mCache = <span class="keyword">new</span> LruCache&lt;String,Bitmap&gt;(maxSize)&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">sizeOf</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> bitmap.getRowBytes() * bitmap.getHeight();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bitmap <span class="title">getBitmap</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mCache.get(url);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putBitmap</span><span class="params">(String url, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">        mCache.put(url,bitmap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="Json解析框架Gson的使用"><a href="#Json解析框架Gson的使用" class="headerlink" title="Json解析框架Gson的使用"></a>Json解析框架Gson的使用</h1><h2 id="JSON格式数据介绍"><a href="#JSON格式数据介绍" class="headerlink" title="JSON格式数据介绍"></a>JSON格式数据介绍</h2><p>JSON：独立于语言和平台，比 XML 更小、更快，更易解析。JSON数据<br>已经成为了互联网中大多数数据的传递方式。</p>
+<h2 id="Android-之-JSON格式数据解析"><a href="#Android-之-JSON格式数据解析" class="headerlink" title="Android 之 JSON格式数据解析"></a>Android 之 JSON格式数据解析</h2><ul>
+<li><p>Android平台自带了JSON解析的相关API，可以将文件、输入流中的数据转化为JSON对象，然后从对象中获取JSON保存的数据内容。</p>
+</li>
+<li><p>Android的JSON解析部分都在包org.json下，主要有以下几个类： </p>
+<ul>
+<li>JSONObject：可以看作是一个json对象,这是系统中有关JSON定义的基本单元。</li>
+<li>JSONStringer：json文本构建类 ，根可以帮助快速和便捷的创建JSON text。</li>
+<li>JSONArray：它代表一组有序的数值。</li>
+<li>JSONTokener：json解析类。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JSONObject jsonObject = <span class="keyword">new</span> JSONObject(result);  </span><br><span class="line"><span class="keyword">int</span> resultCode = jsonObject.getInt(<span class="string">"resultcode"</span>); </span><br><span class="line">JSONArray resultJsonArray = jsonObject.getJSONArray(<span class="string">"result"</span>);  </span><br><span class="line">JSONObject resultJsonObject = resultJsonArray.getJSONObject(<span class="number">0</span>); </span><br><span class="line">String city = resultJsonObject.getString(<span class="string">"city"</span>) ;</span><br></pre></td></tr></table></figure>
+
+<h2 id="案例3：豆瓣电影APP（一）"><a href="#案例3：豆瓣电影APP（一）" class="headerlink" title="案例3：豆瓣电影APP（一）"></a>案例3：豆瓣电影APP（一）</h2><h3 id="Volley及INTERNET权限"><a href="#Volley及INTERNET权限" class="headerlink" title="Volley及INTERNET权限"></a>Volley及INTERNET权限</h3><ul>
+<li><p>添加Volley框架</p>
+</li>
+<li><p>添加网络访问权限</p>
+</li>
+<li><p>添加图片缓存BitmapCache类（见素材）</p>
+</li>
+<li><p>改造电影实体Movie类，添加电影图片url：imgUrl</p>
+</li>
+</ul>
+<h3 id="加载豆瓣电影列表"><a href="#加载豆瓣电影列表" class="headerlink" title="加载豆瓣电影列表"></a>加载豆瓣电影列表</h3><ul>
+<li>使用JsonObjectRequest加载豆瓣电影数据</li>
+<li>豆瓣电影列表<ul>
+<li><a href="https://douban.uieee.com/v2/movie/in_theaters" target="_blank" rel="noopener">https://douban.uieee.com/v2/movie/in_theaters</a> </li>
+<li><a href="https://api.douban.com/v2/movie/in_theaters" target="_blank" rel="noopener">https://api.douban.com/v2/movie/in_theaters</a> </li>
+<li>subjects - 电影列表</li>
+</ul>
+</li>
+<li>使用BitmapCache类缓存电影图片<br>– 提示：返回数据为Json数据：<br>– JsonObjectRequest，JsonArrayRequest</li>
+</ul>
+<h2 id="Gson-框架简介"><a href="#Gson-框架简介" class="headerlink" title="Gson 框架简介"></a>Gson 框架简介</h2><ul>
+<li>Gson 是google解析Json的一个开源框架,同类的框架fastJson,JackJson等等</li>
+<li>基础概念：<ul>
+<li>Serialization:序列化，使Java对象到Json字符串的过程。    </li>
+<li>Deserialization：反序列化，字符串转换成Java对象</li>
+</ul>
+</li>
+<li>Gson的两个基础方法：<ul>
+<li>toJson(); 将bean对象转换为json字符串</li>
+<li>fromJson(); 将json字符串转为bean对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="Gson-框架的使用"><a href="#Gson-框架的使用" class="headerlink" title="Gson 框架的使用"></a>Gson 框架的使用</h2><ol>
+<li><p>在Android Studio中添加Gson框架</p>
+</li>
+<li><p>定义Json字符串对应的实体类（key - 属性）</p>
+</li>
+<li><p>使用Gson框架：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// toJson 将bean对象转换为json字符串</span></span><br><span class="line">String jsonStr = gson.toJson(movie, Movie<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">// fromJson 将json字符串转为bean对象</span></span><br><span class="line">Movie movie = gson.fromJson(jsonStr, Movie<span class="class">.<span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Gson-框架的注解"><a href="#Gson-框架的注解" class="headerlink" title="Gson 框架的注解"></a>Gson 框架的注解</h2><ol>
+<li><p>@Expose注解<br>serialize和deserialize属性可选，默认为true。<br>serialize 为true：调用toJson时会序列化该属性，<br>deserialize 为true：调用fromJson生成Java对象时不会进行反序列化。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210204154849.png" alt="image-20210204154804426"></p>
+</li>
+</ol>
+<p>注意：如果采用new Gson()方式创建Gson，@Expose没有任何效果</p>
+<ol start="2">
+<li><p>@SerializedName注解<br>能指定该字段在序列化成json时的名称。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210204154849.png" alt="image-20210204154733814"></p>
+</li>
+</ol>
+<p>注意：实际开发中我们会遇到比较复杂的Json，比如json中嵌套json数组，这个时候，就需要我们自定义序列化或反序列化方法了</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">lilongzhe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://llz-github.github.io/2021/02/04/Android-LN-7.Android%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-Volley%E5%92%8CGson%E6%A1%86%E6%9E%B6/">https://llz-github.github.io/2021/02/04/Android-LN-7.Android%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-Volley%E5%92%8CGson%E6%A1%86%E6%9E%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://llz-github.github.io" target="_blank">zl的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/weichat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2021/02/02/%E8%AF%8D%E6%B1%87_1/"><img class="next_cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">词汇_1</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><script id="utterances_comment" src="https://utteranc.es/client.js" repo="llz-github/comment" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script><script>var themeNow = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+document.getElementById('utterances_comment').setAttribute('theme',themeNow)
+
+function utterancesTheme () {
+var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+const message = {
+  type: 'set-theme',
+  theme: theme
+};
+const iframe = document.querySelector('.utterances-frame');
+iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+}</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By lilongzhe</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://github.com/llz-github" target="_blank" rel="noopener">github</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">简</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@3/instantpage.min.js" type="module"></script><script src="/js/third-party/click_heart.js"></script><script src="/js/search/local-search.js"></script></body></html>

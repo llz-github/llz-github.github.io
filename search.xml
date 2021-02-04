@@ -2665,7 +2665,7 @@
 <blockquote>
 <p>weapon：武器</p>
 </blockquote>
-<h1 id="orient-ˈoːrient-v-给…定方向，给…定中心"><a href="#orient-ˈoːrient-v-给…定方向，给…定中心" class="headerlink" title="orient /ˈɔːrient/ v. 给…定方向，给…定中心"></a>orient /ˈɔːrient/ v. 给…定方向，给…定中心</h1><blockquote>
+<h2 id="orient-ˈoːrient-v-给…定方向，给…定中心"><a href="#orient-ˈoːrient-v-给…定方向，给…定中心" class="headerlink" title="orient /ˈɔːrient/ v. 给…定方向，给…定中心"></a>orient /ˈɔːrient/ v. 给…定方向，给…定中心</h2><blockquote>
 <p>X-oriented ：以…为方向/中心</p>
 <blockquote>
 <p>test-oriented education：应试教育</p>
@@ -2691,7 +2691,7 @@
 </blockquote>
 <p>Be the change you want to see in the world. </p>
 <p>译文：欲变世界，先变其身。 </p>
-<h1 id="liberal-education-通识教育"><a href="#liberal-education-通识教育" class="headerlink" title="liberal education 通识教育"></a>liberal education 通识教育</h1><blockquote>
+<h2 id="liberal-education-通识教育"><a href="#liberal-education-通识教育" class="headerlink" title="liberal education 通识教育"></a>liberal education 通识教育</h2><blockquote>
 <p>liberty /ˈlɪbərti/ n. 自由</p>
 <blockquote>
 <p>The Statue of Liberty：自由女神</p>
@@ -2748,7 +2748,7 @@
 <blockquote>
 <p> well-rounded /ˌwel ˈraʊndɪd/： adj. 全面的 </p>
 </blockquote>
-<h1 id="learn-lɜːrn-v-学习"><a href="#learn-lɜːrn-v-学习" class="headerlink" title="learn /lɜːrn/ v. 学习"></a>learn /lɜːrn/ v. 学习</h1><blockquote>
+<h2 id="learn-lɜːrn-v-学习"><a href="#learn-lɜːrn-v-学习" class="headerlink" title="learn /lɜːrn/ v. 学习"></a>learn /lɜːrn/ v. 学习</h2><blockquote>
 <p>Live and learn. </p>
 <p>It’s never too old to learn. </p>
 <p>“活到老，学到老。”</p>
@@ -2784,12 +2784,12 @@
 <p>critical thinking 批判性思维 </p>
 <p>Seeing what everybody has seen, but thinking what nobody has thought.</p>
 </blockquote>
-<h1 id="study-ˈstvdi-n-学习；书房-v-学习"><a href="#study-ˈstvdi-n-学习；书房-v-学习" class="headerlink" title="study /ˈstʌdi/ n. 学习；书房 v. 学习"></a>study /ˈstʌdi/ n. 学习；书房 v. 学习</h1><p>Complacency is the enemy of study. </p>
+<h2 id="study-ˈstvdi-n-学习；书房-v-学习"><a href="#study-ˈstvdi-n-学习；书房-v-学习" class="headerlink" title="study /ˈstʌdi/ n. 学习；书房 v. 学习"></a>study /ˈstʌdi/ n. 学习；书房 v. 学习</h2><p>Complacency is the enemy of study. </p>
 <p>译文：自满是学习的敌人。 </p>
 <blockquote>
 <p>complacency /kəmˈpleɪsnsi/ n. 满足，自满 </p>
 </blockquote>
-<h1 id="knowledge-ˈnɑːlɪdʒ-n-知识；了解"><a href="#knowledge-ˈnɑːlɪdʒ-n-知识；了解" class="headerlink" title="knowledge /ˈnɑːlɪdʒ/ n. 知识；了解"></a>knowledge /ˈnɑːlɪdʒ/ n. 知识；了解</h1><p>Knowledge makes humble, ignorance makes proud.</p>
+<h2 id="knowledge-ˈnɑːlɪdʒ-n-知识；了解"><a href="#knowledge-ˈnɑːlɪdʒ-n-知识；了解" class="headerlink" title="knowledge /ˈnɑːlɪdʒ/ n. 知识；了解"></a>knowledge /ˈnɑːlɪdʒ/ n. 知识；了解</h2><p>Knowledge makes humble, ignorance makes proud.</p>
 <p>译文：知识使人谦虚，无知使人骄傲。</p>
 <blockquote>
 <p>humble /ˈhʌmbl/ adj. 谦虚的，谦逊的 </p>
@@ -2807,6 +2807,146 @@
 <p>prejudice /ˈpredʒədɪs/ n. 偏见 </p>
 <p>Pride and Prejudice 《傲慢与偏见》</p>
 </blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android-LN-7.Android的网络编程-Volley和Gson框架</title>
+    <url>/2021/02/04/Android-LN-7.Android%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-Volley%E5%92%8CGson%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<h1 id="HTTP协议简介"><a href="#HTTP协议简介" class="headerlink" title="HTTP协议简介"></a>HTTP协议简介</h1><h2 id="什么是HTTP协议？"><a href="#什么是HTTP协议？" class="headerlink" title="什么是HTTP协议？"></a>什么是HTTP协议？</h2><p>• HTTP（Hyper Text Transfer Protocol）协议即超文本传输协议，它规定了浏览器和万维网服务器之间互相通信的规则。<br>• HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。</p>
+<p>日常生活中，大多数人遇到了问题都会使用手机进行百度搜索。在浏<br>览器的地址栏中输入百度的网址点击搜索，此时就会进入百度主页。<br>这个访问百度的过程就是通过HTTP协议完成的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210203150226.png" alt=""></p>
+<p>从图中可以看出，使用手机客户端访问百度时，会发送一个HTTP请求。<br>当服务器端接收到这个请求后，会做出响应并将百度页面返回给客户端<br>浏览器。这个请求和响应的过程实际上就是HTTP通信的过程。</p>
+<h1 id="Volley网络框架的使用"><a href="#Volley网络框架的使用" class="headerlink" title="Volley网络框架的使用"></a>Volley网络框架的使用</h1><h2 id="什么是Volley？"><a href="#什么是Volley？" class="headerlink" title="什么是Volley？"></a>什么是Volley？</h2><p>Volley网络框架简介</p>
+<ul>
+<li>2013年Google I/O大会上推出的一个新的Android网络通信框架,能使网络通信更快，更<br>简单，更健壮。<ul>
+<li>Json,图像等的异步下载</li>
+<li>网络请求的排序(scheduling)</li>
+<li>网络请求的优先级处理</li>
+<li>缓存</li>
+<li>多级别取消请求</li>
+<li>和Activity生命周期联动(Activity结束时同时取消所有请求)</li>
+</ul>
+</li>
+</ul>
+<p>Volley主页 <a href="https://android.googlesource.com/platform/frameworks/volley" target="_blank" rel="noopener">https://android.googlesource.com/platform/frameworks/volley</a><br>Github地址 <a href="https://github.com/mcxiaoke/android-volley" target="_blank" rel="noopener">https://github.com/mcxiaoke/android-volley</a></p>
+<h2 id="Android-中使用Volley"><a href="#Android-中使用Volley" class="headerlink" title="Android 中使用Volley"></a>Android 中使用Volley</h2><ul>
+<li><p>在Android工程中添加Volley</p>
+<ul>
+<li>compile ‘com.mcxiaoke.volley:library:1.0.19’ </li>
+<li>implementation ‘com.mcxiaoke.volley:library:1.0.19’ </li>
+</ul>
+</li>
+<li><p>加网络访问权限：</p>
+<ul>
+<li>android.permission.INTERNET</li>
+</ul>
+</li>
+<li><p>StringRequest，JsonObjectRequest，JsonArrayRequest，ImageRequest</p>
+<ul>
+<li>1.创建一个请求队列RequestQueue</li>
+<li>2.创建Request对象</li>
+<li>3.将请求对象添加到请求队列中</li>
+</ul>
+</li>
+</ul>
+<h2 id="案例1：狗狗图片APP（一）"><a href="#案例1：狗狗图片APP（一）" class="headerlink" title="案例1：狗狗图片APP（一）"></a>案例1：狗狗图片APP（一）</h2><h3 id="UI界面设计"><a href="#UI界面设计" class="headerlink" title="UI界面设计"></a>UI界面设计</h3><p> 如图： </p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210203161129.png" alt="image-20210203161125322"></p>
+<p>代码：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:padding</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/iv_img"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">app:srcCompat</span>=<span class="string">"@drawable/ic_launcher_foreground"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/edt_name"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:ems</span>=<span class="string">"10"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:inputType</span>=<span class="string">"textPersonName"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"请粘贴链接地址"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/btn_commit"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"提交"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="加载网络图片"><a href="#加载网络图片" class="headerlink" title="加载网络图片"></a>加载网络图片</h3><ul>
+<li><p>添加Volley框架</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">'com.mcxiaoke.volley:library:1.0.19'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加网络访问权限</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span>/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用ImageRequest加载网络图片</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadImage</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">    <span class="comment">//1.创建请求队列</span></span><br><span class="line">    requestQueue = Volley.newRequestQueue(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    String url = editText.getText().toString();</span><br><span class="line">    <span class="comment">//2.创建请求</span></span><br><span class="line">    ImageRequest request = <span class="keyword">new</span> ImageRequest(url, <span class="keyword">new</span> Response.Listener&lt;Bitmap&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Bitmap response)</span> </span>&#123;</span><br><span class="line">            imageView.setImageBitmap(response);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">0</span>, <span class="number">0</span>, Bitmap.Config.RGB_565, <span class="keyword">new</span> Response.ErrorListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError error)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">"网络错误"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//3.将请求加入队列</span></span><br><span class="line">    requestQueue.add(request);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="案例2：狗狗图片APP（二）"><a href="#案例2：狗狗图片APP（二）" class="headerlink" title="案例2：狗狗图片APP（二）"></a>案例2：狗狗图片APP（二）</h2><ul>
+<li>进行图片缓存</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadCacheImage</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">    <span class="comment">//创建网络请求队列</span></span><br><span class="line">    requestQueue = Volley.newRequestQueue(MainActivity.<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取网络图片路径url</span></span><br><span class="line">    String url = editText.getText().toString();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建请求</span></span><br><span class="line">    ImageLoader imageLoader = <span class="keyword">new</span> ImageLoader(requestQueue,<span class="keyword">new</span> BitmapCache());<span class="comment">//带缓存</span></span><br><span class="line">    <span class="comment">//加载不到图片，加载失败，采用默认图</span></span><br><span class="line">    ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(imageView, R.mipmap.ic_launcher, R.mipmap.ic_launcher);</span><br><span class="line"></span><br><span class="line">    imageLoader.get(url,imageListener);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>BitmapCache类（见素材）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.imagenet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.util.LruCache;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.android.volley.toolbox.ImageLoader;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 图片缓存</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BitmapCache</span> <span class="keyword">implements</span> <span class="title">ImageLoader</span>.<span class="title">ImageCache</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> LruCache&lt;String,Bitmap&gt; mCache;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BitmapCache</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxSize = <span class="number">10</span>* <span class="number">1024</span> *<span class="number">1024</span>;<span class="comment">//10m</span></span><br><span class="line">        mCache = <span class="keyword">new</span> LruCache&lt;String,Bitmap&gt;(maxSize)&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">sizeOf</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> bitmap.getRowBytes() * bitmap.getHeight();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bitmap <span class="title">getBitmap</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mCache.get(url);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putBitmap</span><span class="params">(String url, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">        mCache.put(url,bitmap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="Json解析框架Gson的使用"><a href="#Json解析框架Gson的使用" class="headerlink" title="Json解析框架Gson的使用"></a>Json解析框架Gson的使用</h1><h2 id="JSON格式数据介绍"><a href="#JSON格式数据介绍" class="headerlink" title="JSON格式数据介绍"></a>JSON格式数据介绍</h2><p>JSON：独立于语言和平台，比 XML 更小、更快，更易解析。JSON数据<br>已经成为了互联网中大多数数据的传递方式。</p>
+<h2 id="Android-之-JSON格式数据解析"><a href="#Android-之-JSON格式数据解析" class="headerlink" title="Android 之 JSON格式数据解析"></a>Android 之 JSON格式数据解析</h2><ul>
+<li><p>Android平台自带了JSON解析的相关API，可以将文件、输入流中的数据转化为JSON对象，然后从对象中获取JSON保存的数据内容。</p>
+</li>
+<li><p>Android的JSON解析部分都在包org.json下，主要有以下几个类： </p>
+<ul>
+<li>JSONObject：可以看作是一个json对象,这是系统中有关JSON定义的基本单元。</li>
+<li>JSONStringer：json文本构建类 ，根可以帮助快速和便捷的创建JSON text。</li>
+<li>JSONArray：它代表一组有序的数值。</li>
+<li>JSONTokener：json解析类。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">JSONObject jsonObject = <span class="keyword">new</span> JSONObject(result);  </span><br><span class="line"><span class="keyword">int</span> resultCode = jsonObject.getInt(<span class="string">"resultcode"</span>); </span><br><span class="line">JSONArray resultJsonArray = jsonObject.getJSONArray(<span class="string">"result"</span>);  </span><br><span class="line">JSONObject resultJsonObject = resultJsonArray.getJSONObject(<span class="number">0</span>); </span><br><span class="line">String city = resultJsonObject.getString(<span class="string">"city"</span>) ;</span><br></pre></td></tr></table></figure>
+
+<h2 id="案例3：豆瓣电影APP（一）"><a href="#案例3：豆瓣电影APP（一）" class="headerlink" title="案例3：豆瓣电影APP（一）"></a>案例3：豆瓣电影APP（一）</h2><h3 id="Volley及INTERNET权限"><a href="#Volley及INTERNET权限" class="headerlink" title="Volley及INTERNET权限"></a>Volley及INTERNET权限</h3><ul>
+<li><p>添加Volley框架</p>
+</li>
+<li><p>添加网络访问权限</p>
+</li>
+<li><p>添加图片缓存BitmapCache类（见素材）</p>
+</li>
+<li><p>改造电影实体Movie类，添加电影图片url：imgUrl</p>
+</li>
+</ul>
+<h3 id="加载豆瓣电影列表"><a href="#加载豆瓣电影列表" class="headerlink" title="加载豆瓣电影列表"></a>加载豆瓣电影列表</h3><ul>
+<li>使用JsonObjectRequest加载豆瓣电影数据</li>
+<li>豆瓣电影列表<ul>
+<li><a href="https://douban.uieee.com/v2/movie/in_theaters" target="_blank" rel="noopener">https://douban.uieee.com/v2/movie/in_theaters</a> </li>
+<li><a href="https://api.douban.com/v2/movie/in_theaters" target="_blank" rel="noopener">https://api.douban.com/v2/movie/in_theaters</a> </li>
+<li>subjects - 电影列表</li>
+</ul>
+</li>
+<li>使用BitmapCache类缓存电影图片<br>– 提示：返回数据为Json数据：<br>– JsonObjectRequest，JsonArrayRequest</li>
+</ul>
+<h2 id="Gson-框架简介"><a href="#Gson-框架简介" class="headerlink" title="Gson 框架简介"></a>Gson 框架简介</h2><ul>
+<li>Gson 是google解析Json的一个开源框架,同类的框架fastJson,JackJson等等</li>
+<li>基础概念：<ul>
+<li>Serialization:序列化，使Java对象到Json字符串的过程。    </li>
+<li>Deserialization：反序列化，字符串转换成Java对象</li>
+</ul>
+</li>
+<li>Gson的两个基础方法：<ul>
+<li>toJson(); 将bean对象转换为json字符串</li>
+<li>fromJson(); 将json字符串转为bean对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="Gson-框架的使用"><a href="#Gson-框架的使用" class="headerlink" title="Gson 框架的使用"></a>Gson 框架的使用</h2><ol>
+<li><p>在Android Studio中添加Gson框架</p>
+</li>
+<li><p>定义Json字符串对应的实体类（key - 属性）</p>
+</li>
+<li><p>使用Gson框架：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// toJson 将bean对象转换为json字符串</span></span><br><span class="line">String jsonStr = gson.toJson(movie, Movie<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">// fromJson 将json字符串转为bean对象</span></span><br><span class="line">Movie movie = gson.fromJson(jsonStr, Movie<span class="class">.<span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Gson-框架的注解"><a href="#Gson-框架的注解" class="headerlink" title="Gson 框架的注解"></a>Gson 框架的注解</h2><ol>
+<li><p>@Expose注解<br>serialize和deserialize属性可选，默认为true。<br>serialize 为true：调用toJson时会序列化该属性，<br>deserialize 为true：调用fromJson生成Java对象时不会进行反序列化。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210204154849.png" alt="image-20210204154804426"></p>
+</li>
+</ol>
+<p>注意：如果采用new Gson()方式创建Gson，@Expose没有任何效果</p>
+<ol start="2">
+<li><p>@SerializedName注解<br>能指定该字段在序列化成json时的名称。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210204154849.png" alt="image-20210204154733814"></p>
+</li>
+</ol>
+<p>注意：实际开发中我们会遇到比较复杂的Json，比如json中嵌套json数组，这个时候，就需要我们自定义序列化或反序列化方法了</p>
 ]]></content>
   </entry>
 </search>
