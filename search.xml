@@ -2968,8 +2968,9 @@
 <h3 id="整型的取值范围"><a href="#整型的取值范围" class="headerlink" title="整型的取值范围"></a>整型的取值范围</h3><p>Java中的整型主要包含<code>byte</code>、<code>short</code>、<code>int</code>和<code>long</code>这四种，表示的数字范围也是从小到大的，之所以表示范围不同主要和他们存储数据时所占的字节数有关。</p>
 <p>先来个简答的科普，1字节=8位（bit）。java中的整型属于有符号数。</p>
 <p>先来看计算中8bit可以表示的数字：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">最小值：<span class="number">10000000</span> （-<span class="number">128</span>）(-<span class="number">2</span>^<span class="number">7</span>)</span><br><span class="line">最大值：<span class="number">01111111</span>（<span class="number">127</span>）(<span class="number">2</span>^<span class="number">7</span>-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
+<blockquote>
+<p>最小值：10000000 （-128）(-2^7)<br>最大值：01111111（127）(2^7-1)</p>
+</blockquote>
 <p>整型的这几个类型中，</p>
 <ul>
 <li>byte：byte用1个字节来存储，范围为-128(-2^7)到127(2^7-1)，在变量初始化的时候，byte类型的默认值为0。</li>
@@ -3037,12 +3038,12 @@
 <h1 id="自动拆箱与自动装箱"><a href="#自动拆箱与自动装箱" class="headerlink" title="自动拆箱与自动装箱"></a>自动拆箱与自动装箱</h1><p>在Java SE5中，为了减少开发人员的工作，Java提供了自动拆箱与自动装箱功能。</p>
 <p>自动装箱: 就是将基本数据类型自动转换成对应的包装类。</p>
 <p>自动拆箱：就是将包装类自动转换成对应的基本数据类型。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer i =<span class="number">10</span>;  <span class="comment">//自动装箱</span></span><br><span class="line"><span class="keyword">int</span> b= i;     <span class="comment">//自动拆箱</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer i = <span class="number">10</span>;  <span class="comment">//自动装箱</span></span><br><span class="line"><span class="keyword">int</span> b = i;     <span class="comment">//自动拆箱</span></span><br></pre></td></tr></table></figure>
 
 <p><code>Integer i=10</code> 可以替代 <code>Integer i = new Integer(10);</code>，这就是因为Java帮我们提供了自动装箱的功能，不需要开发者手动去new一个Integer对象。</p>
 <h1 id="自动装箱与自动拆箱的实现原理"><a href="#自动装箱与自动拆箱的实现原理" class="headerlink" title="自动装箱与自动拆箱的实现原理"></a>自动装箱与自动拆箱的实现原理</h1><p>既然Java提供了自动拆装箱的能力，那么，我们就来看一下，到底是什么原理，Java是如何实现的自动拆装箱功能。</p>
 <p>我们有以下自动拆装箱的代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[]args)</span></span>&#123;</span><br><span class="line">    Integer integer=<span class="number">1</span>; <span class="comment">//装箱</span></span><br><span class="line">    <span class="keyword">int</span> i=integer; <span class="comment">//拆箱</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span> </span>&#123;</span><br><span class="line">    Integer integer = <span class="number">1</span>; <span class="comment">//装箱</span></span><br><span class="line">    <span class="keyword">int</span> i = integer; <span class="comment">//拆箱</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>对以上代码进行反编译后可以得到以下代码：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[]args)</span></span>&#123;</span><br><span class="line">    Integer integer=Integer.valueOf(<span class="number">1</span>); </span><br><span class="line">    <span class="keyword">int</span> i=integer.intValue(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -3081,7 +3082,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">Integer i = Integer.valueOf(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> k = flag ? i.intValue() : j;</span><br></pre></td></tr></table></figure>
 
 <p>这其实是三目运算符的语法规范：当第二，第三位操作数分别为基本类型和对象时，其中的对象就会拆箱为基本类型进行操作。</p>
-<p>因为例子中，<code>flag ? i : j;</code>片段中，第二段的i是一个包装类型的对象，而第三段的j是一个基本类型，所以会对包装类进行自动拆箱。如果这个时候i的值为<code>null</code>，那么久会发生NPE。（<a href="http://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650121204&idx=1&sn=3083f0bff6fac7c208037a90dfcce07d&chksm=f36bbed5c41c37c37284b45f7d1f52440a29377b84cbbde9796d648220665458ed638ff6d996&scene=21#wechat_redirect" target="_blank" rel="noopener">自动拆箱导致空指针异常</a>）</p>
+<p>因为例子中，<code>flag ? i : j;</code>片段中，第二段的i是一个包装类型的对象，而第三段的j是一个基本类型，所以会对包装类进行自动拆箱。如果这个时候i的值为<code>null</code>，那么久会发生NPE。（[自动拆箱导致空指针异常])</p>
 <h3 id="场景五、函数参数与返回值"><a href="#场景五、函数参数与返回值" class="headerlink" title="场景五、函数参数与返回值"></a>场景五、函数参数与返回值</h3><p>这个比较容易理解，直接上代码了：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自动拆箱</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNum1</span><span class="params">(Integer num)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//自动装箱</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Integer <span class="title">getNum2</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -3099,9 +3100,9 @@
 <p>适用于整数值区间-128 至 +127。</p>
 <p>只适用于自动装箱。使用构造函数创建对象不适用。</p>
 </blockquote>
-<p>具体的代码实现可以阅读<a href="http://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=402060056&idx=1&sn=1cd47760783b32b30e659398d36b233b&scene=21#wechat_redirect" target="_blank" rel="noopener">Java中整型的缓存机制</a>一文，这里不再阐述。</p>
+<p>这里不再阐述。</p>
 <p>我们只需要知道，当需要进行自动装箱时，如果数字在-128至127之间时，会直接使用缓存中的对象，而不是重新创建一个对象。</p>
-<p>其中的javadoc详细的说明了缓存支持-128到127之间的自动装箱过程。最大值127可以通过<code>-XX:AutoBoxCacheMax=size</code>修改。</p>
+<p>其中的 javadoc 详细的说明了缓存支持-128到127之间的自动装箱过程。最大值127可以通过<code>-XX:AutoBoxCacheMax=size</code>修改。</p>
 <p>实际上这个功能在Java 5中引入的时候,范围是固定的-128 至 +127。后来在Java 6中，可以通过<code>java.lang.Integer.IntegerCache.high</code>设置最大值。</p>
 <p>这使我们可以根据应用程序的实际情况灵活地调整来提高性能。到底是什么原因选择这个-128到127范围呢？因为这个范围的数字是最被广泛使用的。 在程序中，第一次使用Integer的时候也需要一定的额外时间来初始化这个缓存。</p>
 <p>在Boxing Conversion部分的Java语言规范(JLS)规定如下：</p>
