@@ -3479,65 +3479,99 @@
 <h2 id="String、StringBuffer与StringBuilder的区别"><a href="#String、StringBuffer与StringBuilder的区别" class="headerlink" title="String、StringBuffer与StringBuilder的区别"></a>String、StringBuffer与StringBuilder的区别</h2><p>第一点: 可变和适用范围。String对象是不可变的，而StringBuffer和StringBuilder是可变字符序列。每次对String的操作相当于生成一个新的String对象，而对StringBuffer和StringBuilder的操作是对对象本身的操作，而不会生成新的对象，所以对于频繁改变内容的字符串避免使用String，因为频繁的生成对象将会对系统性能产生影响。</p>
 <p>第二点: 线程安全。String由于有final修饰，是immutable的，安全性是简单而纯粹的。StringBuilder和StringBuffer的区别在于StringBuilder不保证同步，也就是说如果需要线程安全需要使用StringBuffer，不需要同步的StringBuilder效率更高。</p>
 <h2 id="switch能否用String做参数"><a href="#switch能否用String做参数" class="headerlink" title="switch能否用String做参数"></a>switch能否用String做参数</h2><p>Java1.7开始支持，但实际这是一颗Java语法糖。除此之外，byte，short，int，枚举，boolean均可用于switch，只有浮点型不可以。</p>
-<h2 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h2><p>6.1 一个子类只能继承一个抽象类,但能实现多个接口 6.2 抽象类可以有构造方法,接口没有构造方法 6.3 抽象类可以有普通成员变量,接口没有普通成员变量 6.4 抽象类和接口都可有静态成员变量,抽象类中静态成员变量访问类型任意，接口只能public static final(默认) 6.5 抽象类可以没有抽象方法,抽象类可以有普通方法,接口中都是抽象方法 6.6 抽象类可以有静态方法，接口不能有静态方法 6.7 抽象类中的方法可以是public、protected;接口方法只有public abstract</p>
+<h2 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h2><blockquote>
+<ul>
+<li><p>一个子类只能继承一个抽象类,但能实现多个接口 </p>
+</li>
+<li><p>抽象类可以有构造方法,接口没有构造方法 </p>
+</li>
+<li><p>抽象类可以有普通成员变量,接口没有普通成员变量 </p>
+</li>
+<li><p>抽象类和接口都可有静态成员变量,抽象类中静态成员变量访问类型任意，接口只能public static final(默认) </p>
+</li>
+<li><p>抽象类可以没有抽象方法,抽象类可以有普通方法,接口中都是抽象方法 </p>
+</li>
+<li><p>抽象类可以有静态方法，接口不能有静态方法 </p>
+</li>
+<li><p>抽象类中的方法可以是public、protected;接口方法只有public abstract</p>
+</li>
+</ul>
+</blockquote>
 <h2 id="抽象类和最终类"><a href="#抽象类和最终类" class="headerlink" title="抽象类和最终类"></a>抽象类和最终类</h2><p>抽象类可以没有抽象方法, 最终类可以没有最终方法</p>
 <p>最终类不能被继承, 最终方法不能被重写(可以重载)</p>
 <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>相关的关键字 throw、throws、try…catch、finally</p>
 <p>throws 用在方法签名上, 以便抛出的异常可以被调用者处理 throw 方法内部通过throw抛出异常 try 用于检测包住的语句块, 若有异常, catch子句捕获并执行catch块</p>
 <h2 id="关于finally"><a href="#关于finally" class="headerlink" title="关于finally"></a>关于finally</h2><p>finally不管有没有异常都要处理 当try和catch中有return时，finally仍然会执行，finally比return先执行 不管有木有异常抛出, finally在return返回前执行 finally是在return后面的表达式运算后执行的(此时并没有返回运算后的值，而是先把要返回的值保存起来，管finally中的代码怎么样，返回的值都不会改变，仍然是之前保存的值)，所以函数返回值是在finally执行前确定的 注意: finally中最好不要包含return，否则程序会提前退出，返回值不是try或catch中保存的返回值</p>
 <p>finally不执行的几种情况: 程序提前终止如调用了System.exit, 病毒，断电</p>
-<h2 id="受检查异常和运行时异常"><a href="#受检查异常和运行时异常" class="headerlink" title="受检查异常和运行时异常"></a>受检查异常和运行时异常</h2><p>10.1 粉红色的是受检查的异常(checked exceptions),其必须被try…catch语句块所捕获, 或者在方法签名里通过throws子句声明。受检查的异常必须在编译时被捕捉处理,命名为Checked Exception是因为Java编译器要进行检查, Java虚拟机也要进行检查, 以确保这个规则得到遵守。</p>
-<p>常见的checked exception: ClassNotFoundException IOException FileNotFoundException EOFException</p>
-<p>10.2 绿色的异常是运行时异常(runtime exceptions), 需要程序员自己分析代码决定是否捕获和处理,比如空指针,被0除…</p>
-<p>常见的runtime exception: NullPointerException ArithmeticException ClassCastException IllegalArgumentException IllegalStateException IndexOutOfBoundsException NoSuchElementException</p>
-<p>10.3 而声明为Error的，则属于严重错误，如系统崩溃、虚拟机错误、动态链接失败等，这些错误无法恢复或者不可能捕捉，将导致应用程序中断，Error不需要捕获。</p>
-<h2 id="super出现在父类的子类中。有三种存在方式"><a href="#super出现在父类的子类中。有三种存在方式" class="headerlink" title="super出现在父类的子类中。有三种存在方式"></a>super出现在父类的子类中。有三种存在方式</h2><p>super.xxx(xxx为变量名或对象名)意思是获取父类中xxx的变量或引用 super.xxx(); (xxx为方法名)意思是直接访问并调用父类中的方法 super() 调用父类构造 注: super只能指代其直接父类</p>
-<h2 id="this-amp-super-在构造方法中的区别"><a href="#this-amp-super-在构造方法中的区别" class="headerlink" title="this() &amp; super()在构造方法中的区别"></a>this() &amp; super()在构造方法中的区别</h2><p>调用super()必须写在子类构造方法的第一行, 否则编译不通过 super从子类调用父类构造, this在同一类中调用其他构造 均需要放在第一行 尽管可以用this调用一个构造器, 却不能调用2个 this和super不能出现在同一个构造器中, 否则编译不通过 this()、super()都指的对象,不可以在static环境中使用 本质this指向本对象的指针。super是一个关键字</p>
-<h2 id="修饰符一览"><a href="#修饰符一览" class="headerlink" title="修饰符一览"></a>修饰符一览</h2><p>修饰符             类内部      同一个包        子类         任何地方 private         yes default         yes            yes protected        yes            yes                yes public            yes            yes                yes            yes</p>
-<h2 id="构造内部类和静态内部类对象"><a href="#构造内部类和静态内部类对象" class="headerlink" title="构造内部类和静态内部类对象"></a>构造内部类和静态内部类对象</h2><p>public class Enclosingone { public class Insideone {} public static class Insideone{} }</p>
-<p>public class Test { public static void main(String[] args) { // 构造内部类对象需要外部类的引用 Enclosingone.Insideone obj1 = new Enclosingone().new Insideone(); // 构造静态内部类的对象 Enclosingone.Insideone obj2 = new Enclosingone.Insideone(); } } 静态内部类不需要有指向外部类的引用。但非静态内部类需要持有对外部类的引用。非静态内部类能够访问外部类的静态和非静态成员。静态内部类不能访问外部类的非静态成员，只能访问外部类的静态成员。</p>
-<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>声明为static和transient类型的数据不能被序列化， 反序列化需要一个无参构造函数</p>
-<p>序列化参见我的笔记Java-note-序列化.md</p>
-<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>次数符号</p>
+<h2 id="受检查异常和运行时异常"><a href="#受检查异常和运行时异常" class="headerlink" title="受检查异常和运行时异常"></a>受检查异常和运行时异常</h2><ul>
+<li><p>粉红色的是受检查的异常(checked exceptions),其必须被try…catch语句块所捕获, 或者在方法签名里通过throws子句声明。受检查的异常必须在编译时被捕捉处理,命名为Checked Exception是因为Java编译器要进行检查, Java虚拟机也要进行检查, 以确保这个规则得到遵守。</p>
 <ul>
-<li><p>0或多次</p>
+<li>常见的checked exception: ClassNotFoundException IOException FileNotFoundException EOFException</li>
+</ul>
 </li>
-<li><p>1或多次 ? 0或1次 {n} 恰n次 {n,m} 从n到m次 其他符号</p>
+<li><p>绿色的异常是运行时异常(runtime exceptions), 需要程序员自己分析代码决定是否捕获和处理,比如空指针,被0除…</p>
+<ul>
+<li>常见的runtime exception: NullPointerException ArithmeticException ClassCastException IllegalArgumentException IllegalStateException IndexOutOfBoundsException NoSuchElementException</li>
+</ul>
+</li>
+<li><p>而声明为Error的，则属于严重错误，如系统崩溃、虚拟机错误、动态链接失败等，这些错误无法恢复或者不可能捕捉，将导致应用程序中断，Error不需要捕获。</p>
 </li>
 </ul>
-<p>符号    等价形式</p>
-<p>\d        [0-9] \D      [^0-9]<br> \w         [a-zA-Z_0-9] \W         [^a-zA-Z_0-9] \s         [\t\n\r\f] \S         [^\t\n\r\f] .         任何字符 边界匹配器</p>
-<p>行开头    ^ 行结尾 $ 单词边界 \b</p>
-<p>贪婪模式:最大长度匹配 非贪婪模式:匹配到结果就好,最短匹配</p>
-<p>环视</p>
-<p>字符                 描述                     匹配对象 .                    单个任意字符             […]                 字符组                     列出的任意字符 [^…]                                         未列出的任意字符 ^                     caret                     行的起始位置 $                     dollar                     行的结束位置 &lt;                                           单词的起始位置 &gt;                                             单词的结束位置 \b                   单词边界 \B                     非单词边界 (?=Expression)        顺序肯定环视            成功,如果右边能够匹配 (?!Expression)        顺序否定环视            成功,如果右边不能够匹配 (?&lt;=Expression)        逆序肯定环视            成功,如果左边能够匹配 (?&lt;!Expression)     逆序否定环视            成功,如果左边不能够匹配 举例:北京市(海淀区)(朝阳区)(西城区)</p>
-<p>Regex: .*(?=()</p>
-<p>模式和匹配器的典型调用次序</p>
-<p>把正则表达式编译到模式中 Pattern p = Pattern.compile(“a*b”); 创建给定输入与此模式的匹配器 Matcher m = p.matcher(“aaab”); 尝试将整个区域与此模式匹配 boolean b = m.matches();</p>
-<ol>
-<li>null可以被强制转型为任意类型的对象</li>
-</ol>
-<p>19.代码执行次序</p>
-<p>多个静态成员变量, 静态代码块按顺序执行 单个类中: 静态代码 -&gt; main方法 -&gt; 构造块 -&gt; 构造方法 构造块在每一次创建对象时执行 涉及父类和子类的初始化过程 a.初始化父类中的静态成员变量和静态代码块 b.初始化子类中的静态成员变量和静态代码块 c.初始化父类的普通成员变量和构造代码块(按次序)，再执行父类的构造方法(注意父类构造方法中的子类方法覆盖) d.初始化子类的普通成员变量和构造代码块(按次序)，再执行子类的构造方法 20. 数组复制方法</p>
-<p>for逐一复制 System.arraycopy() -&gt; 效率最高native方法 Arrays.copyOf() -&gt; 本质调用arraycopy clone方法 -&gt; 返回Object[],需要强制类型转换 21. 多态</p>
-<p>Java通过方法重写和方法重载实现多态 方法重写是指子类重写了父类的同名方法 方法重载是指在同一个类中，方法的名字相同，但是参数列表不同 22. Java文件</p>
-<p>.java文件可以包含多个类，唯一的限制就是: 一个文件中只能有一个public类， 并且此public类必须与 文件名相同。而且这些类和写在多个文件中没有区别。</p>
+<h2 id="super出现在父类的子类中。有三种存在方式"><a href="#super出现在父类的子类中。有三种存在方式" class="headerlink" title="super出现在父类的子类中。有三种存在方式"></a>super出现在父类的子类中。有三种存在方式</h2><p>super.xxx(xxx为变量名或对象名)意思是获取父类中xxx的变量或引用 super.xxx(); (xxx为方法名)意思是直接访问并调用父类中的方法 super() 调用父类构造 注: super只能指代其直接父类</p>
+<h2 id="this-amp-super-在构造方法中的区别"><a href="#this-amp-super-在构造方法中的区别" class="headerlink" title="this() &amp; super()在构造方法中的区别"></a>this() &amp; super()在构造方法中的区别</h2><p>调用super()必须写在子类构造方法的第一行, 否则编译不通过 super从子类调用父类构造, this在同一类中调用其他构造 均需要放在第一行 尽管可以用this调用一个构造器, 却不能调用2个 this和super不能出现在同一个构造器中, 否则编译不通过 this()、super()都指的对象,不可以在static环境中使用 本质this指向本对象的指针。super是一个关键字</p>
+<h2 id="构造内部类和静态内部类对象"><a href="#构造内部类和静态内部类对象" class="headerlink" title="构造内部类和静态内部类对象"></a>构造内部类和静态内部类对象</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enclosingone</span> </span>&#123; </span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Insideone</span> </span>&#123;&#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Insideone</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        <span class="comment">// 构造内部类对象需要外部类的引用 </span></span><br><span class="line">        Enclosingone.Insideone obj1 = <span class="keyword">new</span> Enclosingone().<span class="keyword">new</span> Insideone(); </span><br><span class="line">        <span class="comment">// 构造静态内部类的对象 </span></span><br><span class="line">        Enclosingone.Insideone obj2 = <span class="keyword">new</span> Enclosingone.Insideone(); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>静态内部类不需要有指向外部类的引用。但非静态内部类需要持有对外部类的引用。非静态内部类能够访问外部类的静态和非静态成员。静态内部类不能访问外部类的非静态成员，只能访问外部类的静态成员。</p>
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>声明为static和transient类型的数据不能被序列化， 反序列化需要一个无参构造函数</p>
 <h2 id="Java移位运算符"><a href="#Java移位运算符" class="headerlink" title="Java移位运算符"></a>Java移位运算符</h2><p>java中有三种移位运算符</p>
 <p>&lt;&lt; :左移运算符,x &lt;&lt; 1,相当于x乘以2(不溢出的情况下),低位补0</p>
-<blockquote>
-<blockquote>
-<p>:带符号右移,x &gt;&gt; 1,相当于x除以2,正数高位补0,负数高位补1</p>
-<blockquote>
-<p>:无符号右移,忽略符号位,空位都以0补齐 参见我的GitHub，Java移位符</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<p>&gt;&gt;:带符号右移,x &gt;&gt; 1,相当于x除以2,正数高位补0,负数高位补1</p>
+<p>&gt;&gt;&gt;:无符号右移,忽略符号位,空位都以0补齐</p>
 <h2 id="形参-amp-实参"><a href="#形参-amp-实参" class="headerlink" title="形参&amp;实参"></a>形参&amp;实参</h2><p>形式参数可被视为local variable.形参和局部变量一样都不能离开方法。只有在方法中使用，不会在方法外可见。 形式参数只能用final修饰符，其它任何修饰符都会引起编译器错误。但是用这个修饰符也有一定的限制，就是在方法中不能对参数做任何修改。不过一般情况下，一个方法的形参不用final修饰。只有在特殊情况下，那就是: 方法内部类。一个方法内的内部类如果使用了这个方法的参数或者局部变量的话，这个参数或局部变量应该是final。 形参的值在调用时根据调用者更改，实参则用自身的值更改形参的值(指针、引用皆在此列)，也就是说真正被传递的是实参。</p>
 <h2 id="局部变量为什么要初始化"><a href="#局部变量为什么要初始化" class="headerlink" title="局部变量为什么要初始化"></a>局部变量为什么要初始化</h2><p>局部变量是指类方法中的变量，必须初始化。局部变量运行时被分配在栈中，量大，生命周期短，如果虚拟机给每个局部变量都初始化一下，是一笔很大的开销，但变量不初始化为默认值就使用是不安全的。出于速度和安全性两个方面的综合考虑，解决方案就是虚拟机不初始化，但要求编写者一定要在使用前给变量赋值。</p>
-<h2 id="Java语言的鲁棒性"><a href="#Java语言的鲁棒性" class="headerlink" title="Java语言的鲁棒性"></a>Java语言的鲁棒性</h2><p>Java在编译和运行程序时，都要对可能出现的问题进行检查，以消除错误的产生。它提供自动垃圾收集来进行内存管理，防止程序员在管理内存时容易产生的错误。通过集成的面向对象的例外处理机制，在编译时，Java揭示出可能出现但未被处理的异常，帮助程序员正确地进行选择以防止系统的崩溃。另外，Java在编译时还可捕获类型声明中的许多常见错误，防止动态运行时不匹配问题的出现。</p>
-<h2 id="Java语言特性"><a href="#Java语言特性" class="headerlink" title="Java语言特性"></a>Java语言特性</h2><p>Java致力于检查程序在编译和运行时的错误 Java虚拟机实现了跨平台接口 类型检查帮助检查出许多开发早期出现的错误 Java自己操纵内存减少了内存出错的可能性 Java还实现了真数组，避免了覆盖数据的可能</p>
-<h2 id="包装类的equals-方法不处理数据转型，必须类型和值都一样才相等。"><a href="#包装类的equals-方法不处理数据转型，必须类型和值都一样才相等。" class="headerlink" title="包装类的equals()方法不处理数据转型，必须类型和值都一样才相等。"></a>包装类的equals()方法不处理数据转型，必须类型和值都一样才相等。</h2><p>子类可以继承父类的静态方法！但是不能覆盖。因为静态方法是在编译时确定了，不能多态，也就是不能运行时绑定。</p>
+<h2 id="Java语言的鲁棒性"><a href="#Java语言的鲁棒性" class="headerlink" title="Java语言的鲁棒性"></a>Java语言的鲁棒性</h2><p>Java在编译和运行程序时，都要对可能出现的问题进行检查，以消除错误的产生。</p>
+<p>它提供自动垃圾收集来进行内存管理，防止程序员在管理内存时容易产生的错误。</p>
+<p>通过集成的面向对象的例外处理机制，在编译时，Java揭示出可能出现但未被处理的异常，帮助程序员正确地进行选择以防止系统的崩溃。另外，Java在编译时还可捕获类型声明中的许多常见错误，防止动态运行时不匹配问题的出现。</p>
+<h2 id="Java语言特性"><a href="#Java语言特性" class="headerlink" title="Java语言特性"></a>Java语言特性</h2><p>Java致力于检查程序在编译和运行时的错误 </p>
+<p>Java虚拟机实现了跨平台接口 </p>
+<p>类型检查帮助检查出许多开发早期出现的错误 </p>
+<p>Java自己操纵内存减少了内存出错的可能性 </p>
+<p>Java还实现了真数组，避免了覆盖数据的可能</p>
+<p>包装类的equals()方法不处理数据转型，必须类型和值都一样才相等。</p>
+<p>子类可以继承父类的静态方法！但是不能覆盖。因为静态方法是在编译时确定了，不能多态，也就是不能运行时绑定。</p>
 <h2 id="Java语法糖"><a href="#Java语法糖" class="headerlink" title="Java语法糖"></a>Java语法糖</h2><p>Java7的switch用字符串 - hashcode方法 switch用于enum枚举 伪泛型 - List原始类型 自动装箱拆箱 - Integer.valueOf和Integer.intValue foreach遍历 - Iterator迭代器实现 条件编译 enum枚举类、内部类 可变参数 - 数组 断言语言 try语句中定义和关闭资源</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java常见异常</title>
+    <url>/2021/02/23/Java%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<p>在Java中提供了一些异常用来描述经常发生的错误，对于这些异常，有的需要程序员进行捕获处理或声明抛出，有的是由Java虚拟机自动进行捕获处理。Java中常见的异常类:</p>
+<h1 id="RuntimeException"><a href="#RuntimeException" class="headerlink" title="RuntimeException"></a><strong>RuntimeException</strong></h1><ul>
+<li>java.lang.ArrayIndexOutOfBoundsException 数组索引越界异常。当对数组的索引值为负数或大于等于数组大小时抛出。</li>
+<li>java.lang.ArithmeticException 算术条件异常。譬如：整数除零等。</li>
+<li>java.lang.NullPointerException 空指针异常。当应用试图在要求使用对象的地方使用了null时，抛出该异常。譬如：调用null对象的实例方法、访问null对象的属性、计算null对象的长度、使用throw语句抛出null等等</li>
+<li>java.lang.ClassNotFoundException 找不到类异常。当应用试图根据字符串形式的类名构造类，而在遍历CLASSPAH之后找不到对应名称的class文件时，抛出该异常。</li>
+<li>java.lang.NegativeArraySizeException  数组长度为负异常</li>
+<li>java.lang.ArrayStoreException 数组中包含不兼容的值抛出的异常</li>
+<li>java.lang.SecurityException 安全性异常</li>
+<li>java.lang.IllegalArgumentException 非法参数异常</li>
+</ul>
+<h1 id="IOException"><a href="#IOException" class="headerlink" title="IOException"></a><strong>IOException</strong></h1><ul>
+<li>IOException：操作输入流和输出流时可能出现的异常。</li>
+<li>EOFException   文件已结束异常</li>
+<li>FileNotFoundException   文件未找到异常</li>
+</ul>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a><strong>其他</strong></h1><ul>
+<li>ClassCastException    类型转换异常类</li>
+<li>ArrayStoreException  数组中包含不兼容的值抛出的异常</li>
+<li>SQLException   操作数据库异常类</li>
+<li>NoSuchFieldException   字段未找到异常</li>
+<li>NoSuchMethodException   方法未找到抛出的异常</li>
+<li>NumberFormatException    字符串转换为数字抛出的异常</li>
+<li>StringIndexOutOfBoundsException 字符串索引超出范围抛出的异常</li>
+<li>IllegalAccessException  不允许访问某类异常</li>
+<li>InstantiationException  当应用程序试图使用Class类中的newInstance()方法创建一个类的实例，而指定的类对象无法被实例化时，抛出该异常</li>
+</ul>
 ]]></content>
   </entry>
 </search>
