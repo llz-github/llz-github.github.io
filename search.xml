@@ -4131,4 +4131,11 @@
 <p><a href="https://images0.cnblogs.com/blog/385532/201308/30193704-d65f24c7ddea474ab3236bd701650059.png" target="_blank" rel="noopener"><img src="https://images0.cnblogs.com/blog/385532/201308/30193705-accbdcad601c4d45b96392feea1bb63a.png" alt="image"></a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>mongodb导入csv报错</title>
+    <url>/2021/05/25/mongodb%E5%AF%BC%E5%85%A5csv%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<h1 id="mongodb导入csv报错-Failed-line-1-column-671-bare-“-in-non-quoted-field"><a href="#mongodb导入csv报错-Failed-line-1-column-671-bare-“-in-non-quoted-field" class="headerlink" title="mongodb导入csv报错  Failed: line 1, column 671: bare “ in non-quoted-field"></a>mongodb导入csv报错  Failed: line 1, column 671: bare “ in non-quoted-field</h1><p>导致这个问题的原因是因为的csv的编码不正确，在windows下只能导入可预览的csv数据</p>
+<p>导入出现乱码的csv（用excel打开，会有提示：您尝试打开的文件“文件名”的格式与文件扩展名指定的格式不一致）就会报这个错误。</p>
+]]></content>
+  </entry>
 </search>
