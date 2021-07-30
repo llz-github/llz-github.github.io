@@ -4149,4 +4149,54 @@
 <p>其中 <code>ParameterizedType</code>:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ParameterizedType</span> <span class="keyword">extends</span> <span class="title">Type</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 返回确切的泛型参数, 如Map&lt;String, Integer&gt;返回[String, Integer]</span></span><br><span class="line">    Type[] getActualTypeArguments();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回当前class或interface声明的类型, 如List&lt;?&gt;返回List</span></span><br><span class="line">    <span class="function">Type <span class="title">getRawType</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回所属类型. 如,当前类型为O&lt;T&gt;.I&lt;S&gt;, 则返回O&lt;T&gt;. 顶级类型将返回null </span></span><br><span class="line">    <span class="function">Type <span class="title">getOwnerType</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
+  <entry>
+    <title>c++基本类型之间的转换</title>
+    <url>/2021/07/30/c++%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/StrayWolf/p/6082828.html" target="_blank" rel="noopener">转载</a></p>
+<p>常用的转换方法：</p>
+<ol>
+<li>流转换</li>
+<li>STL标准函数库中函数转换</li>
+</ol>
+<h2 id="流转换"><a href="#流转换" class="headerlink" title="流转换"></a>流转换</h2><p>流转换主要是用到了<sstream>库中的stringstream类。</p>
+<p>通过stringstream可以完成基本类型间的转换，</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"> <span class="number">2</span> </span><br><span class="line"> <span class="number">3</span> <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> <span class="keyword">template</span>&lt;<span class="keyword">typename</span> out_type, <span class="keyword">typename</span> in_value&gt;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="function">out_type <span class="title">convert</span><span class="params">(<span class="keyword">const</span> in_value &amp; t)</span></span>&#123;</span><br><span class="line"> <span class="number">8</span> </span><br><span class="line"> <span class="number">9</span>     <span class="built_in">stringstream</span> stream;</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span>     stream &lt;&lt; t;</span><br><span class="line"><span class="number">12</span> </span><br><span class="line"><span class="number">13</span>     out_type result;</span><br><span class="line"><span class="number">14</span> </span><br><span class="line"><span class="number">15</span>     stream &gt;&gt; result;</span><br><span class="line"><span class="number">16</span> </span><br><span class="line"><span class="number">17</span>     <span class="keyword">return</span> result;</span><br><span class="line"><span class="number">18</span> </span><br><span class="line"><span class="number">19</span> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="STL函数转换"><a href="#STL函数转换" class="headerlink" title="STL函数转换"></a>STL函数转换</h2><p>标准函数库里包含了基本类型间转换的函数，在库&lt;stdlib.h&gt;中。</p>
+<p>基本的函数：</p>
+<p>itoa()：将整型值转换为字符串。</p>
+<p>ltoa()：将长整型值转换为字符串。</p>
+<p>ultoa()：将无符号长整型值转换为字符串。</p>
+<p>gcvt()：将浮点型数转换为字符串，取四舍五入。</p>
+<p>ecvt()：将双精度浮点型值转换为字符串，转换结果中不包含十进制小数点。</p>
+<p>fcvt()：指定位数为转换精度，其余同ecvt()。</p>
+<p>atof()：将字符串转换为双精度浮点型值。</p>
+<p>atoi()：将字符串转换为整型值。</p>
+<p>atol()：将字符串转换为长整型值。</p>
+<p>strtod()：将字符串转换为双精度浮点型值，并报告不能被转换的所有剩余数字。</p>
+<p>strtol()：将字符串转换为长整值，并报告不能被转换的所有剩余数字。</p>
+<p>strtoul()：将字符串转换为无符号长整型值，并报告不能被转换的所有剩余数字。</p>
+<p>每个函数的参数不尽相同，比如</p>
+<p>char* itoa(int value, char* string, int radix)</p>
+<p>含义：将整数value转换成字符串存入string, radix为转换时所用基数(保存到字符串中的数据的进制基数 2 8 10 16)</p>
+<p>int atoi(const char* nptr)</p>
+<p>含义：跳过前面的空格字符，直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(‘\0’)才结束转换，并将结果返回。</p>
+<p>如此看来，这种方法就没有流转换灵活，方便。</p>
+<p>实例：</p>
+<p>（使用流转换）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> out_type, <span class="keyword">typename</span> in_value&gt;</span><br><span class="line"><span class="function">out_type <span class="title">convert</span><span class="params">(<span class="keyword">const</span> in_value &amp; t)</span></span>&#123;</span><br><span class="line">    <span class="built_in">stringstream</span> stream;</span><br><span class="line">    stream &lt;&lt; t;</span><br><span class="line">    out_type result;</span><br><span class="line">    stream &gt;&gt; result;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> xxx[<span class="number">10</span>] = <span class="string">"45126"</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">45641</span>;</span><br><span class="line">    i = convert&lt;<span class="keyword">int</span>&gt;(xxx);<span class="comment">//字符串转换为整型</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果：</p>
+<p><img src="https://images2015.cnblogs.com/blog/936680/201611/936680-20161120162434263-950692052.png" alt="img"></p>
+<p>（使用STL函数）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1254876</span>;</span><br><span class="line">    <span class="keyword">char</span> x[<span class="number">10</span>];</span><br><span class="line">    itoa(i, x, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">char</span>* y = <span class="string">"45128"</span>;</span><br><span class="line">    n = atoi(y);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://images2015.cnblogs.com/blog/936680/201611/936680-20161120163048498-1253713344.png" alt="img"></p>
+]]></content>
+  </entry>
 </search>
