@@ -4191,12 +4191,12 @@
 
 
 <p>结果：</p>
-<p><img src="https://images2015.cnblogs.com/blog/936680/201611/936680-20161120162434263-950692052.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210730114317.png" alt="image-20210730114308809"></p>
 <p>（使用STL函数）</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1254876</span>;</span><br><span class="line">    <span class="keyword">char</span> x[<span class="number">10</span>];</span><br><span class="line">    itoa(i, x, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">char</span>* y = <span class="string">"45128"</span>;</span><br><span class="line">    n = atoi(y);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<p><img src="https://images2015.cnblogs.com/blog/936680/201611/936680-20161120163048498-1253713344.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/image/img1/20210730114821.png" alt="image-20210730114820959"></p>
 ]]></content>
   </entry>
 </search>
