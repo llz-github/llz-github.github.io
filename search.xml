@@ -4493,7 +4493,7 @@
 <p>CMake 和 MinGW 安装好后，要确保环境变量path中存在cmake下bin的所在路径（直接解压安装不会自动添加路径）。</p>
 <p><strong>检查安装是否成功</strong></p>
 <p>管理员cmd窗口执行：cmake -version</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240130094530215.png" alt="image-20240130094530215"></p>
+<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151243.png" alt="image-20240130094530215"></p>
 <h2 id="CMake基础"><a href="#CMake基础" class="headerlink" title="CMake基础"></a>CMake基础</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ul>
 <li>注释 使用井号(#)开头的行是注释行，会被 CMake 忽略。</li>
 </ul>
@@ -4724,13 +4724,13 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HelloWorld&#x2F;</span><br><span class="line">    build&#x2F;</span><br><span class="line">    CMakeLists.txt</span><br><span class="line">    tutorial.cpp</span><br></pre></td></tr></table></figure>
 
 <h4 id="cmake-gui方式"><a href="#cmake-gui方式" class="headerlink" title="cmake-gui方式"></a>cmake-gui方式</h4><p>在HelloWorld目录中，手动创建build目录。</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240130113833434.png" alt="image-20240130113833434"></p>
+<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151256.png" alt="image-20240130113833434"></p>
 <p>打开cmake-gui.exe</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240130114145101.png" alt="image-20240130114145101"></p>
+<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151257.png" alt="image-20240130114145101"></p>
 <p> 点击Configure开始执行配置，选择运行平台</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240130134719188.png" alt="image-20240130134719188"></p>
+<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151258.png" alt="image-20240130134719188"></p>
 <p>点击 Generate，开始生成 VS 项目</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240130134838794.png" alt="image-20240130134838794"></p>
+<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151259.png" alt="image-20240130134838794"></p>
 <p>ALL_BUILD：该目标会导致工程中所有项目被构建，类似 Visual Studio 的 Build All 或者 make 的 make all命令</p>
 <p>HelloWorld：项目本身，就是在CMakeLists.txt文件中配置的project(HelloWorld)</p>
 <p>ZERO_CHECK：该项目会检查生成工程的 CMake 配置文件（ CMakeLists.txt ）是否更新，如更新将运行 CMake 重新生成工程文件，如果确信 CMakeLists.txt 不会被更新，或者希望手工运行 CMake 重新生成工程文件，可以在 CMakeLists.txt 配置文件中添加 set(CMAKE_SUPPRESS_REGENERATION FALSE) 命令， ZERO_CHECK 目标将不会生成</p>
