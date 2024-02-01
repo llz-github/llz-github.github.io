@@ -4493,7 +4493,7 @@
 <p>CMake 和 MinGW 安装好后，要确保环境变量path中存在cmake下bin的所在路径（直接解压安装不会自动添加路径）。</p>
 <p><strong>检查安装是否成功</strong></p>
 <p>管理员cmd窗口执行：cmake -version</p>
-<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151243.png" alt="image-20240130094530215"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011702069.png" alt="image-20240130094530215"></p>
 <h2 id="CMake基础"><a href="#CMake基础" class="headerlink" title="CMake基础"></a>CMake基础</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ul>
 <li>注释 使用井号(#)开头的行是注释行，会被 CMake 忽略。</li>
 </ul>
