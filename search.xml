@@ -4370,36 +4370,36 @@
 </ul>
 <h1 id="Lua安装"><a href="#Lua安装" class="headerlink" title="Lua安装"></a>Lua安装</h1><ul>
 <li><p><a href="http://www.lua.org" target="_blank" rel="noopener">Lua官网</a>下载源码</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219214822394.png" alt="image-20230219214822394"></p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219214917068.png" alt="image-20230219214917068"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711709.png" alt="image-20230219214822394"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711711.png" alt="image-20230219214917068"></p>
 </li>
 <li><p><a href="https://pan.baidu.com/s/1dVbrYisag00WiB78FLAVyQ?pwd=4f7s" target="_blank" rel="noopener">百度网盘</a>下载  提取码：4f7s</p>
 </li>
 </ul>
 <p>如果没有时间或意愿自己编译Lua，可单击如下图位置下载生成的二进制文件进行操作，解压即可完成安装。</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219215421992.png" alt="image-20230219215421992"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711712.png" alt="image-20230219215421992"></p>
 <p>本文档进行源码编译演示。</p>
 <h2 id="VS编译lua源码"><a href="#VS编译lua源码" class="headerlink" title="VS编译lua源码"></a>VS编译lua源码</h2><h3 id="lua静态库编译"><a href="#lua静态库编译" class="headerlink" title="lua静态库编译"></a>lua静态库编译</h3><ol>
 <li>新建vs静态库工程，将下载的Lua源码引入项目中（除lua.c和luac.c）</li>
 <li>将项目改为C编译，不使用预编译头</li>
 </ol>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219220354828.png" alt="image-20230219220354828"></p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219220517123.png" alt="image-20230219220517123"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711713.png" alt="image-20230219220354828"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711714.png" alt="image-20230219220517123"></p>
 <p>编译生成静态库。</p>
 <h3 id="lua动态库编译"><a href="#lua动态库编译" class="headerlink" title="lua动态库编译"></a>lua动态库编译</h3><p>将配置类型更改为动态库</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219220746612.png" alt="image-20230219220746612"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711715.png" alt="image-20230219220746612"></p>
 <p>编译生成动态库。</p>
 <h3 id="lua解释器编译"><a href="#lua解释器编译" class="headerlink" title="lua解释器编译"></a>lua解释器编译</h3><p>将配置类型更改为应用程序</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219220858239.png" alt="image-20230219220858239"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711716.png" alt="image-20230219220858239"></p>
 <p>将lua.c引入源文件中；</p>
 <p>编译生成lua解释器。</p>
 <h3 id="lua编译器编译"><a href="#lua编译器编译" class="headerlink" title="lua编译器编译"></a>lua编译器编译</h3><p>将lua.c从源文件中移除，把luac.c引入源文件，目标文件名改为$(ProjectName)c</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219221641881.png" alt="image-20230219221641881"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711717.png" alt="image-20230219221641881"></p>
 <p>编译生成lua编译器器。</p>
 <p>生成路径下有这些文件</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219222323532.png" alt="image-20230219222323532"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711718.png" alt="image-20230219222323532"></p>
 <p>在该路径下运行cmd输入lua5.4.4.exe -i显示如下即为成功，如果需要，可将其配至环境变量下。</p>
-<p><img src="C:%5CUsers%5Cllz%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230219222506808.png" alt="image-20230219222506808"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011711719.png" alt="image-20230219222506808"></p>
 <h3 id="Lua项目源码"><a href="#Lua项目源码" class="headerlink" title="Lua项目源码"></a>Lua项目源码</h3><p><a href="https://pan.baidu.com/s/1OiN9nv3jZzpDpGQ7NVkJ8Q?pwd=oq8j" target="_blank" rel="noopener">百度网盘</a>下载   提取码：oq8j</p>
 <h1 id="Lua入门"><a href="#Lua入门" class="headerlink" title="Lua入门"></a>Lua入门</h1><h2 id="Lua参考手册"><a href="#Lua参考手册" class="headerlink" title="Lua参考手册"></a>Lua参考手册</h2><p>目前5.4只有官网提供的<a href="http://www.lua.org/manual/5.4/" target="_blank" rel="noopener">英文手册</a></p>
 <p>中文手册可以参考云风译版  <a href="http://cloudwu.github.io/lua53doc/" target="_blank" rel="noopener">5.3版本</a></p>
@@ -4724,13 +4724,13 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HelloWorld&#x2F;</span><br><span class="line">    build&#x2F;</span><br><span class="line">    CMakeLists.txt</span><br><span class="line">    tutorial.cpp</span><br></pre></td></tr></table></figure>
 
 <h4 id="cmake-gui方式"><a href="#cmake-gui方式" class="headerlink" title="cmake-gui方式"></a>cmake-gui方式</h4><p>在HelloWorld目录中，手动创建build目录。</p>
-<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151256.png" alt="image-20240130113833434"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011703702.png" alt="image-20240130113833434"></p>
 <p>打开cmake-gui.exe</p>
-<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151257.png" alt="image-20240130114145101"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011703733.png" alt="image-20240130114145101"></p>
 <p> 点击Configure开始执行配置，选择运行平台</p>
-<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151258.png" alt="image-20240130134719188"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011703203.png" alt="image-20240130134719188"></p>
 <p>点击 Generate，开始生成 VS 项目</p>
-<p><img src="https://gitee.com/llz-gitee/mypic/raw/master/img/20240201151259.png" alt="image-20240130134838794"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202402011714370.png" alt="image-20240130134838794"></p>
 <p>ALL_BUILD：该目标会导致工程中所有项目被构建，类似 Visual Studio 的 Build All 或者 make 的 make all命令</p>
 <p>HelloWorld：项目本身，就是在CMakeLists.txt文件中配置的project(HelloWorld)</p>
 <p>ZERO_CHECK：该项目会检查生成工程的 CMake 配置文件（ CMakeLists.txt ）是否更新，如更新将运行 CMake 重新生成工程文件，如果确信 CMakeLists.txt 不会被更新，或者希望手工运行 CMake 重新生成工程文件，可以在 CMakeLists.txt 配置文件中添加 set(CMAKE_SUPPRESS_REGENERATION FALSE) 命令， ZERO_CHECK 目标将不会生成</p>
