@@ -4833,4 +4833,209 @@
 <p>调用Startup和Shutdown实现远程开关机。</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>git简单使用教程</title>
+    <url>/2024/03/28/git%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="git简单使用教程"><a href="#git简单使用教程" class="headerlink" title="git简单使用教程"></a>git简单使用教程</h1><h2 id="Git介绍"><a href="#Git介绍" class="headerlink" title="Git介绍"></a>Git介绍</h2><p>Git 是一个分布式版本控制系统，用于跟踪文件的更改和管理项目的版本历史。它由 Linus Torvalds 于 2005 年开发，旨在取代当时广泛使用的集中式版本控制系统（如 SVN）。</p>
+<p>Git 的工作原理是将每个版本的文件和元数据存储在一个称为“仓库”的地方，每个开发者在本地都有一个完整的仓库副本，可以在本地进行更改和提交。当多个开发者同时在同一个项目上工作时，Git 会自动合并他们的更改，并在必要时解决冲突。Git 还提供了强大的分支和合并功能，使得开发者可以在不影响主线代码的情况下进行实验性的开发和合并。</p>
+<p>Git 是目前最流行的版本控制系统之一，被广泛用于软件开发、数据科学、设计等领域。</p>
+<h3 id="Git工作原理（流程图）"><a href="#Git工作原理（流程图）" class="headerlink" title="Git工作原理（流程图）"></a>Git工作原理（流程图）</h3><p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202403281115234.png" alt="image-20240328111505130"></p>
+<p>Workspace：工作区（本地的工作目录）<br>        Index / Stage：暂存区（由本地工作目录预提交的内容）<br>        Repository：仓库区或本地仓库（分布式本地仓库，本用户目录）<br>        Remote：远程仓库（远程仓库，所有用户共享目录）</p>
+<h3 id="Git和SVN区别"><a href="#Git和SVN区别" class="headerlink" title="Git和SVN区别"></a>Git和SVN区别</h3><p>Git 和 SVN 都是版本控制系统，但它们在工作原理、速度、安全性、分支管理等方面存在一些区别：</p>
+<ol>
+<li>工作原理：Git 是分布式版本控制系统，每个开发者都有一个完整的本地仓库，并且可以在本地进行更改和提交。SVN 是集中式版本控制系统，只有一个中央服务器，所有的更改都需要提交到中央服务器。</li>
+<li>速度：Git 的速度比 SVN 快，因为它不需要频繁地与中央服务器通信。</li>
+<li>安全性：Git 的安全性比 SVN 高，因为每个开发者都有一个完整的本地仓库，即使中央服务器出现问题，也不会影响其他开发者的工作。</li>
+<li>分支管理：Git 的分支管理比 SVN 更强大，因为它支持本地分支、远程分支、合并分支等操作，并且可以在不影响主线代码的情况下进行实验性的开发和合并。</li>
+<li>合并操作：Git 的合并操作比 SVN 更简单，因为它使用了智能合并算法，可以自动解决大部分冲突。</li>
+<li>存储方式：Git 以对象的形式存储版本库的数据，而 SVN 以文件系统的形式存储版本库的数据。Git 的存储方式更加高效，占用的空间更小。</li>
+</ol>
+<h2 id="Git常用命令使用"><a href="#Git常用命令使用" class="headerlink" title="Git常用命令使用"></a>Git常用命令使用</h2><p>以下命令在已经关联好远程仓库的情况开发使用下，若还没有远程仓库，跳转至本章<code>Git关联远程仓库</code></p>
+<h3 id="使用流程："><a href="#使用流程：" class="headerlink" title="使用流程："></a>使用流程：</h3><blockquote>
+<p>clone远程项目</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git clone https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;repository.git</span><br></pre></td></tr></table></figure>
+
+<p>拉取指定分支合并至当前分支，确保本次开发版本为最新版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git pull origin 分支名称</span><br></pre></td></tr></table></figure>
+
+<p>将修改完的内容添加到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git add -A</span><br></pre></td></tr></table></figure>
+
+<p>将暂存区的内容更新到本地仓库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git commit -m &quot;本次更新要写的注释&quot;</span><br></pre></td></tr></table></figure>
+
+<p>将本地仓库内容更新至远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git push origin 分支名称</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="版本回退："><a href="#版本回退：" class="headerlink" title="版本回退："></a>版本回退：</h3><blockquote>
+<p>查看版本号及更新内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git log –pretty&#x3D;oneline</span><br></pre></td></tr></table></figure>
+
+<p>回退至上一个版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git reset --hard HEAD^</span><br><span class="line">&gt;git reset --hard HEAD^^ #回退上两个版本</span><br><span class="line">&gt;git reset --hard HEAD~100 #回退上100个版本</span><br></pre></td></tr></table></figure>
+
+<p>回退后使用 git log命令已经查看不到最新的版本了，需要使用git reflog查询，找到最新的版本号，通过指定的版本号获取最新版本，或者直接pull最新版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git reflog</span><br><span class="line">&gt;git reset --hard 版本号</span><br><span class="line">&gt;git pull origin 分支名称</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="撤销修改："><a href="#撤销修改：" class="headerlink" title="撤销修改："></a>撤销修改：</h3><blockquote>
+<p>在未提交之前，发现添加内容有误，想要恢复以前的版本，有如下几种方法可以做修改：</p>
+<ul>
+<li>如果知道要删掉那些内容的话，直接手动更改去掉那些需要的文件，然后add添加到暂存区，最后commit掉。</li>
+<li>可以按以前的方法直接恢复到上一个版本。使用 git reset –hard HEAD^</li>
+</ul>
+<p>但是现在我不想使用上面的2种方法，我想直接想使用撤销命令该如何操作呢？首先在做撤销之前，我们可以先用 git status 查看下当前的状态。</p>
+<p>Git会告诉你，git checkout – file 可以丢弃工作区的修改，如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<p>命令 git checkout –<file>意思就是，把file文件在工作区做的修改全部撤销，这里有2种情况，如下：</p>
+<ol>
+<li>file自动修改后，还没有放到暂存区，使用 撤销修改就回到和版本库一模一样的状态。</li>
+<li>另外一种是file已经放入暂存区了，接着又作了修改，撤销修改就回到添加暂存区后的状态。<br>可以使用git reset HEAD <file>将更改撤出暂存区</li>
+</ol>
+</blockquote>
+<h2 id="Git关联远程仓库"><a href="#Git关联远程仓库" class="headerlink" title="Git关联远程仓库"></a>Git关联远程仓库</h2><p>在Github上或者其他平台创建一个仓库，拿到它的repository地址</p>
+<h3 id="Git命令行创建一个新的版本库"><a href="#Git命令行创建一个新的版本库" class="headerlink" title="Git命令行创建一个新的版本库"></a>Git命令行创建一个新的版本库</h3><blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git init</span><br><span class="line">&gt;git add README.md</span><br><span class="line">&gt;git commit -m &quot;first commit&quot;</span><br><span class="line">&gt;git remote add origin https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;repository.git</span><br><span class="line">&gt;git push -u origin master</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Git命令行推送一个已经存在版本库"><a href="#Git命令行推送一个已经存在版本库" class="headerlink" title="Git命令行推送一个已经存在版本库"></a>Git命令行推送一个已经存在版本库</h3><blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;git remote add origin https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;repository.git</span><br><span class="line">&gt;git push -u origin master</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="Git命令详解"><a href="#Git命令详解" class="headerlink" title="Git命令详解"></a>Git命令详解</h2><h3 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h3><p><code>git clone</code>是 Git 版本控制系统中的一个命令，用于从远程仓库克隆一个本地仓库。使用<code>git clone</code>命令可以创建一个新的本地仓库，并将远程仓库的所有历史记录和分支复制到本地。</p>
+<p><code>git clone</code>命令的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> [options] &lt;repository&gt; [&lt;directory&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>options</code>是可选的参数，用于指定一些选项。常用的选项包括：</p>
+<ul>
+<li><code>-b</code>：指定要克隆的分支。</li>
+<li><code>-l</code>：使用深度克隆，只克隆最近的一次提交。</li>
+<li><code>-n</code>：创建一个新的空仓库，不克隆任何内容。</li>
+<li><code>-o</code>：指定远程仓库的名称。</li>
+<li><code>-q</code>：安静模式，不显示克隆过程的输出。</li>
+<li><code>-s</code>：使用浅层克隆，只克隆最近的一次提交。</li>
+</ul>
+<p><code>&lt;repository&gt;</code>是要克隆的远程仓库的地址。如果省略该参数，Git 将从默认的远程仓库（通常是<code>origin</code>）克隆代码。<br><code>&lt;directory&gt;</code>是要创建的本地仓库的目录。如果省略该参数，Git 将在当前目录下创建一个新的目录，并将其作为本地仓库的目录。</p>
+<p>下面是一些使用<code>git clone</code>命令的示例：</p>
+<blockquote>
+<p>克隆远程仓库的默认分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/username/repository.git</span><br></pre></td></tr></table></figure>
+
+<p>克隆远程仓库的特定分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b branch_name https://github.com/username/repository.git</span><br></pre></td></tr></table></figure>
+
+<p>克隆远程仓库的特定标签：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b tag_name https://github.com/username/repository.git</span><br></pre></td></tr></table></figure>
+
+<p>深度克隆远程仓库的特定分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth 1 -b branch_name https://github.com/username/repository.git</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><p>在 Git 中，<code>git pull</code>命令用于从远程仓库拉取最新的更改并合并到本地仓库中。下面是<code>git pull</code>命令的基本用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull [options] [remote] [branch]</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>options</code>是可选的参数，用于指定一些选项。常用的选项包括：</p>
+<ul>
+<li><code>-f</code>：强制覆盖本地修改。</li>
+<li><code>-r</code>：递归地拉取子模块的更新。</li>
+<li><code>-p</code>：在拉取时进行合并操作。</li>
+</ul>
+<p><code>remote</code>是要拉取代码的远程仓库的名称。如果省略该参数，Git 将从默认的远程仓库（通常是<code>origin</code>）拉取代码。<br><code>branch</code>是要拉取的远程分支的名称。如果省略该参数，Git 将拉取远程仓库的默认分支（通常是<code>master</code>）。</p>
+<p>下面是一些使用<code>git pull</code>命令的示例：</p>
+<blockquote>
+<p>拉取远程仓库的默认分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<p>拉取远程仓库的特定分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull origin branch_name</span><br></pre></td></tr></table></figure>
+
+<p>拉取远程仓库的特定标签：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull origin tag_name</span><br></pre></td></tr></table></figure>
+
+<p>强制覆盖本地修改：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull -f</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>在使用<code>git pull</code>命令时，可能会遇到冲突。如果发生冲突，Git 会提示你解决冲突，并在解决冲突后再次执行<code>git pull</code>命令。</p>
+<h3 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h3><p><code>git add</code>是 Git 版本控制系统中的一个命令，用于将工作目录中的文件或目录添加到暂存区中。暂存区是 Git 中用于临时存储待提交更改的区域，在提交更改之前，暂存区中的更改不会被提交到版本库中。</p>
+<p><code>git add</code>命令的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add [options] &lt;pathspec&gt;…</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>options</code>是可选的参数，用于指定一些选项。常用的选项包括：</p>
+<ul>
+<li><code>-A</code>：添加所有文件和子目录。</li>
+<li><code>-u</code>：只添加已跟踪的文件和子目录中的更改。</li>
+<li><code>-i</code>：交互模式，在添加文件之前进行确认。</li>
+<li><code>-p</code>：添加时显示文件的差异。</li>
+</ul>
+<p><code>&lt;pathspec&gt;</code>是要添加的文件或目录的路径，可以是一个或多个文件或目录。如果省略<code>&lt;pathspec&gt;</code>，Git 将添加当前目录中的所有文件和子目录。</p>
+<p>下面是一些使用<code>git add</code>命令的示例：</p>
+<blockquote>
+<p>添加当前目录中的所有文件和子目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;git add -A</span><br></pre></td></tr></table></figure>
+
+<p>添加已跟踪的文件和子目录中的更改：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;git add -u</span><br></pre></td></tr></table></figure>
+
+<p>添加特定文件或目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;git add file1.txt dir1/</span><br></pre></td></tr></table></figure>
+
+<p>添加特定文件或目录时显示文件的差异：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;git add -p file1.txt</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>在使用<code>git add</code>命令时，如果文件或目录已经在暂存区中，Git 不会再次添加它们。如果文件或目录已经在版本库中，Git 也不会添加它们。</p>
+<h3 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h3><p><code>git commit</code>是 Git 版本控制系统中的一个命令，用于将暂存区中的更改提交到版本库中。提交操作会创建一个新的提交对象，该对象包含了提交信息、提交者、提交时间和提交的更改等信息。</p>
+<p><code>git commit</code>命令的语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit [options] [-m &lt;message&gt;] [-a] [--amend]</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>options</code>是可选的参数，用于指定一些选项。常用的选项包括：</p>
+<ul>
+<li><code>-m &lt;message&gt;</code>：指定提交消息。提交消息是对本次提交的描述，应该简洁明了地描述本次提交的内容。</li>
+<li><code>-a</code>：自动添加暂存区中的更改。如果暂存区中有更改，使用<code>-a</code>选项可以省略使用<code>git add</code>命令将更改添加到暂存区的步骤。</li>
+<li><code>--amend</code>：修改上次提交。使用<code>--amend</code>选项可以修改上次提交的信息和更改，而不是创建一个新的提交。</li>
+</ul>
+<p>下面是一些使用<code>git commit</code>命令的示例：</p>
+<blockquote>
+<p>提交暂存区中的更改：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"Add new file"</span></span><br></pre></td></tr></table></figure>
+
+<p>自动添加暂存区中的更改并提交：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -a -m <span class="string">"Update file"</span></span><br></pre></td></tr></table></figure>
+
+<p>修改上次提交：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit --amend -m <span class="string">"Fix bug"</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>在使用<code>git commit</code>命令时，Git 会自动生成一个提交消息。如果你没有指定提交消息，Git 会打开一个默认的文本编辑器，让你输入提交消息。提交消息应该简洁明了地描述本次提交的内容，以便其他开发者理解你的更改。</p>
+<h3 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h3><p>在 Git 中，<code>git push</code>命令用于将本地分支的更改推送到远程仓库中。下面是<code>git push</code>命令的基本用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push [options] [remote] [branch]</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>options</code>是可选的参数，用于指定一些选项。常用的选项包括：</p>
+<ul>
+<li><code>-f</code>：强制覆盖远程分支的更改。</li>
+<li><code>-u</code>：设置上游分支，以便在后续的推送操作中自动同步远程分支和本地分支。</li>
+<li><code>-r</code>：递归地推送子模块的更改。</li>
+</ul>
+<p><code>remote</code>是要推送代码的远程仓库的名称。如果省略该参数，Git 将默认推送代码到<code>origin</code>远程仓库。<br><code>branch</code>是要推送的本地分支的名称。如果省略该参数，Git 将默认推送当前分支。</p>
+<p>下面是一些使用<code>git push</code>命令的示例：</p>
+<blockquote>
+<p>推送当前分支的更改到<code>origin</code>远程仓库的<code>master</code>分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>推送本地分支的更改到<code>origin</code>远程仓库的<code>feature</code>分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;git push origin feature</span><br></pre></td></tr></table></figure>
+
+<p>强制覆盖远程分支的更改：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;git push -f origin master</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>在使用<code>git push</code>命令时，可能会遇到冲突。如果远程分支和本地分支的更改存在冲突，Git 会提示你解决冲突，并在解决冲突后再次执行<code>git push</code>命令。</p>
+<h2 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h2><ol>
+<li><code>git status</code>：查看当前分支的状态。</li>
+<li><code>git diff</code>：查看工作区和暂存区的差异。</li>
+<li><code>git log</code>：查看提交历史。</li>
+<li><code>git branch</code>：创建、删除和切换分支。</li>
+<li><code>git merge</code>：合并分支。</li>
+<li><code>git tag</code>：创建和查看标签</li>
+<li><code>git config --global user.name &quot;Your Name&quot;</code>：设置全局用户名。</li>
+<li><code>git config --global user.email &quot;your@example.com&quot;</code>：设置全局电子邮件地址。</li>
+<li><code>git remote -v</code>：获取本地所有远程仓库的详细信息.</li>
+<li><code>git log –pretty=oneline</code>:查看版本号及更新内容</li>
+</ol>
+]]></content>
+  </entry>
 </search>
