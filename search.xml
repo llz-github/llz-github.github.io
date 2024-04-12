@@ -5038,4 +5038,203 @@
 </ol>
 ]]></content>
   </entry>
+  <entry>
+    <title>Linux常用命令</title>
+    <url>/2024/04/12/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Linux系统常用文件夹作用"><a href="#Linux系统常用文件夹作用" class="headerlink" title="Linux系统常用文件夹作用"></a>Linux系统常用文件夹作用</h1><blockquote>
+<p>/：根目录，整个文件系统的起始点。</p>
+<p>/bin：二进制可执行文件的存放目录，包含许多基本的系统工具和命令，如ls、cp和rm等。</p>
+<p>/boot：包含启动系统所需的文件，如内核和引导加载程序。</p>
+<p>/dev：设备文件的存放目录，包含与硬件设备相关的文件，如磁盘、键盘和鼠标等。</p>
+<p>/etc：系统配置文件的存放目录，包含各种系统和应用程序的配置文件。</p>
+<p>/home：普通用户的主目录，每个用户在这里有一个单独的文件夹用于存放个人文件和设置。</p>
+<p>/lib：库文件的存放目录，包含许多用于支持系统和应用程序的共享库文件。</p>
+<p>/media：可移动媒体设备（如光盘、USB驱动器等）的挂载点，当插入可移动设备时，会在此目录下创建一个对应的子目录。</p>
+<p>/mnt：临时挂载点，用于挂载其他文件系统或网络共享。</p>
+<p>/opt：第三方软件的安装目录，一些额外的应用程序可以安装到这个目录下。</p>
+<p>/proc：虚拟文件系统，提供系统和进程信息的访问点，可以通过读取其中的文件获取系统状态和进程信息。</p>
+<p>/root：超级用户（root）的主目录，与/home不同，这是root用户的个人目录。</p>
+<p>/sbin：系统管理员使用的系统管理工具的存放目录，包含一些用于系统管理的命令。</p>
+<p>/srv：服务数据目录，用于存放特定服务（如网站、FTP服务器）的数据文件。</p>
+<p>/tmp：临时文件目录，用于存放临时文件，该目录下的文件在系统重新启动时会被清空。</p>
+<p>/usr：用户软件的存放目录，包含系统范围内的应用程序、库文件和文档等。</p>
+<p>/var：可变数据的存放目录，包含经常变化的文件，如日志文件、缓存文件和邮件等。</p>
+</blockquote>
+<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h2 id="ls-ll-：列出目录中的文件和子目录。"><a href="#ls-ll-：列出目录中的文件和子目录。" class="headerlink" title="ls(ll)：列出目录中的文件和子目录。"></a><strong>ls</strong>(<strong>ll</strong>)：列出目录中的文件和子目录。</h2><p>示例：<code>ls /home/username/</code> 列出指定目录下的文件和子目录。</p>
+<h2 id="cd：改变当前工作目录。"><a href="#cd：改变当前工作目录。" class="headerlink" title="cd：改变当前工作目录。"></a><strong>cd</strong>：改变当前工作目录。</h2><p>示例：<code>cd /etc</code> 进入/etc 目录。</p>
+<h2 id="mkdir：创建新目录。"><a href="#mkdir：创建新目录。" class="headerlink" title="mkdir：创建新目录。"></a><strong>mkdir</strong>：创建新目录。</h2><p>示例：<code>mkdir new_directory</code> 创建一个名为“new_directory”的新目录。</p>
+<h2 id="rm：删除文件或目录。"><a href="#rm：删除文件或目录。" class="headerlink" title="rm：删除文件或目录。"></a><strong>rm</strong>：删除文件或目录。</h2><blockquote>
+<ol>
+<li><code>rm file.txt</code>：删除名为 <code>file.txt</code> 的文件。</li>
+<li><code>rm *</code>：删除当前目录下的所有文件。</li>
+<li><code>rm -r directory</code>：删除指定目录及其子目录中的所有文件和目录。</li>
+<li><code>rm -f file.txt</code>：强制删除文件，不提示确认。</li>
+<li><code>rm -rf directory</code>：强制删除目录及其子目录，不提示确认。</li>
+</ol>
+</blockquote>
+<h2 id="cp：复制文件或目录。"><a href="#cp：复制文件或目录。" class="headerlink" title="cp：复制文件或目录。"></a><strong>cp</strong>：复制文件或目录。</h2><blockquote>
+<ol>
+<li><code>cp file1 file2</code>：将文件 <code>file1</code> 复制为 <code>file2</code>。</li>
+<li><code>cp file /destination/directory/</code>：将文件复制到指定目录。</li>
+<li><code>cp -r directory1 directory2</code>：递归复制目录 <code>directory1</code> 及其内容到 <code>directory2</code>。</li>
+<li><code>cp -a source destination</code>：保留文件属性和权限进行复制。</li>
+</ol>
+</blockquote>
+<h2 id="scp：安全地在本地和远程系统之间复制文件"><a href="#scp：安全地在本地和远程系统之间复制文件" class="headerlink" title="scp：安全地在本地和远程系统之间复制文件"></a><strong>scp</strong>：安全地在本地和远程系统之间复制文件</h2><p>示例：<code>scp file user@host:/destination</code>。</p>
+<h2 id="mv：移动或重命名文件或目录。"><a href="#mv：移动或重命名文件或目录。" class="headerlink" title="mv：移动或重命名文件或目录。"></a><strong>mv</strong>：移动或重命名文件或目录。</h2><blockquote>
+<ol>
+<li><code>mv file1 file2</code>：将文件 <code>file1</code> 重命名为 <code>file2</code>。</li>
+<li><code>mv file /destination/directory/</code>：将文件移动到指定目录。</li>
+<li><code>mv directory1 /destination/directory/</code>：将目录移动到指定位置。</li>
+<li><code>mv directory new_directory_name</code>：重命名目录。</li>
+</ol>
+</blockquote>
+<h2 id="cat：显示文件内容。"><a href="#cat：显示文件内容。" class="headerlink" title="cat：显示文件内容。"></a><strong>cat</strong>：显示文件内容。</h2><blockquote>
+<ol>
+<li><code>cat filename</code>：查看名为 <code>filename</code> 的文件的内容。</li>
+<li><code>cat file1 file2 &gt; combined_file</code>：将 <code>file1</code> 和 <code>file2</code> 的内容连接并输出到 <code>combined_file</code>。</li>
+</ol>
+</blockquote>
+<h2 id="grep：在文件中搜索指定的模式。"><a href="#grep：在文件中搜索指定的模式。" class="headerlink" title="grep：在文件中搜索指定的模式。"></a><strong>grep</strong>：在文件中搜索指定的模式。</h2><blockquote>
+<ol>
+<li><code>grep &quot;keyword&quot; filename</code>：在 <code>filename</code> 文件中搜索 <code>keyword</code>。</li>
+<li><code>grep -r &quot;keyword&quot; directory</code>：在指定目录及其子目录中递归搜索 <code>keyword</code>。</li>
+</ol>
+</blockquote>
+<h2 id="chmod：改变文件或目录的权限。"><a href="#chmod：改变文件或目录的权限。" class="headerlink" title="chmod：改变文件或目录的权限。"></a><strong>chmod</strong>：改变文件或目录的权限。</h2><blockquote>
+<ol>
+<li><code>chmod 755 filename</code>：将文件 <code>filename</code> 的权限设置为所有者有读、写和执行权限，组用户有读和执行权限，其他用户有读和执行权限。</li>
+<li><code>chmod u+x filename</code>：为文件 <code>filename</code> 的所有者添加执行权限。</li>
+<li><code>chmod g+w filename</code>：为文件 <code>filename</code> 的组用户添加写入权限</li>
+</ol>
+</blockquote>
+<h2 id="chown：改变文件或目录的所有者。"><a href="#chown：改变文件或目录的所有者。" class="headerlink" title="chown：改变文件或目录的所有者。"></a><strong>chown</strong>：改变文件或目录的所有者。</h2><blockquote>
+<ol>
+<li><code>chown user filename</code>：将文件 <code>filename</code> 的所有者更改为 <code>user</code>。</li>
+<li><code>chown user:group directory</code>：将目录及其子目录的所有者更改为 <code>user</code>，所属组更改为 <code>group</code></li>
+</ol>
+</blockquote>
+<h2 id="ps：显示系统进程。"><a href="#ps：显示系统进程。" class="headerlink" title="ps：显示系统进程。"></a><strong>ps</strong>：显示系统进程。</h2><p><code>ps -aux</code> 显示系统中的所有进程。</p>
+<h2 id="losf：列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件"><a href="#losf：列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件" class="headerlink" title="losf：列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件"></a>losf：列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件</h2><p>losf -i 用以显示符合条件的进程情况</p>
+<h2 id="kill：终止进程-通过PID-。"><a href="#kill：终止进程-通过PID-。" class="headerlink" title="kill：终止进程(通过PID)。"></a><strong>kill</strong>：终止进程(通过PID)。</h2><p>示例：<code>kill PID</code> 终止指定 PID 的进程。</p>
+<h2 id="killall：终止进程-通过进程名称-。"><a href="#killall：终止进程-通过进程名称-。" class="headerlink" title="killall：终止进程(通过进程名称)。"></a><strong>killall</strong>：终止进程(通过进程名称)。</h2><p>示例：<code>killall COMMAND</code> 终止指定名称的进程。</p>
+<h2 id="pwd：显示当前工作目录。"><a href="#pwd：显示当前工作目录。" class="headerlink" title="pwd：显示当前工作目录。"></a><strong>pwd</strong>：显示当前工作目录。</h2><p>示例：<code>pwd</code>。</p>
+<h2 id="su：切换用户。"><a href="#su：切换用户。" class="headerlink" title="su：切换用户。"></a><strong>su</strong>：切换用户。</h2><p>示例：<code>su username</code>。</p>
+<h2 id="sudo：以其他用户身份执行命令。"><a href="#sudo：以其他用户身份执行命令。" class="headerlink" title="sudo：以其他用户身份执行命令。"></a><strong>sudo</strong>：以其他用户身份执行命令。</h2><p>示例：<code>sudo command</code>。</p>
+<h2 id="shutdown：关闭或重启系统。"><a href="#shutdown：关闭或重启系统。" class="headerlink" title="shutdown：关闭或重启系统。"></a><strong>shutdown</strong>：关闭或重启系统。</h2><p>示例：<code>shutdown -h now</code>。</p>
+<h2 id="reboot：重启系统。"><a href="#reboot：重启系统。" class="headerlink" title="reboot：重启系统。"></a><strong>reboot</strong>：重启系统。</h2><p>示例：<code>reboot</code>。</p>
+<h2 id="ifconfig：查看网络接口信息。"><a href="#ifconfig：查看网络接口信息。" class="headerlink" title="ifconfig：查看网络接口信息。"></a><strong>ifconfig</strong>：查看网络接口信息。</h2><p>示例：<code>ifconfig</code>。</p>
+<h2 id="ping：测试网络连接。"><a href="#ping：测试网络连接。" class="headerlink" title="ping：测试网络连接。"></a><strong>ping</strong>：测试网络连接。</h2><p>示例：<code>ping ip_address</code>。</p>
+<h2 id="tar：文件归档和压缩。"><a href="#tar：文件归档和压缩。" class="headerlink" title="tar：文件归档和压缩。"></a><strong>tar</strong>：文件归档和压缩。</h2><p>示例：<code>tar -czvf archive.tar.gz files</code>。</p>
+<h2 id="gzip：文件压缩。"><a href="#gzip：文件压缩。" class="headerlink" title="gzip：文件压缩。"></a><strong>gzip</strong>：文件压缩。</h2><p>示例：<code>gzip file</code>。</p>
+<h2 id="gunzip：解压缩-gzip-压缩文件。"><a href="#gunzip：解压缩-gzip-压缩文件。" class="headerlink" title="gunzip：解压缩 gzip 压缩文件。"></a><strong>gunzip</strong>：解压缩 gzip 压缩文件。</h2><p>示例：<code>gunzip archive.gz</code>。</p>
+<h2 id="ssh：安全远程登录。"><a href="#ssh：安全远程登录。" class="headerlink" title="ssh：安全远程登录。"></a><strong>ssh</strong>：安全远程登录。</h2><p>示例：<code>ssh user@host</code>。</p>
+<h2 id="vim：文本编辑器。"><a href="#vim：文本编辑器。" class="headerlink" title="vim：文本编辑器。"></a><strong>vim</strong>：文本编辑器。</h2><p>示例：<code>vim file</code>。</p>
+<h2 id="top：实时显示系统进程的信息。"><a href="#top：实时显示系统进程的信息。" class="headerlink" title="top：实时显示系统进程的信息。"></a><strong>top</strong>：实时显示系统进程的信息。</h2><p>示例：<code>top</code> 显示系统进程的实时信息。</p>
+<h2 id="df：显示磁盘空间使用情况。"><a href="#df：显示磁盘空间使用情况。" class="headerlink" title="df：显示磁盘空间使用情况。"></a><strong>df</strong>：显示磁盘空间使用情况。</h2><p>示例：<code>df -h</code> 以易读的形式显示磁盘空间使用情况。</p>
+<h2 id="du：计算文件或目录占用的磁盘空间。"><a href="#du：计算文件或目录占用的磁盘空间。" class="headerlink" title="du：计算文件或目录占用的磁盘空间。"></a><strong>du</strong>：计算文件或目录占用的磁盘空间。</h2><p>示例：<code>du -sh /directory/</code> 计算指定目录占用的磁盘空间。</p>
+<h2 id="touch：创建新文件。"><a href="#touch：创建新文件。" class="headerlink" title="touch：创建新文件。"></a><strong>touch</strong>：创建新文件。</h2><p>示例：<code>touch new_file</code>。</p>
+<h2 id="ln：创建链接。"><a href="#ln：创建链接。" class="headerlink" title="ln：创建链接。"></a><strong>ln</strong>：创建链接。</h2><p>示例：<code>ln -s /source /destination</code>。</p>
+<h2 id="uname：显示系统信息。"><a href="#uname：显示系统信息。" class="headerlink" title="uname：显示系统信息。"></a><strong>uname</strong>：显示系统信息。</h2><p>示例：<code>uname -a</code>。</p>
+<h2 id="echo：输出文本。"><a href="#echo：输出文本。" class="headerlink" title="echo：输出文本。"></a><strong>echo</strong>：输出文本。</h2><p>示例：<code>echo &quot;Hello, World!&quot;</code>。</p>
+<h2 id="tail：显示文件尾部。"><a href="#tail：显示文件尾部。" class="headerlink" title="tail：显示文件尾部。"></a><strong>tail</strong>：显示文件尾部。</h2><p>示例：<code>tail -f log_file</code>。</p>
+<h2 id="head：显示文件头部。"><a href="#head：显示文件头部。" class="headerlink" title="head：显示文件头部。"></a><strong>head</strong>：显示文件头部。</h2><p>示例：<code>head file.txt</code>。</p>
+<h2 id="chgrp：改变文件或目录所属组。"><a href="#chgrp：改变文件或目录所属组。" class="headerlink" title="chgrp：改变文件或目录所属组。"></a><strong>chgrp</strong>：改变文件或目录所属组。</h2><p>示例：<code>chgrp group file</code>。</p>
+<h2 id="useradd：添加用户。"><a href="#useradd：添加用户。" class="headerlink" title="useradd：添加用户。"></a><strong>useradd</strong>：添加用户。</h2><p>示例：<code>useradd username</code>。</p>
+<h2 id="passwd：设置用户密码。"><a href="#passwd：设置用户密码。" class="headerlink" title="passwd：设置用户密码。"></a><strong>passwd</strong>：设置用户密码。</h2><p>示例：<code>passwd username</code>。</p>
+<h2 id="telnet：远程登录。"><a href="#telnet：远程登录。" class="headerlink" title="telnet：远程登录。"></a><strong>telnet</strong>：远程登录。</h2><p>示例：<code>telnet host</code>。</p>
+<h2 id="ftp：文件传输。"><a href="#ftp：文件传输。" class="headerlink" title="ftp：文件传输。"></a><strong>ftp</strong>：文件传输。</h2><p>示例：<code>ftp server</code>。</p>
+<h2 id="find：查找文件。"><a href="#find：查找文件。" class="headerlink" title="find：查找文件。"></a><strong>find</strong>：查找文件。</h2><p>示例：<code>find / -name &quot;file*&quot;</code>。</p>
+<h2 id="sed：流编辑器。"><a href="#sed：流编辑器。" class="headerlink" title="sed：流编辑器。"></a><strong>sed</strong>：<a href="coco://sendMessage?ext={"s%24wiki_link"%3A"https%3A%2F%2Fm.baike.com%2Fwikiid%2F2358556461109666141"}&msg=流编辑器">流编辑器</a>。</h2><p>示例：<code>sed &#39;/old/new/&#39; file</code>。</p>
+<h2 id="awk：文本处理工具。"><a href="#awk：文本处理工具。" class="headerlink" title="awk：文本处理工具。"></a><strong>awk</strong>：文本处理工具。</h2><p>示例：<code>awk &#39;pattern {action}&#39; file</code>。</p>
+<h2 id="gcc：编译器。"><a href="#gcc：编译器。" class="headerlink" title="gcc：编译器。"></a><strong>gcc</strong>：编译器。</h2><p>示例：<code>gcc source_file.c -o executable_file</code>。</p>
+<h2 id="make：项目构建工具。"><a href="#make：项目构建工具。" class="headerlink" title="make：项目构建工具。"></a><strong>make</strong>：项目构建工具。</h2><p>示例：<code>make</code>。</p>
+<h2 id="apt-get：Debian-系系统的包管理工具。"><a href="#apt-get：Debian-系系统的包管理工具。" class="headerlink" title="apt-get：Debian 系系统的包管理工具。"></a><strong>apt-get</strong>：Debian 系系统的包管理工具。</h2><p>示例：<code>apt-get install package</code>。</p>
+<h2 id="yum：RPM-系系统的包管理工具。"><a href="#yum：RPM-系系统的包管理工具。" class="headerlink" title="yum：RPM 系系统的包管理工具。"></a><strong>yum</strong>：RPM 系系统的包管理工具。</h2><p>示例：<code>yum install package</code>。</p>
+<h2 id="locate：快速查找文件。"><a href="#locate：快速查找文件。" class="headerlink" title="locate：快速查找文件。"></a><strong>locate</strong>：快速查找文件。</h2><p>示例：<code>locate file</code>。</p>
+<h2 id="whereis：查找命令的位置。"><a href="#whereis：查找命令的位置。" class="headerlink" title="whereis：查找命令的位置。"></a><strong>whereis</strong>：查找命令的位置。</h2><p>示例：<code>whereis command</code>。</p>
+<h2 id="updatedb：更新数据库以支持-locate-搜索。"><a href="#updatedb：更新数据库以支持-locate-搜索。" class="headerlink" title="updatedb：更新数据库以支持 locate 搜索。"></a><strong>updatedb</strong>：更新数据库以支持 locate 搜索。</h2><p>示例：<code>updatedb</code>。</p>
+<h2 id="dmesg：显示系统内核消息。"><a href="#dmesg：显示系统内核消息。" class="headerlink" title="dmesg：显示系统内核消息。"></a><strong>dmesg</strong>：显示系统内核消息。</h2><p>示例：<code>dmesg</code>。</p>
+<h2 id="free：显示内存使用情况。"><a href="#free：显示内存使用情况。" class="headerlink" title="free：显示内存使用情况。"></a><strong>free</strong>：显示内存使用情况。</h2><p>示例：<code>free -m</code>。</p>
+<h2 id="top：实时显示系统进程信息。"><a href="#top：实时显示系统进程信息。" class="headerlink" title="top：实时显示系统进程信息。"></a><strong>top</strong>：实时显示系统进程信息。</h2><p>示例：<code>top</code>。</p>
+<h2 id="vmstat：虚拟内存统计。"><a href="#vmstat：虚拟内存统计。" class="headerlink" title="vmstat：虚拟内存统计。"></a><strong>vmstat</strong>：虚拟内存统计。</h2><p>示例：<code>vmstat 1 5</code>。</p>
+<h2 id="iostat：输入-输出统计。"><a href="#iostat：输入-输出统计。" class="headerlink" title="iostat：输入/输出统计。"></a><strong>iostat</strong>：输入/输出统计。</h2><p>示例：<code>iostat 1 5</code>。</p>
+<h2 id="mpstat：多处理器统计。"><a href="#mpstat：多处理器统计。" class="headerlink" title="mpstat：多处理器统计。"></a><strong>mpstat</strong>：多处理器统计。</h2><p>示例：<code>mpstat 1 5</code>。</p>
+<h2 id="netstat：网络状态。"><a href="#netstat：网络状态。" class="headerlink" title="netstat：网络状态。"></a><strong>netstat</strong>：网络状态。</h2><p>示例：<code>netstat -an</code>。</p>
+<h2 id="ss：替代-netstat。"><a href="#ss：替代-netstat。" class="headerlink" title="ss：替代 netstat。"></a><strong>ss</strong>：替代 netstat。</h2><p>示例：<code>ss -t</code>。</p>
+<h2 id="watch：重复执行命令并显示结果。"><a href="#watch：重复执行命令并显示结果。" class="headerlink" title="watch：重复执行命令并显示结果。"></a><strong>watch</strong>：重复执行命令并显示结果。</h2><p>示例：<code>watch -n 1 command</code>。</p>
+<h2 id="crontab：任务计划。"><a href="#crontab：任务计划。" class="headerlink" title="crontab：任务计划。"></a><strong>crontab</strong>：任务计划。</h2><p>示例：<code>crontab -e</code>。</p>
+<h2 id="ntpdate：同步网络时间。"><a href="#ntpdate：同步网络时间。" class="headerlink" title="ntpdate：同步网络时间。"></a><strong>ntpdate</strong>：同步网络时间。</h2><p>示例：<code>ntpdate time.server</code>。</p>
+<h2 id="route：显示路由表。"><a href="#route：显示路由表。" class="headerlink" title="route：显示路由表。"></a><strong>route</strong>：显示路由表。</h2><p>示例：<code>route</code>。</p>
+<h2 id="ip：网络配置工具。"><a href="#ip：网络配置工具。" class="headerlink" title="ip：网络配置工具。"></a><strong>ip</strong>：网络配置工具。</h2><p>示例：<code>ip address show</code>。</p>
+<h2 id="history：显示命令历史记录。"><a href="#history：显示命令历史记录。" class="headerlink" title="history：显示命令历史记录。"></a><strong>history</strong>：显示命令历史记录。</h2><p>示例：<code>history</code>。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Linux系统下常用文件夹及其含义</title>
+    <url>/2024/04/10/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8F%8A%E5%85%B6%E5%90%AB%E4%B9%89/</url>
+    <content><![CDATA[<h1 id="Linux系统常用文件夹作用"><a href="#Linux系统常用文件夹作用" class="headerlink" title="Linux系统常用文件夹作用"></a>Linux系统常用文件夹作用</h1><p>/：根目录，整个文件系统的起始点。</p>
+<p>/bin：二进制可执行文件的存放目录，包含许多基本的系统工具和命令，如ls、cp和rm等。</p>
+<p>/boot：包含启动系统所需的文件，如内核和引导加载程序。</p>
+<p>/dev：设备文件的存放目录，包含与硬件设备相关的文件，如磁盘、键盘和鼠标等。</p>
+<p>/etc：系统配置文件的存放目录，包含各种系统和应用程序的配置文件。</p>
+<ol>
+<li><code>/etc/sysconfig</code>：包含系统配置的各种参数。</li>
+<li><code>/etc/cron.d</code>：用于存放定时任务的配置文件。</li>
+<li><code>/etc/crontab</code>：系统级别的定时任务配置文件。</li>
+<li><code>/etc/fstab</code>：文件系统的挂载配置信息。</li>
+<li><code>/etc/profile</code>：全局系统环境变量的配置文件。</li>
+<li><code>/etc/bashrc</code>：bash shell 的配置文件。</li>
+<li><code>/etc/hosts</code>：主机名和 IP 地址的映射文件。</li>
+<li><code>/etc/group</code>：用户组信息的配置文件。</li>
+<li><code>/etc/logrotate.d</code>：日志文件滚动的配置文件。</li>
+<li><code>/etc/sudoers</code>：sudo 权限的配置文件。</li>
+<li><code>/etc/apt/sources.list</code>：软件包源的配置文件。</li>
+<li><code>/etc/init</code>：系统初始化脚本的存放目录。</li>
+<li><code>/etc/issue</code>：在登录终端时显示的信息。</li>
+<li><code>/etc/rc.d</code>：系统启动和关闭时的脚本。</li>
+<li><code>/etc/ssh</code>：SSH 相关的配置文件。</li>
+<li><code>/etc/yum.repos.d</code>：在基于 <a href="coco://sendMessage?ext={"s%24wiki_link"%3A"https%3A%2F%2Fm.baike.com%2Fwikiid%2F1136539948567077806"}&msg=RPM">RPM</a> 的系统中，用于存储软件包仓库的配置。</li>
+<li><code>/etc/pam.d</code>：可插拔认证模块（PAM）的配置文件。</li>
+<li><code>/etc/udev/rules.d</code>：设备管理器的规则文件。</li>
+<li><code>/etc/sysctl.conf</code>：系统参数的配置文件。</li>
+<li><code>/etc/inetd.conf</code>：超级服务器的配置文件。</li>
+<li><code>/etc/updatedb.conf</code>：更新数据库的配置文件。</li>
+<li><code>/etc/lightdm/</code>：LightDM 显示管理器的相关配置。</li>
+</ol>
+<p>/home：普通用户的主目录，每个用户在这里有一个单独的文件夹用于存放个人文件和设置。</p>
+<p>/lib：库文件的存放目录，包含许多用于支持系统和应用程序的共享库文件。</p>
+<p>/media：可移动媒体设备（如光盘、USB驱动器等）的挂载点，当插入可移动设备时，会在此目录下创建一个对应的子目录。</p>
+<p>/mnt：临时挂载点，用于挂载其他文件系统或网络共享。</p>
+<p>/opt：第三方软件的安装目录，一些额外的应用程序可以安装到这个目录下。</p>
+<p>/proc：虚拟文件系统，提供系统和进程信息的访问点，可以通过读取其中的文件获取系统状态和进程信息。</p>
+<p>/root：超级用户（root）的主目录，与/home不同，这是root用户的个人目录。</p>
+<p>/sbin：系统管理员使用的系统管理工具的存放目录，包含一些用于系统管理的命令。</p>
+<p>/srv：服务数据目录，用于存放特定服务（如网站、FTP服务器）的数据文件。</p>
+<p>/tmp：临时文件目录，用于存放临时文件，该目录下的文件在系统重新启动时会被清空。</p>
+<p>/usr：用户软件的存放目录，包含系统范围内的应用程序、库文件和文档等。</p>
+<ol>
+<li><code>/usr/bin</code>：包含大量的命令和工具，如文本编辑器、编译器、解释器等。</li>
+<li><code>/usr/sbin</code>：包含管理员常用的命令和工具，如网络配置、系统维护等。</li>
+<li><code>/usr/lib</code>：包含共享库文件，供各种应用程序使用。</li>
+<li><code>/usr/share</code>：包含应用程序所需的共享数据文件，如文档、图标、帮助文件等。</li>
+<li><code>/usr/include</code>：包含头文件，供编译程序使用。</li>
+<li><code>/usr/local</code>：用于本地安装的软件。</li>
+<li><code>/usr/games</code>：游戏相关的文件。</li>
+<li><code>/usr/doc</code>：文档和手册。</li>
+<li><code>/usr/src</code>：源代码。</li>
+</ol>
+<p>/var：可变数据的存放目录，包含经常变化的文件，如日志文件、缓存文件和邮件等。</p>
+<ol>
+<li><strong>/var/log</strong>：系统日志文件的存储位置。</li>
+<li><strong>/var/spool</strong>：用于存储各种队列和<a href="coco://sendMessage?ext={"s%24wiki_link"%3A"https%3A%2F%2Fm.baike.com%2Fwikiid%2F7793774935793854012"}&msg=缓存">缓存</a>，如邮件队列。</li>
+<li><strong>/var/run</strong>：存储进程的相关信息。</li>
+<li><strong>/var/cache</strong>：缓存文件的存放位置。</li>
+<li><strong>/var/mail</strong>：电子邮件的存储目录。</li>
+<li><strong>/var/tmp</strong>：临时文件的存储位置。</li>
+<li><strong>/var/lock</strong>：用于锁定文件或目录，以防止并发访问。</li>
+<li><strong>/var/account</strong>：可能包含账户相关的信息。</li>
+</ol>
+]]></content>
+  </entry>
 </search>
