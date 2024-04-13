@@ -5272,6 +5272,11 @@
 <p>执行ssh-keygen –t rsa –C “git仓库邮箱”，重新生成密钥；</p>
 <p>执行git config –global user.name “git用户名”，重新配置本地用户名；</p>
 <p>执行git config –global user.email “git登录邮箱”，重新配置本地邮箱；</p>
+<h3 id="Git提交代码报错-Push-failed-unable-to-access"><a href="#Git提交代码报错-Push-failed-unable-to-access" class="headerlink" title="Git提交代码报错 Push failed unable to access"></a>Git提交代码报错 Push failed unable to access</h3><p>没有设置账户和邮箱</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;111&quot;</span><br><span class="line">git config --global user.email &quot;111@163.com&quot;</span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="如何使sudo命令时不需要输入密码"><a href="#如何使sudo命令时不需要输入密码" class="headerlink" title="如何使sudo命令时不需要输入密码"></a>如何使sudo命令时不需要输入密码</h3><p>在etc/sudoers文件中找到找到以下行：%sudo ALL=(ALL:ALL) ALL;</p>
 <p>在这一行的下面添加一行，例如：你的用户名 ALL=(ALL:ALL) NOPASSWD: ALL</p>
 <h3 id="“a-terminal-is-required-to-read-the-password-either-use-the-－s-option-to-read-from-standard-input-or-configure-an-askpass-helper”"><a href="#“a-terminal-is-required-to-read-the-password-either-use-the-－s-option-to-read-from-standard-input-or-configure-an-askpass-helper”" class="headerlink" title="“a terminal is required to read the password either use the －s option to read from standard input or configure an askpass helper”"></a>“a terminal is required to read the password either use the －s option to read from standard input or configure an askpass helper”</h3><p>这个问题是因为sudo命令需要终端来读取密码，但在某些情况下，无法从终端读取密码。要解决此问题，您可以使用以下方法之一：</p>
@@ -5335,6 +5340,59 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim etc/profile</span><br></pre></td></tr></table></figure>
 
 <p>在文档最后添加自己的环境变量，格式为<code>export KEY=VALUE</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Linux局域网内远程开关机</title>
+    <url>/2024/03/19/Linux%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%85%B3%E6%9C%BA/</url>
+    <content><![CDATA[<h1 id="Linux-Ubuntu、Debian、Centos-…-的远程唤醒"><a href="#Linux-Ubuntu、Debian、Centos-…-的远程唤醒" class="headerlink" title="Linux (Ubuntu、Debian、Centos …) 的远程唤醒"></a>Linux (Ubuntu、Debian、Centos …) 的远程唤醒</h1><p>环境说明： 两台局域网内的 linux 主机，本环境的系统为 麒麟系统</p>
+<p>目的主机为：IP 192.168.1.101  mac 86:d8:60:47:28:22</p>
+<p>远程主机为：IP 192.168.1.100</p>
+<h2 id="一、唤醒准备工作-目的机上操作"><a href="#一、唤醒准备工作-目的机上操作" class="headerlink" title="一、唤醒准备工作 (目的机上操作)"></a>一、唤醒准备工作 (目的机上操作)</h2><h3 id="1-1-安装工具"><a href="#1-1-安装工具" class="headerlink" title="1.1 安装工具"></a>1.1 安装工具</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ethtool</span><br><span class="line">sudo apt-get install etherwake</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-查看是否开启网络唤醒"><a href="#1-2-查看是否开启网络唤醒" class="headerlink" title="1.2 查看是否开启网络唤醒"></a>1.2 查看是否开启网络唤醒</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ethtool eno1 | grep Wake-on</span><br></pre></td></tr></table></figure>
+
+<p>Wake-on为g代表开启，为d代表关闭</p>
+<h3 id="1-3-开启网络唤醒"><a href="#1-3-开启网络唤醒" class="headerlink" title="1.3 开启网络唤醒"></a>1.3 开启网络唤醒</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ethtool -s eno1 wol g</span><br></pre></td></tr></table></figure>
+
+<p>命令使用后在不重启或关机的情况下有效，下次开机后又会变成d</p>
+<h3 id="1-4-进入待唤醒条件"><a href="#1-4-进入待唤醒条件" class="headerlink" title="1.4 进入待唤醒条件"></a>1.4 进入待唤醒条件</h3><p>关机</p>
+<h2 id="二、Ubuntu、Debian唤醒操作-远程机上操作"><a href="#二、Ubuntu、Debian唤醒操作-远程机上操作" class="headerlink" title="二、Ubuntu、Debian唤醒操作 (远程机上操作)"></a>二、Ubuntu、Debian唤醒操作 (远程机上操作)</h2><h3 id="2-1-安装工具"><a href="#2-1-安装工具" class="headerlink" title="2.1 安装工具"></a>2.1 安装工具</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get install wakeonlan</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-唤醒计算机"><a href="#2-2-唤醒计算机" class="headerlink" title="2.2 唤醒计算机"></a>2.2 唤醒计算机</h3><p>wakeonlan -i 目的主机IP 目的主机mac</p>
+<p>例子：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wakeonlan -i 192.168.1.101 86:d8:60:47:28:22</span><br><span class="line">sudo etherwake -i 网口名 MAC 地址。<span class="comment">#其中，网口名是要发送唤醒包的网络接口名称，MAC 地址是要唤醒的计算机的 MAC 地址</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、Fedora、Red-Hat-Enterprise-Linux、Centos唤醒操作"><a href="#三、Fedora、Red-Hat-Enterprise-Linux、Centos唤醒操作" class="headerlink" title="三、Fedora、Red Hat Enterprise Linux、Centos唤醒操作"></a>三、Fedora、Red Hat Enterprise Linux、Centos唤醒操作</h2><h3 id="3-1-安装工具"><a href="#3-1-安装工具" class="headerlink" title="3.1 安装工具"></a>3.1 安装工具</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install wol</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-唤醒计算机"><a href="#3-2-唤醒计算机" class="headerlink" title="3.2 唤醒计算机"></a>3.2 唤醒计算机</h3><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#wol 目的主机mac</span><br><span class="line">wol 86:d8:60:47:28:22</span><br></pre></td></tr></table></figure>
+
+<p>如果不可以，查看以下配置确定电脑是否进入待唤醒状态</p>
+<blockquote>
+<p>在BIOS中找到“OnBoard LAN”选项，将它设成“Enabled”。</p>
+<p>进入“<a href="coco://sendMessage?ext={"s%24wiki_link"%3A"https%3A%2F%2Fm.baike.com%2Fwikiid%2F1624044424510695484"}&msg=POWER">POWER</a> MANAGEMENT SETUP（电源管理设置）”，将“Power On by LAN/Ring”选项设为“Enabled”。</p>
+<p>进入“Wake On LAN（网络唤醒）”选项，将其设为“Enabled”，设置好后保存退出。</p>
+</blockquote>
+<h2 id="四、无网络情况下"><a href="#四、无网络情况下" class="headerlink" title="四、无网络情况下"></a>四、无网络情况下</h2><p>外网下载ethtool、wakeonlan软件包（不同发行版本下载不同软件），</p>
+<p>根据系统环境选择使用dpkg或是rpm进行安装</p>
+<h3 id="4-1-（Ubuntu、Debian）环境下使用dpkg进行安装"><a href="#4-1-（Ubuntu、Debian）环境下使用dpkg进行安装" class="headerlink" title="4.1 （Ubuntu、Debian）环境下使用dpkg进行安装"></a>4.1 （Ubuntu、Debian）环境下使用dpkg进行安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">packageName:你下载的安装包名称</span></span><br><span class="line">dpkg -i packageName.deb</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2（-Fedora、Red-Hat-Enterprise-Linux、CentOS-）下使用rpm进行安装"><a href="#4-2（-Fedora、Red-Hat-Enterprise-Linux、CentOS-）下使用rpm进行安装" class="headerlink" title="4.2（ Fedora、Red Hat Enterprise Linux、CentOS ）下使用rpm进行安装"></a>4.2（ Fedora、Red Hat Enterprise Linux、CentOS ）下使用rpm进行安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">packageName:你下载的安装包名称</span></span><br><span class="line">rpm -i packageName.rpm</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后唤醒操作步骤同上。 </p>
+<h1 id="Linux-远程关机"><a href="#Linux-远程关机" class="headerlink" title="Linux 远程关机"></a>Linux 远程关机</h1><p>安装sshpass软件（ssh 登陆不能在命令行中指定密码，sshpass 的出现则解决了这一问题。它允许你用 -p 参数指定明文密码，然后直接登录远程服务器，它支持密码从命令行、文件、环境变量中读取。）</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo apt-get  install sshpass</span><br></pre></td></tr></table></figure>
+
+<p>shutdown指令是需要sudo用户权限的，要想通过sshpass远程批量关机，一个一个输密码是不现实的，所以这里将shutdown这个命令的所有者更改为当前用户并为其设置权限。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo chown root:suma /sbin/shutdown</span><br><span class="line">sudo chmod u+s /sbin/shutdown</span><br></pre></td></tr></table></figure>
+
+<p>第一行命令 <code>sudo chown root:suma /sbin/shutdown</code> 用于更改 <code>/sbin/shutdown</code> 文件的所有者和组。这里将所有者设置为 <code>root</code>，组设置为 <code>suma</code>。</p>
+<p>第二行命令 <code>sudo chmod u+s /sbin/shutdown</code> 用于设置 <code>/sbin/shutdown</code> 文件的特殊权限。<code>u+s</code> 表示为文件的所有者设置 <code>SUID</code> 权限。</p>
+<p>SUID 权限允许普通用户以文件所有者的身份执行该文件，通常用于一些需要特殊权限的系统命令。</p>
+<p>在每台需要远程关机的电脑上设置上述指令后，编辑程序批量执行一下命令。</p>
+<p>关机指令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sshpass -p <span class="string">'密码'</span> ssh 用户名@ip <span class="string">"shutdown -h now"</span></span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
 </search>
