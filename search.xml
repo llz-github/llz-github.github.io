@@ -5114,6 +5114,15 @@
 <li><code>chown user:group directory</code>：将目录及其子目录的所有者更改为 <code>user</code>，所属组更改为 <code>group</code></li>
 </ol>
 </blockquote>
+<h2 id="dpkg-用于管理-Debian-包的工具"><a href="#dpkg-用于管理-Debian-包的工具" class="headerlink" title="dpkg :用于管理 Debian 包的工具"></a><a href="coco://sendMessage?ext={"s%24wiki_link"%3A"https%3A%2F%2Fm.baike.com%2Fwikiid%2F5933539072090740480"}&msg=dpkg">dpkg</a> :用于管理 Debian 包的工具</h2><blockquote>
+<ol>
+<li><strong>安装软件包</strong>：<code>dpkg -i package.deb</code>。</li>
+<li><strong>删除软件包</strong>：<code>dpkg -r package</code>。</li>
+<li><strong>查询已安装的软件包</strong>：<code>dpkg -l</code>。</li>
+<li><strong>查询特定软件包的信息</strong>：<code>dpkg -s package</code>。</li>
+<li><strong>重新配置已安装的软件包</strong>：<code>dpkg-reconfigure package</code></li>
+</ol>
+</blockquote>
 <h2 id="ps：显示系统进程。"><a href="#ps：显示系统进程。" class="headerlink" title="ps：显示系统进程。"></a><strong>ps</strong>：显示系统进程。</h2><p><code>ps -aux</code> 显示系统中的所有进程。</p>
 <h2 id="losf：列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件"><a href="#losf：列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件" class="headerlink" title="losf：列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件"></a>losf：列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件</h2><p>losf -i 用以显示符合条件的进程情况</p>
 <h2 id="kill：终止进程-通过PID-。"><a href="#kill：终止进程-通过PID-。" class="headerlink" title="kill：终止进程(通过PID)。"></a><strong>kill</strong>：终止进程(通过PID)。</h2><p>示例：<code>kill PID</code> 终止指定 PID 的进程。</p>
@@ -5235,6 +5244,97 @@
 <li><strong>/var/lock</strong>：用于锁定文件或目录，以防止并发访问。</li>
 <li><strong>/var/account</strong>：可能包含账户相关的信息。</li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>麒麟系统开发使用常见问题</title>
+    <url>/2024/04/13/%E9%BA%92%E9%BA%9F%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="开发软件安装"><a href="#开发软件安装" class="headerlink" title="开发软件安装"></a>开发软件安装</h1><h2 id="常见问题："><a href="#常见问题：" class="headerlink" title="常见问题："></a>常见问题：</h2><h3 id="执行软件报权限不够错误"><a href="#执行软件报权限不够错误" class="headerlink" title="执行软件报权限不够错误"></a>执行软件报权限不够错误</h3><p>银河麒麟系统安装后，没有可执行权限，运行bash或者二进制程序都提示bash权限不够或者类似报错</p>
+<p>输入命令前加上sudo即可，</p>
+<h3 id="QTCreater代码中汉字乱码需要设置文件编码格式"><a href="#QTCreater代码中汉字乱码需要设置文件编码格式" class="headerlink" title="QTCreater代码中汉字乱码需要设置文件编码格式"></a>QTCreater代码中汉字乱码需要设置文件编码格式</h3><p>Window系统默认的文件格式是GBK，所以汉字可以直接显示；linux文件默认格式是UTF8，所以汉字显示乱码；</p>
+<h4 id="解决方法1："><a href="#解决方法1：" class="headerlink" title="解决方法1："></a>解决方法1：</h4><blockquote>
+<p>在QtCreator中，工具-选项-文本编辑器-行为将默认编码改成GBK，保存后，再关闭原来打开的文件（打开的还是原来的utf8，不会自动刷新），重新打开；中文就正常显示了；</p>
+</blockquote>
+<h4 id="解决方法2："><a href="#解决方法2：" class="headerlink" title="解决方法2："></a>解决方法2：</h4><blockquote>
+<p>在QtCreator中，编辑-select Encoding 找到GBK，点击按编码载入（这样只是按照GBK显示，再次打开还是会乱码）</p>
+<p>再次点击 编辑-select Encoding 找到utf-8,点击按编码保存，这样文件编码格式改变，中文就正常显示了；</p>
+</blockquote>
+<h3 id="程序运行提示-SIGSEGV-stack-trace-……"><a href="#程序运行提示-SIGSEGV-stack-trace-……" class="headerlink" title="程序运行提示 SIGSEGV! stack trace:……."></a>程序运行提示 SIGSEGV! stack trace:…….</h3><p>程序在执行过程中发生了内存访问错误；</p>
+<p>查看代码里哪里内存越界、空指针访问等。</p>
+<h3 id="麒麟系统UDP组播程序没有问题，但无法接收到数据"><a href="#麒麟系统UDP组播程序没有问题，但无法接收到数据" class="headerlink" title="麒麟系统UDP组播程序没有问题，但无法接收到数据"></a>麒麟系统UDP组播程序没有问题，但无法接收到数据</h3><p>麒麟系统下UDP通信需要配置本机网关，地址为IP相应的地址，如本机ip为192.168.1.11，网关为192.168.1.254；</p>
+<h3 id="程序编译时提示usr-bin-ld：cannot-find-l…"><a href="#程序编译时提示usr-bin-ld：cannot-find-l…" class="headerlink" title="程序编译时提示usr/bin/ld：cannot find -l…"></a>程序编译时提示usr/bin/ld：cannot find -l…</h3><p>这种情况为没有找到引用库，将所需的库所在的路径引用至项目中即可</p>
+<p>如动态库地址为/home/mode 则llink_directories(/home/mode)</p>
+<h3 id="cmake程序动态库编译成功启动时却加载不上"><a href="#cmake程序动态库编译成功启动时却加载不上" class="headerlink" title="cmake程序动态库编译成功启动时却加载不上"></a>cmake程序动态库编译成功启动时却加载不上</h3><p>使用<code>ldd -r 库名称</code>查看问题是否是编译时未将指定的依赖库引入</p>
+<p>linux编程同window编程不一致，需要显示的引用所依赖的动态库；</p>
+<p><code>target_link_libraries(ProjectName libName)</code> ProjectName:项目名称 libName：依赖库名称</p>
+<p>cmake使用见<a href="https://llz-github.github.io/2024/01/31/cmake%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">cmake简单使用教程</a>。</p>
+<h3 id="Git-fatal-Could-not-read-from-remote-repository"><a href="#Git-fatal-Could-not-read-from-remote-repository" class="headerlink" title="Git  fatal: Could not read from remote repository."></a>Git  fatal: Could not read from remote repository.</h3><p>因为git仓库的用户信息和本地的用户信息不匹配造成的，解决方法也很简单，在git仓库中删除当前用户配置的key后重新生成并配置即可；</p>
+<p>执行ssh-keygen –t rsa –C “git仓库邮箱”，重新生成密钥；</p>
+<p>执行git config –global user.name “git用户名”，重新配置本地用户名；</p>
+<p>执行git config –global user.email “git登录邮箱”，重新配置本地邮箱；</p>
+<h3 id="如何使sudo命令时不需要输入密码"><a href="#如何使sudo命令时不需要输入密码" class="headerlink" title="如何使sudo命令时不需要输入密码"></a>如何使sudo命令时不需要输入密码</h3><p>在etc/sudoers文件中找到找到以下行：%sudo ALL=(ALL:ALL) ALL;</p>
+<p>在这一行的下面添加一行，例如：你的用户名 ALL=(ALL:ALL) NOPASSWD: ALL</p>
+<h3 id="“a-terminal-is-required-to-read-the-password-either-use-the-－s-option-to-read-from-standard-input-or-configure-an-askpass-helper”"><a href="#“a-terminal-is-required-to-read-the-password-either-use-the-－s-option-to-read-from-standard-input-or-configure-an-askpass-helper”" class="headerlink" title="“a terminal is required to read the password either use the －s option to read from standard input or configure an askpass helper”"></a>“a terminal is required to read the password either use the －s option to read from standard input or configure an askpass helper”</h3><p>这个问题是因为sudo命令需要终端来读取密码，但在某些情况下，无法从终端读取密码。要解决此问题，您可以使用以下方法之一：</p>
+<ol>
+<li>使用-S选项：使用-S选项将密码从标准输入中读取。例如：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;password&quot; | sudo -S command</span><br></pre></td></tr></table></figure>
+
+<p>其中“password”是您的密码，“command”是您要执行的命令。</p>
+<ol start="2">
+<li>配置askpass助手：如果您正在使用图形化界面，则可以配置一个askpass助手来获取sudo密码。首先，安装一个askpass程序（如ksshaskpass或gnome-ssh-askpass），然后在sudoers文件中设置路径。例如：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Defaults        env_keep +&#x3D; &quot;SSH_ASKPASS&quot;   Defaults        env_keep +&#x3D; &quot;DISPLAY&quot;      Defaults        ask_pass&#x3D;&#x2F;usr&#x2F;bin&#x2F;ksshaskpass</span><br></pre></td></tr></table></figure>
+
+<p>请注意，修改sudoers文件可能会对系统产生不良影响，请小心操作并进行备份。</p>
+<h3 id="ssh初次链接时提示The-authenticity-of-host-‘-‘-can’t-be-established-ECDSA-key-fingerprint-is-SHA256-Are-you-sure-you-want-to-continue-connecting-yes-no-fingerprint"><a href="#ssh初次链接时提示The-authenticity-of-host-‘-‘-can’t-be-established-ECDSA-key-fingerprint-is-SHA256-Are-you-sure-you-want-to-continue-connecting-yes-no-fingerprint" class="headerlink" title="ssh初次链接时提示The authenticity of host ‘ ‘ can’t be established.ECDSA key fingerprint is SHA256:Are you sure you want to continue connecting (yes/no/[fingerprint])?"></a>ssh初次链接时提示The authenticity of host ‘ ‘ can’t be established.ECDSA key fingerprint is SHA256:Are you sure you want to continue connecting (yes/no/[fingerprint])?</h3><p>SSH连接服务器为什么会出现这个提示，出现这种情况一般有两个原因，一个是第一次登录云服务器，另一个是主机key发生了变化，解决方法很简单，输入yes，然后回车即可。</p>
+<p>可以在SSH的时候加上StrictHostKeyChecking选项，</p>
+<p>还有一种彻底去掉SSH主机验证的方法，就是修改/etc/ssh/ssh_config配置文件，在ssh_config配置文件中添加：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">StrictHostKeyChecking no</span><br><span class="line">UserKnownHostsFile &#x2F;dev&#x2F;null</span><br></pre></td></tr></table></figure>
+
+<p>不建议这么做。</p>
+<p>软件安装</p>
+<p>安装g++</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install g++</span><br></pre></td></tr></table></figure>
+
+<p>安装cmake</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install cmake</span><br></pre></td></tr></table></figure>
+
+<p>安装opengl(不安装会报没有GL/gl.h问题)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get installmesa-common-dev libgl1-mesa-dev</span><br></pre></td></tr></table></figure>
+
+<p>mobaxterm访问麒麟系统可视化界面，麒麟系统安装XRDP</p>
+<blockquote>
+<p>安装XRDP</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install xrdp</span><br></pre></td></tr></table></figure>
+
+<p>启动XRDP</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo &#x2F;etc&#x2F;init.d&#x2F;xrdp start</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>安装QTCreater</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install qtcreater</span><br></pre></td></tr></table></figure>
+
+<p> dpkg 命令用法：</p>
+<ul>
+<li><code>dpkg -i package.deb</code>：安装指定的.deb 软件包。</li>
+<li><code>dpkg -r package</code>：删除已安装的软件包。</li>
+<li><code>dpkg -l</code>：列出已安装的软件包。</li>
+<li><code>dpkg -S file</code>：根据文件查找所属的软件包。</li>
+</ul>
+<p>将一台电脑上的软件拷贝到另一台没有网络的电脑</p>
+<p>sudo apt-get install安装软件时，安装包存放位置为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;var&#x2F;cache&#x2F;apt&#x2F;archives&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>将此文件夹下的安装包下载导入另一台没有网络的电脑,安装即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg -i *.deb</span><br></pre></td></tr></table></figure>
+
+<h2 id="麒麟系统环境变量设置"><a href="#麒麟系统环境变量设置" class="headerlink" title="麒麟系统环境变量设置"></a>麒麟系统环境变量设置</h2><p>在命令行中设置，只在当前命令生效</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export KEY=VALUE</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件，全局有效。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>在文档最后添加自己的环境变量，格式为<code>export KEY=VALUE</code></p>
 ]]></content>
   </entry>
 </search>
