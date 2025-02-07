@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>介绍1-设备状态监控与心跳报文系统 | zl的个人博客</title><meta name="description" content="介绍-设备状态监控与心跳报文系统在当今数字化时代，设备的稳定运行和实时监控对于各类系统的高效运作至关重要。今天要给大家介绍的，是一套精心打造的组合项目 ——设备状态监控系统和 跳报文程序。它们相互协作，为设备管理提供了全面且高效的解决方案，无论是在工业生产、网络运维还是其他需要设备稳定运行的领域，都发挥着关键作用。 一、项目背景与目标在复杂的设备管理场景中，及时了解设备的运行状态并进行有效的控制是"><meta name="keywords" content="java 技术,各种小工具"><meta name="author" content="lilongzhe"><meta name="copyright" content="lilongzhe"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="介绍1-设备状态监控与心跳报文系统"><meta name="twitter:description" content="介绍-设备状态监控与心跳报文系统在当今数字化时代，设备的稳定运行和实时监控对于各类系统的高效运作至关重要。今天要给大家介绍的，是一套精心打造的组合项目 ——设备状态监控系统和 跳报文程序。它们相互协作，为设备管理提供了全面且高效的解决方案，无论是在工业生产、网络运维还是其他需要设备稳定运行的领域，都发挥着关键作用。 一、项目背景与目标在复杂的设备管理场景中，及时了解设备的运行状态并进行有效的控制是"><meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="og:type" content="article"><meta property="og:title" content="介绍1-设备状态监控与心跳报文系统"><meta property="og:url" content="https://llz-github.github.io/2025/02/07/%E4%BB%8B%E7%BB%8D1-%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%BF%83%E8%B7%B3%E6%8A%A5%E6%96%87%E7%B3%BB%E7%BB%9F/"><meta property="og:site_name" content="zl的个人博客"><meta property="og:description" content="介绍-设备状态监控与心跳报文系统在当今数字化时代，设备的稳定运行和实时监控对于各类系统的高效运作至关重要。今天要给大家介绍的，是一套精心打造的组合项目 ——设备状态监控系统和 跳报文程序。它们相互协作，为设备管理提供了全面且高效的解决方案，无论是在工业生产、网络运维还是其他需要设备稳定运行的领域，都发挥着关键作用。 一、项目背景与目标在复杂的设备管理场景中，及时了解设备的运行状态并进行有效的控制是"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2025-02-07T02:26:53.209Z"><meta property="article:modified_time" content="2025-02-07T02:19:12.549Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://llz-github.github.io/2025/02/07/%E4%BB%8B%E7%BB%8D1-%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%BF%83%E8%B7%B3%E6%8A%A5%E6%96%87%E7%B3%BB%E7%BB%9F/"><link rel="prev" title="介绍2-通用UDP网关" href="https://llz-github.github.io/2025/02/07/%E4%BB%8B%E7%BB%8D2-%E9%80%9A%E7%94%A8UDP%E7%BD%91%E5%85%B3/"><link rel="next" title="麒麟系统开发使用常见问题" href="https://llz-github.github.io/2024/04/13/%E9%BA%92%E9%BA%9F%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">56</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍-设备状态监控与心跳报文系统"><span class="toc-number">1.</span> <span class="toc-text">介绍-设备状态监控与心跳报文系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、项目背景与目标"><span class="toc-number">1.1.</span> <span class="toc-text">一、项目背景与目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、功能详解"><span class="toc-number">1.2.</span> <span class="toc-text">二、功能详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（一）设备状态监控"><span class="toc-number">1.2.1.</span> <span class="toc-text">（一）设备状态监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（二）心跳报文程序"><span class="toc-number">1.2.2.</span> <span class="toc-text">（二）心跳报文程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、技术实现"><span class="toc-number">1.3.</span> <span class="toc-text">三、技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（一）网络通信"><span class="toc-number">1.3.1.</span> <span class="toc-text">（一）网络通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（二）辅助功能实现"><span class="toc-number">1.3.2.</span> <span class="toc-text">（二）辅助功能实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、使用介绍"><span class="toc-number">1.4.</span> <span class="toc-text">四、使用介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（一）设备状态监控系统"><span class="toc-number">1.4.1.</span> <span class="toc-text">（一）设备状态监控系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（二）心跳报文程序-1"><span class="toc-number">1.4.2.</span> <span class="toc-text">（二）心跳报文程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、运行截图"><span class="toc-number">1.5.</span> <span class="toc-text">五、运行截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、使用场景与优势"><span class="toc-number">1.6.</span> <span class="toc-text">六、使用场景与优势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（一）使用场景"><span class="toc-number">1.6.1.</span> <span class="toc-text">（一）使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（二）项目优势"><span class="toc-number">1.6.2.</span> <span class="toc-text">（二）项目优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、总结与展望"><span class="toc-number">1.7.</span> <span class="toc-text">七、总结与展望</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">zl的个人博客</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">介绍1-设备状态监控与心跳报文系统</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2025-02-07 10:26:53"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2025-02-07</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2025-02-07 10:19:12"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2025-02-07</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="介绍-设备状态监控与心跳报文系统"><a href="#介绍-设备状态监控与心跳报文系统" class="headerlink" title="介绍-设备状态监控与心跳报文系统"></a>介绍-设备状态监控与心跳报文系统</h1><p>在当今数字化时代，设备的稳定运行和实时监控对于各类系统的高效运作至关重要。今天要给大家介绍的，是一套精心打造的组合项目 ——设备状态监控系统和 跳报文程序。它们相互协作，为设备管理提供了全面且高效的解决方案，无论是在工业生产、网络运维还是其他需要设备稳定运行的领域，都发挥着关键作用。</p>
+<h2 id="一、项目背景与目标"><a href="#一、项目背景与目标" class="headerlink" title="一、项目背景与目标"></a>一、项目背景与目标</h2><p>在复杂的设备管理场景中，及时了解设备的运行状态并进行有效的控制是提升系统可靠性和效率的关键。传统的设备管理方式往往依赖人工巡检，不仅效率低下，还容易出现疏漏。为了实现设备状态的实时监控、远程控制以及故障预警，开发了设备状态监控系统和 跳报文程序，旨在构建一个智能化、自动化的设备管理体系。</p>
+<h2 id="二、功能详解"><a href="#二、功能详解" class="headerlink" title="二、功能详解"></a>二、功能详解</h2><h3 id="（一）设备状态监控"><a href="#（一）设备状态监控" class="headerlink" title="（一）设备状态监控"></a>（一）设备状态监控</h3><ol>
+<li><strong>设备状态实时展示</strong>：通过从配置文件读取设备信息，包括 IP、Mac 地址、名称和所属组别等，在界面上直观展示各个设备的状态。利用<code>DeviceNodeStatusWidget</code>类，根据设备状态绘制不同颜色和图标的界面，如绿色代表正常，红色代表故障等，方便用户快速了解设备的运行状况。</li>
+<li><strong>远程控制设备</strong>：借助<code>CRemoteControl</code>类，实现对设备的远程开关机和程序控制。<code>Startup</code>函数通过构造 Magic Packet 并发送广播，实现设备开机；<code>Shutdown</code>函数利用系统权限发送关机指令，可设置关机超时时间、是否强制关闭应用程序以及关机后是否重启等参数；<code>openProgram</code>函数则通过网络连接在远程设备上启动指定程序。</li>
+<li><strong>配置管理与数据交互</strong>：支持用户在界面上添加、删除设备信息，并将配置保存到 XML 文件中。程序启动时读取配置文件进行初始化，确保设备信息的持久化和灵活管理。同时，通过 UDP 协议与 HeartBeat 程序进行数据交互，接收心跳报文以更新设备状态，发送控制指令实现对设备的远程操作。</li>
+</ol>
+<h3 id="（二）心跳报文程序"><a href="#（二）心跳报文程序" class="headerlink" title="（二）心跳报文程序"></a>（二）心跳报文程序</h3><ol>
+<li><strong>心跳报文发送</strong>：定时向指定地址发送心跳报文，报告自身的运行状态。在<code>HeartRunningTask</code>函数中，获取本机 IP 地址并封装成心跳报文，通过<code>UDPClient</code>类发送出去。如果获取本机 IP 失败，会记录错误日志并切换到默认 IP。这一功能确保了设备状态监控系统能够实时了解各个设备的在线情况，及时发现设备离线等异常情况。</li>
+<li><strong>指令接收与处理</strong>：监听 TCP 连接，接收来自设备状态监控系统发送的开关机、开关程序指令。在<code>CommondTask</code>函数中，创建 TCP socket 并绑定到指定端口，等待连接请求。接收到指令后，启动相应的程序，实现对设备的远程控制。这一功能使得设备状态监控系统能够对设备进行实时干预，确保设备按照预期运行。</li>
+</ol>
+<h2 id="三、技术实现"><a href="#三、技术实现" class="headerlink" title="三、技术实现"></a>三、技术实现</h2><h3 id="（一）网络通信"><a href="#（一）网络通信" class="headerlink" title="（一）网络通信"></a>（一）网络通信</h3><ol>
+<li><strong>UDP 通信</strong>：在设备状态监控系统和心跳报文程序中，广泛使用 UDP 协议进行数据传输。<code>UDPClient</code>和<code>UDPServer</code>类基于 Boost 库实现 UDP 通信，通过<code>Init</code>函数初始化连接，<code>SendData</code>函数发送数据，<code>handle_receive_from</code>函数处理接收的数据。UDP 协议的使用，保证了数据传输的实时性和高效性，适用于心跳报文的发送和设备状态信息的快速更新。</li>
+<li><strong>TCP 通信</strong>：心跳报文程序通过 TCP 协议接收控制指令。在<code>CommondTask</code>函数中，使用<code>socket</code>、<code>bind</code>、<code>listen</code>和<code>accept</code>等函数创建 TCP 连接，接收来自设备状态监控系统的指令。TCP 协议的可靠性确保了指令的准确传输，避免了数据丢失和错误。</li>
+</ol>
+<h3 id="（二）辅助功能实现"><a href="#（二）辅助功能实现" class="headerlink" title="（二）辅助功能实现"></a>（二）辅助功能实现</h3><ol>
+<li><strong>日志记录</strong>：利用自定义的<code>Util</code>库中的日志记录功能，记录程序运行过程中的关键信息、错误信息和设备状态变化。通过<code>UTIL_INSTANCE_LogDebug</code>、<code>UTIL_INSTANCE_LogInfo</code>和<code>UTIL_INSTANCE_LogError</code>等宏，在不同的代码位置记录日志，方便调试和故障排查。</li>
+<li><strong>配置文件处理</strong>：使用<code>pugixml</code>库解析 XML 格式的配置文件，在设备状态监控系统中读取设备信息，在心跳报文程序中读取网络配置信息。通过<code>doc.load_file</code>、<code>select_single_node</code>和<code>attribute</code>等函数，实现对配置文件的读取和修改，确保程序能够根据配置灵活运行。</li>
+</ol>
+<h2 id="四、使用介绍"><a href="#四、使用介绍" class="headerlink" title="四、使用介绍"></a>四、使用介绍</h2><h3 id="（一）设备状态监控系统"><a href="#（一）设备状态监控系统" class="headerlink" title="（一）设备状态监控系统"></a>（一）设备状态监控系统</h3><ol>
+<li><strong>首次运行</strong>：首次启动设备状态监控系统时，程序会读取配置文件（位于程序同级目录下单<code>Config\config.json</code>）。若配置文件不存在或格式有误，可能导致设备信息加载失败。用户可根据实际需求手动修改配置文件，确保设备的 IP、Mac 地址、名称、所属组别等信息准确无误。</li>
+<li><strong>设备状态查看</strong>：程序启动后，在主界面的监控区域，用户可以看到各个设备的当前状态，通过不同颜色和图标直观区分设备是正常运行、关机、故障还是状态不明。例如，绿色图标表示设备正常，灰色图标表示设备故障。</li>
+<li><strong>设备控制操作</strong>：在控制界面，针对每个设备，用户可以进行开机、关机、打开程序和关闭程序等操作。点击相应按钮即可向目标设备发送指令。比如，点击 “开机” 按钮，系统会调用<code>CRemoteControl</code>类的<code>Startup</code>函数，向设备发送开机指令。</li>
+</ol>
+<h3 id="（二）心跳报文程序-1"><a href="#（二）心跳报文程序-1" class="headerlink" title="（二）心跳报文程序"></a>（二）心跳报文程序</h3><ol>
+<li><strong>配置设置</strong>：HeartBeat 心跳报文程序运行前，需确保配置文件（位于程序同级目录下的<code>config\HeartBeatConfig.XUnit</code>）中的网络配置信息正确，包括心跳报文发送的目标 IP、端口以及监听控制指令的端口等。若配置信息错误，可能导致心跳报文无法正常发送或接收控制指令失败。</li>
+<li><strong>启动与运行</strong>：启动 HeartBeat 程序后，它会在后台运行。程序会定时获取本机 IP 地址，并封装成心跳报文通过 UDP 协议发送出去。同时，它会监听指定的 TCP 端口，等待接收来自 DeviceStatusMonitoring 设备状态监控系统的控制指令。在运行过程中，若出现网络故障或其他异常情况，程序会记录错误日志，用户可通过查看日志了解具体情况。</li>
+<li><strong>指令响应</strong>：当 HeartBeat 程序接收到来自设备状态监控系统的开关机、开关程序指令时，会根据指令内容执行相应操作。例如，接收到开机指令，会按照预设的流程启动相关设备；接收到打开程序指令，会在目标设备上启动指定的程序。在执行指令过程中，如果出现问题，如程序启动失败，也会记录错误日志。</li>
+</ol>
+<h2 id="五、运行截图"><a href="#五、运行截图" class="headerlink" title="五、运行截图"></a>五、运行截图</h2><p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202502071018662.png" alt="image-20250206181410664"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/llz-github/Pictures/img1/202502071019741.png" alt="image-20250206181431363"></p>
+<h2 id="六、使用场景与优势"><a href="#六、使用场景与优势" class="headerlink" title="六、使用场景与优势"></a>六、使用场景与优势</h2><h3 id="（一）使用场景"><a href="#（一）使用场景" class="headerlink" title="（一）使用场景"></a>（一）使用场景</h3><ol>
+<li><strong>工业自动化生产</strong>：在工厂的生产线中，对各种设备进行实时监控和远程控制。通过设备状态监控系统，操作人员可以随时了解设备的运行状态，及时发现故障设备并进行远程修复，避免生产线停机，提高生产效率。</li>
+<li><strong>网络设备管理</strong>：在网络机房中，对服务器、路由器等网络设备进行集中管理。心跳报文程序实时报告设备的在线状态，设备状态监控系统可以根据设备负载情况远程控制设备的开关机和程序运行，优化网络资源配置。</li>
+</ol>
+<h3 id="（二）项目优势"><a href="#（二）项目优势" class="headerlink" title="（二）项目优势"></a>（二）项目优势</h3><ol>
+<li><strong>实时性强</strong>：通过心跳报文和 UDP 通信，能够实时获取设备状态并进行远程控制，及时响应设备状态变化。</li>
+<li><strong>操作便捷</strong>：提供直观的图形界面，方便用户进行设备管理和操作，降低了管理成本。</li>
+<li><strong>扩展性好</strong>：代码结构清晰，各个模块功能独立，便于后续添加新的功能和扩展设备管理范围。</li>
+</ol>
+<h2 id="七、总结与展望"><a href="#七、总结与展望" class="headerlink" title="七、总结与展望"></a>七、总结与展望</h2><p>设备状态监控系统和 心跳报文程序的组合，为设备管理提供了一套完整、高效的解决方案。通过实时监控、远程控制和灵活的配置管理，提高了设备的可靠性和管理效率。未来，我们计划进一步优化系统性能，增加更多的设备状态监测指标和控制功能，支持更多的设备类型和通信协议，以满足不断变化的设备管理需求。同时，我们也希望这套项目能够为更多的开发者和企业提供参考，共同推动设备管理领域的技术进步。如果你在使用过程中有任何问题或建议，欢迎随时交流，让我们一起打造更强大的设备管理系统。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">lilongzhe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://llz-github.github.io/2025/02/07/%E4%BB%8B%E7%BB%8D1-%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%BF%83%E8%B7%B3%E6%8A%A5%E6%96%87%E7%B3%BB%E7%BB%9F/">https://llz-github.github.io/2025/02/07/%E4%BB%8B%E7%BB%8D1-%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%BF%83%E8%B7%B3%E6%8A%A5%E6%96%87%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://llz-github.github.io" target="_blank">zl的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2025/02/07/%E4%BB%8B%E7%BB%8D2-%E9%80%9A%E7%94%A8UDP%E7%BD%91%E5%85%B3/"><img class="prev_cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">介绍2-通用UDP网关</div></div></a></div><div class="next-post pull_right"><a href="/2024/04/13/%E9%BA%92%E9%BA%9F%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><img class="next_cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">麒麟系统开发使用常见问题</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By lilongzhe</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@3/instantpage.min.js" type="module"></script></body></html>
